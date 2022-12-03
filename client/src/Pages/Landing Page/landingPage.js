@@ -18,7 +18,7 @@ function LandingPage() {
   }, []);
   return (
     <div>
-      <h1>LandingPage</h1>
+      <h1>Hero page</h1>
       {students?.map((s) => {
         return (
           <div key={s.id}>
