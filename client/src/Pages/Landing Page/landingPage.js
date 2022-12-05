@@ -4,7 +4,7 @@ function LandingPage() {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/students")
+    fetch("http://127.0.0.1:8000/api/students")
       .then((res) => {
         return res.json();
       })
