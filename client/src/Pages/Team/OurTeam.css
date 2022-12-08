@@ -1,0 +1,14 @@
+.our_team {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    padding: 20px;
+}
+.our_team span {
+    position: absolute;
+    top: 1rem;
+    left: 2rem;
+    cursor: pointer;
+}
