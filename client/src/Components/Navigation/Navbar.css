@@ -1,0 +1,30 @@
+.bg-Navbar {
+    background-color: #1d2128;
+}
+
+.me-auto {
+    justify-content: flex-end;
+}
+
+.navbar a {
+    color: #fff;
+}
+
+/* .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+} */
+
+button {
+    background: transparent;
+    border: none;
+}
+.navbar-nav .active {
+    border-radius: .58rem !important;
+    background-color: #fff !important;
+    color: blueviolet !important;
+    overflow: hidden !important;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function LandingPage() {
+function About() {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function LandingPage() {
   }, []);
   return (
     <div>
-      <h1>Hero page</h1>
+      <p>About Page</p>
       {students?.map((s) => {
         return (
           <div key={s.id}>
@@ -31,4 +31,4 @@ function LandingPage() {
   );
 }
 
-export default LandingPage;
+export default About;
