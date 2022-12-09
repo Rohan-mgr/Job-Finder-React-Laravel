@@ -5,10 +5,40 @@
     height: 100vh;
     position: relative;
     padding: 20px;
+    background-color: #1d2128;
+    color: #fff;
 }
 .our_team span {
     position: absolute;
     top: 1rem;
     left: 2rem;
     cursor: pointer;
+}
+.ourteam__image__wrapper {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    overflow: hidden;
+    margin: 0.5rem auto;
+    transition: all 0.2s ease-in-out;
+}
+.ourteam__image__wrapper img {
+    height: 100%; 
+    object-fit: contain;
+}
+.ourteam__image__wrapper:hover {
+    border-width: 8px;
+    background: white;
+    cursor: pointer;
+}
+.our_team .row {
+    width: 80% !important;
+}
+
+@media (max-width: 768px) {
+    .ourteam__image__wrapper {
+        height: 120px;
+        width: 120px;
+    }
 }
