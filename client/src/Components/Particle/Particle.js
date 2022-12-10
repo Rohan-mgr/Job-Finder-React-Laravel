@@ -20,13 +20,17 @@ const Particle = () => {
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
+      smooth="true"
       options={{
+        fullScreen: {
+          enable: true,
+          zIndex: 0,
+        },
         background: {
           color: {
             value: "#1d2128",
           },
         },
-        fpsLimit: 120,
         interactivity: {
           events: {
             onClick: {
@@ -82,9 +86,9 @@ const Particle = () => {
           number: {
             density: {
               enable: true,
-              area: 900,
+              area: 1000,
             },
-            value: 80,
+            value: 100,
           },
           opacity: {
             value: 0.2,

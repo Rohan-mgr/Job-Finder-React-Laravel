@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Preloader.css";
+import { CSSTransition } from "react-transition-group";
 
-function Preloader() {
-  return <div className="preloader"></div>;
+function Preloader(props) {
+  const nodeRef = useRef(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 7700);
+    return () => clearTimeout();
+  }, []);
+  return (
+    <CSSTransition
+      nodeRef={nodeRef}
+      in={loading}
+      timeout={300}
+      onExiting={() => props.setAnimatedPage(false)}
+      unmountOnExit
+    >
+      <div className="preloader"></div>
+    </CSSTransition>
+  );
 }
 
 export default Preloader;
