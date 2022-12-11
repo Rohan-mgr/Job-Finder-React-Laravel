@@ -2,6 +2,10 @@
     background-color: #1d2128;
 }
 
+.navbar {
+    border-bottom-left-radius: .90rem;
+    border-bottom-right-radius: .90rem;
+}
 .me-auto {
     justify-content: flex-end;
 }
@@ -10,13 +14,6 @@
     color: #fff;
 }
 
-/* .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-} */
 
 button {
     background: transparent;
@@ -27,4 +24,8 @@ button {
     background-color: #fff !important;
     color: blueviolet !important;
     overflow: hidden !important;
+}
+
+.navbar .navbar-toggler {
+    background-color: #f8f9fa !important;
 }

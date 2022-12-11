@@ -23,7 +23,7 @@ function OurTeam() {
           </span>
           <Row>
             <Col className="col-12 col-md-6 col-lg-4 text-center my-2">
-              <Rotate direction="top-left" triggerOnce duration={1500}>
+              <Rotate triggerOnce duration={1500}>
                 <div className="ourteam__image__wrapper">
                   <img
                     src={require("../../Assets/Images/ourteam_rohan-min.jpg")}
@@ -36,7 +36,7 @@ function OurTeam() {
               </Fade>
             </Col>
             <Col className="col-12 col-md-6 col-lg-4 text-center my-2">
-              <Rotate direction="top-left" triggerOnce duration={1500}>
+              <Rotate triggerOnce duration={1500}>
                 <div className="ourteam__image__wrapper">
                   <img
                     src={require("../../Assets/Images/ourteam_rojan-min.jpg")}
@@ -49,7 +49,7 @@ function OurTeam() {
               </Fade>
             </Col>
             <Col className="col-12 col-md-12 col-lg-4 text-center my-2">
-              <Rotate direction="top-left" triggerOnce duration={1500}>
+              <Rotate triggerOnce duration={1500}>
                 <div className="ourteam__image__wrapper">
                   <img
                     src={require("../../Assets/Images/ourteam_amrit-min.jpg")}

@@ -1,3 +1,4 @@
+import React, { useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -5,6 +6,12 @@ import "./Navbar.css";
 import NavLink from "./NavLink/NavLink";
 
 function NavigationBar() {
+  const collapseRef = useRef(null);
+
+  const hideBars = () => {
+    collapseRef.current.setAttribute("class", "navbar-collapse collapse");
+  };
+
   return (
     <Navbar bg="Navbar" expand="lg">
       <Container fluid>
@@ -14,10 +21,11 @@ function NavigationBar() {
           id="basic-navbar-nav"
           className="justify-content-center"
           style={{ width: "100%" }}
+          ref={collapseRef}
         >
           <Nav className="text-center my-2" style={{ marginLeft: "auto" }}>
-            <NavLink Path="/" Link="Home" />
-            <NavLink Path="about" Link="About" />
+            <NavLink Path="/" hideNav={hideBars} Link="Home" />
+            <NavLink Path="about" hideNav={hideBars} Link="About" />
             <NavLink Path="ourteam" Link="Our Team" />
           </Nav>
         </Navbar.Collapse>
