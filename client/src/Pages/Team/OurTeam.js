@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Preloader from "../../Components/Preloader/Preloader";
 import "./OurTeam.css";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,9 @@ import Particle from "../../Components/Particle/Particle";
 function OurTeam() {
   const navigate = useNavigate();
   const [showAnimatedPage, setAnimatedPage] = useState(true);
+  useEffect(() => {
+    document.title = "React App | Our Team";
+  }, []);
   return (
     <>
       {showAnimatedPage ? (
@@ -18,7 +21,7 @@ function OurTeam() {
         <Container fluid className="our_team">
           <Particle />
           <span onClick={() => navigate(-1)}>
-            <BiArrowBack style={{ marginTop: "-2px", marginRight: "5px" }} />
+            <BiArrowBack className="back__btn" />
             Our Team
           </span>
           <Row>
