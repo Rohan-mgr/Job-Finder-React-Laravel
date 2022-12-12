@@ -26,6 +26,7 @@ function NavigationBar() {
           <Nav className="text-center my-2" style={{ marginLeft: "auto" }}>
             <NavLink Path="/" hideNav={hideBars} Link="Home" />
             <NavLink Path="about" hideNav={hideBars} Link="About" />
+            <NavLink Path="login" hideNav={hideBars} Link="Login" />
             <NavLink Path="ourteam" Link="Our Team" />
           </Nav>
         </Navbar.Collapse>
