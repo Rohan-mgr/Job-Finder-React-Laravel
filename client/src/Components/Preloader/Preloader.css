@@ -1,7 +1,7 @@
 .preloader {
     position: relative;
     color: white;
-    background-color: #1d2128;
+    background-color: #010b1d;
     height: 100vh;
     z-index: 50;
 }
@@ -87,24 +87,30 @@
 
     60% {
         opacity: 0;
-        content: "Project Name";
-        background-color: transparent;
-        background-image: none;
+        content: "";
+        background-image: url("../../Assets/Images/logo2_footer.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: auto;
     }
 
 
     75% {
         opacity: 1;
-        content: "Project Name";
-        background-color: transparent;
-        background-image: none;
+        content: "";
+        background-image: url("../../Assets/Images/logo2_footer.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: auto;
     }
-
+    
     100% {
         opacity: 0;
         content: " ";
-        background-color: transparent;
-        background-image: none;
+        background-image: url("../../Assets/Images/logo2_footer.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: auto;
 
     }
 }
