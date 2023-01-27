@@ -14,8 +14,8 @@ function Footer() {
                     <h4>About Us</h4>
                     <div className="footer-pera">
                       <p>
-                        Find most recent jobs in Nepal jobfinder.com. We are an
-                        online job search site in Nepal where you can find
+                        Find most recent jobs in Nepal at jobfinder.com. We are
+                        an online job search site in Nepal where you can find
                         career opportunities suitable for everyone.
                       </p>
                     </div>

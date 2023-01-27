@@ -28,7 +28,7 @@ const Particle = () => {
         },
         background: {
           color: {
-            value: "#1d2128",
+            value: "#010b1d",
           },
         },
         interactivity: {
