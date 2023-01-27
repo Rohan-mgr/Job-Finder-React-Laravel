@@ -88,7 +88,8 @@
     60% {
         opacity: 0;
         content: "";
-        background-image: url("../../Assets/Images/logo2_footer.png");
+        background-image: url("../../Assets/Images/logo.png");
+        /* background-size: 30%; */
         background-repeat: no-repeat;
         background-position: center;
         margin: auto;
@@ -98,17 +99,19 @@
     75% {
         opacity: 1;
         content: "";
-        background-image: url("../../Assets/Images/logo2_footer.png");
+        background-image: url("../../Assets/Images/logo.png");
         background-repeat: no-repeat;
         background-position: center;
+        /* background-size: 30%; */
         margin: auto;
     }
     
     100% {
         opacity: 0;
         content: " ";
-        background-image: url("../../Assets/Images/logo2_footer.png");
+        background-image: url("../../Assets/Images/logo.png");
         background-repeat: no-repeat;
+        /* background-size: 30%; */
         background-position: center;
         margin: auto;
 
