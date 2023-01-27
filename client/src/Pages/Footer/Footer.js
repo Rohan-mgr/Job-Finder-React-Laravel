@@ -73,7 +73,7 @@ function Footer() {
               <div className="footer-logo mb-20">
                 <a href="/">
                   <img
-                    src={require("../../Assets/Images/logo2_footer.png")}
+                    src={require("../../Assets/Images/logo.png")}
                     alt="logo"
                   />
                 </a>
