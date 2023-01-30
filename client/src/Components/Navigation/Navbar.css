@@ -1,5 +1,5 @@
 .bg-Navbar {
-    background-color: #010b1d;
+    background-color: #fff;
 }
 
 .navbar {
@@ -11,7 +11,7 @@
 }
 
 .navbar a {
-    color: #fff;
+    color: #000;
 }
 
 .navbar .nav-link:hover, .navbar-brand:hover {
@@ -25,7 +25,7 @@ button {
 .navbar-nav .active {
     border-radius: .58rem !important;
     background-color: #fff !important;
-    color: blueviolet !important;
+    color: #dc3545 !important;
     overflow: hidden !important;
 }
 

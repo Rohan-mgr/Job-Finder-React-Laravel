@@ -5,9 +5,11 @@
     height: 100vh;
     position: relative;
     padding: 20px;
-    background-color: #010b1d;
-    color: #fff;
+    color: #fff !important;
     overflow: hidden;
+}
+.our_team h3 {
+    color: #fff !important
 }
 .our_team span {
     position: absolute;
@@ -17,14 +19,14 @@
 }
 
 .our_team span:hover {
-    color: crimson;
+    color: #dc3545;
 }
 
 .ourteam__image__wrapper {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 2px solid #fff;
+    border: 2px solid #fff !important;
     overflow: hidden;
     margin: 0.5rem auto;
     transition: all 0.2s ease-in-out;

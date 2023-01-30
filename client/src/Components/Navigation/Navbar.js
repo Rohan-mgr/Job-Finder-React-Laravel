@@ -15,7 +15,13 @@ function NavigationBar() {
   return (
     <Navbar bg="Navbar" expand="lg">
       <Container fluid>
-        <Navbar.Brand href="/">Laravel Project</Navbar.Brand>
+        <Navbar.Brand href="/">
+          <img
+            src={require("../../Assets/Images/logo.png")}
+            alt="logo"
+            style={{ width: "40px", height: "50px" }}
+          />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
           id="basic-navbar-nav"

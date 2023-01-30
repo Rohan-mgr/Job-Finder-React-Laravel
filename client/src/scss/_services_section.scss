@@ -1,3 +1,6 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
 .our-services{
     .single-services{
         border: 1px solid rgb(218, 252, 239);
@@ -44,6 +47,7 @@
             }
         }
     }
+    
 }
 
 

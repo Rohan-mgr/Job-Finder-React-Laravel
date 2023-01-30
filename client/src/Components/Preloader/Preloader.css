@@ -1,7 +1,7 @@
 .preloader {
     position: relative;
     color: white;
-    background-color: #010b1d;
+    background-color: #010b1d !important;
     height: 100vh;
     z-index: 50;
 }

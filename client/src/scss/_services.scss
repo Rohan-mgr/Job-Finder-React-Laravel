@@ -1,4 +1,6 @@
 // Hero
+@import "./variables.scss";
+@import "./mixins.scss";
 .hero-caption{
     & span{
         color: #fff;

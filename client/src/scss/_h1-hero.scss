@@ -168,6 +168,10 @@ form.search-box{
         @media #{$xs}{
             width: 100%;
         }
+        #select1 {
+            border:none;
+            color: #616875;
+        }
         .nice-select {
             width: 100%;
             height: 70px;
