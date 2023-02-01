@@ -36,8 +36,8 @@
     object-fit: contain;
 }
 .ourteam__image__wrapper:hover {
-    border-width: 8px;
-    background: white;
+    border-width: 8px !important;
+    background: white; 
     cursor: pointer;
 }
 .our_team .row {

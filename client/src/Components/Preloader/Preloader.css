@@ -1,4 +1,4 @@
-.preloader {
+#preloader {
     position: relative;
     color: white;
     background-color: #010b1d !important;
@@ -6,7 +6,7 @@
     z-index: 50;
 }
 
-.preloader::after {
+#preloader::after {
     content: "";
     font-size: 52px;
     display: flex;
@@ -24,7 +24,7 @@
 }
 
 @media (max-width: 768px) {
-    .preloader::after {
+    #preloader::after {
         font-size: 32px !important;
         background-size: 200px;
     }

@@ -1,6 +1,15 @@
 import React from "react";
 import "../../scss/_services_section.scss";
 import "../../scss/_services.scss";
+import {
+  MdAppSettingsAlt,
+  MdEngineering,
+  MdOutlineRealEstateAgent,
+} from "react-icons/md";
+import { GiHistogram, GiCircuitry } from "react-icons/gi";
+import { BsJournalCode } from "react-icons/bs";
+import { RiUserSettingsLine } from "react-icons/ri";
+import { HiOutlineNewspaper } from "react-icons/hi";
 
 function Service() {
   return (
@@ -18,7 +27,9 @@ function Service() {
         <div className="row d-flex justify-contnet-center">
           <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
             <div className="single-services text-center mb-30">
-              <div className="services-ion">{/* <AiFillMobile /> */}</div>
+              <div className="services-ion">
+                <RiUserSettingsLine />
+              </div>
               <div className="services-cap">
                 <h5>
                   <a href="job_listing.html">Design &amp; Creative</a>
@@ -30,7 +41,7 @@ function Service() {
           <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
             <div className="single-services text-center mb-30">
               <div className="services-ion">
-                <span className="flaticon-cms" />
+                <BsJournalCode />
               </div>
               <div className="services-cap">
                 <h5>
@@ -43,7 +54,7 @@ function Service() {
           <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
             <div className="single-services text-center mb-30">
               <div className="services-ion">
-                <span className="flaticon-report" />
+                <GiHistogram />
               </div>
               <div className="services-cap">
                 <h5>
@@ -56,7 +67,7 @@ function Service() {
           <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
             <div className="single-services text-center mb-30">
               <div className="services-ion">
-                <span className="flaticon-app" />
+                <MdAppSettingsAlt />
               </div>
               <div className="services-cap">
                 <h5>
@@ -69,7 +80,7 @@ function Service() {
           <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
             <div className="single-services text-center mb-30">
               <div className="services-ion">
-                <span className="flaticon-helmet" />
+                <MdEngineering />
               </div>
               <div className="services-cap">
                 <h5>
@@ -82,7 +93,7 @@ function Service() {
           <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
             <div className="single-services text-center mb-30">
               <div className="services-ion">
-                <span className="flaticon-high-tech" />
+                <GiCircuitry />
               </div>
               <div className="services-cap">
                 <h5>
@@ -95,7 +106,7 @@ function Service() {
           <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
             <div className="single-services text-center mb-30">
               <div className="services-ion">
-                <span className="flaticon-real-estate" />
+                <MdOutlineRealEstateAgent />
               </div>
               <div className="services-cap">
                 <h5>
@@ -108,7 +119,7 @@ function Service() {
           <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
             <div className="single-services text-center mb-30">
               <div className="services-ion">
-                <span className="flaticon-content" />
+                <HiOutlineNewspaper />
               </div>
               <div className="services-cap">
                 <h5>
