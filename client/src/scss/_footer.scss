@@ -185,3 +185,11 @@
         padding-bottom: 40px;
     }
 }
+.footer-logo {
+    a {
+        img {
+            height: 80px;
+            object-fit: contain;
+        }
+    }
+}

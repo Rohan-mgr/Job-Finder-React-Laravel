@@ -1,6 +1,9 @@
+@import "./variables.scss";
+@import "./mixins.scss";
 
 .slider-height {
     min-height: 850px;
+    background: url("../Assets/Images/h1_hero.jpg");
     background-repeat:no-repeat ;
     background-position: center center;
     background-size: cover;
@@ -164,6 +167,10 @@ form.search-box{
         width: 34%;
         @media #{$xs}{
             width: 100%;
+        }
+        #select1 {
+            border:none;
+            color: #616875;
         }
         .nice-select {
             width: 100%;

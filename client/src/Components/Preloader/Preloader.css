@@ -1,12 +1,12 @@
-.preloader {
+#preloader {
     position: relative;
     color: white;
-    background-color: #010b1d;
+    background-color: #010b1d !important;
     height: 100vh;
     z-index: 50;
 }
 
-.preloader::after {
+#preloader::after {
     content: "";
     font-size: 52px;
     display: flex;
@@ -24,7 +24,7 @@
 }
 
 @media (max-width: 768px) {
-    .preloader::after {
+    #preloader::after {
         font-size: 32px !important;
         background-size: 200px;
     }
@@ -89,7 +89,7 @@
         opacity: 0;
         content: "";
         background-image: url("../../Assets/Images/logo.png");
-        /* background-size: 30%; */
+        background-size: 5%;
         background-repeat: no-repeat;
         background-position: center;
         margin: auto;
@@ -102,7 +102,7 @@
         background-image: url("../../Assets/Images/logo.png");
         background-repeat: no-repeat;
         background-position: center;
-        /* background-size: 30%; */
+        background-size: 5%;
         margin: auto;
     }
     
@@ -111,7 +111,7 @@
         content: " ";
         background-image: url("../../Assets/Images/logo.png");
         background-repeat: no-repeat;
-        /* background-size: 30%; */
+        background-size: 5%;
         background-position: center;
         margin: auto;
 

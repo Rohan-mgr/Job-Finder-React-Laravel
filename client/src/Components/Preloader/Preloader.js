@@ -19,7 +19,7 @@ function Preloader(props) {
       onExiting={() => props.setAnimatedPage(false)}
       unmountOnExit
     >
-      <div className="preloader"></div>
+      <div id="preloader"></div>
     </CSSTransition>
   );
 }
