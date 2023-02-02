@@ -5,6 +5,7 @@
     height: 100vh;
     position: relative;
     padding: 20px;
+    background-color: #010b1d;
     color: #fff !important;
     overflow: hidden;
 }

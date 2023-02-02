@@ -1,21 +1,55 @@
 .bg-Navbar {
     background-color: #fff;
+    box-shadow: 0 1px 1px #fb246a;
 }
 
-.navbar {
+.sticky-nav {
+    position: fixed;
+    transition: all 0.3s ease-in-out;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+/* .navbar {
     border-bottom-left-radius: .90rem;
     border-bottom-right-radius: .90rem;
+} */
+/* .me-auto {
+    justify-content: center;
+} */
+
+/* .navbar-collapse {
+    border: 1px solid red; 
+    margin: 0 auto !important;
+} */
+
+
+.user-menu {
+    background: #fb246a;
+    border-radius: 2rem;    
 }
-.me-auto {
-    justify-content: flex-end;
+.user-menu a {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff !important;
+    padding: 5px 16px; 
+    text-align: center;
+    
 }
 
-.navbar a {
-    color: #000;
+.user-menu a svg {
+    margin-top: -2px;
+    margin-right: 2px;
 }
+
+.user-menu a:nth-child(1), .user-menu a:nth-child(2) {
+    border-right: 1px solid #ddd;
+}
+
 
 .navbar .nav-link:hover, .navbar-brand:hover {
-    color: red;
+    color: #fb246a !important;
 }
 
 button {
@@ -25,10 +59,30 @@ button {
 .navbar-nav .active {
     border-radius: .58rem !important;
     background-color: #fff !important;
-    color: #dc3545 !important;
+    color: #fb246a !important;
     overflow: hidden !important;
 }
 
 .navbar .navbar-toggler {
     background-color: #f8f9fa !important;
+}
+
+@media (max-width: 992px) {
+    .user-menu {
+        position: absolute;
+        width: 100%;
+        border-radius: 0;
+        top: 76px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        z-index: 999;
+    }
+    .user-menu a {
+        width: 100%;
+        font-size: 12px;
+    }
+    .navbar-collapse {
+        margin-top: 50px !important;
+    }
 }
