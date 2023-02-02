@@ -28,7 +28,7 @@ const Particle = () => {
         },
         background: {
           color: {
-            value: "#010b1d",
+            value: "transparent",
           },
         },
         interactivity: {
@@ -80,7 +80,7 @@ const Particle = () => {
               default: "bounce",
             },
             random: false,
-            speed: 2,
+            speed: 0.5,
             straight: false,
           },
           number: {

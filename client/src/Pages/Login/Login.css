@@ -1,0 +1,21 @@
+.login {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../../Assets/Images/login-bg.jpg");
+}
+.login form {
+    background-color: #fff;
+    padding: 25px;
+    color: #506172 !important;
+}
+.login form p{
+    font-weight: bolder;
+}
+.login form p svg{
+    font-size: 1.1rem;
+    margin-top: -4px;
+    margin-right: 3px;
+}

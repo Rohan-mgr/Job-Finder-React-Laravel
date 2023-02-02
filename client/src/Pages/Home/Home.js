@@ -14,7 +14,7 @@ function Home() {
       <Navbar />
       {pathname === "/" && (
         <>
-          <div className="slider-area ">
+          <div className="slider-area">
             {/* Mobile Menu */}
             <div className="slider-active">
               <div className="single-slider slider-height d-flex align-items-center">

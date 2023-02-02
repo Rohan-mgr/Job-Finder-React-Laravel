@@ -247,7 +247,7 @@ hr {
 		background: $btn_bg;
 		-moz-user-select: none;
 		text-transform: capitalize;
-		color: #fff;
+		color: #fff !important;
 		cursor: pointer;
 		display: inline-block;
 		font-size: 14px;
