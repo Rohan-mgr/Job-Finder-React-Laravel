@@ -5,6 +5,7 @@ import Dashboard from "./Pages/Admin/Dashboard";
 import About from "./Pages/About/About";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
+import Register from "./Pages/SignUp/Register";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -13,7 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}>
           <Route path="about" element={<About />} />
-          <Route path="login" element={<Login />} />
+          <Route path="services" element={<p>This is services page</p>} />
+          <Route path="login/:mode" element={<Login />} />
+          <Route path="register/:mode" element={<Register />} />
         </Route>
         <Route path="/ourteam" element={<OurTeam />} />
         <Route path="/admin" element={<Dashboard />}>

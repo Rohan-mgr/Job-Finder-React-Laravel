@@ -1,14 +1,34 @@
 import React, { useRef, useState, useEffect } from "react";
+import "./Navbar.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import "./Navbar.css";
 import NavLink from "./NavLink/NavLink";
 import { BiLogIn, BiUserCircle } from "react-icons/bi";
-import { FaListUl } from "react-icons/fa";
+import { FaThList } from "react-icons/fa";
+import Modal from "../Modal/Modal";
+import { _getSecureLs, _setSecureLs, _remove } from "../../helper/storage";
 
 function NavigationBar() {
   const collapseRef = useRef(null);
+  const [authModal, setAuthModal] = useState(false);
+
+  const handleCloseAuthModal = () => {
+    _remove("authModal");
+    setAuthModal(false);
+  };
+  const handleSignUpClick = () => {
+    _setSecureLs("authModal", {
+      modalType: "Signup",
+    });
+    setAuthModal(true);
+  };
+  const handleLoginClick = () => {
+    _setSecureLs("authModal", {
+      modalType: "Login",
+    });
+    setAuthModal(true);
+  };
 
   const [show, handleShow] = useState(false);
   useEffect(() => {
@@ -48,25 +68,26 @@ function NavigationBar() {
           <Nav className="text-center my-2">
             <NavLink Path="/" hideNav={hideBars} Link="Home" />
             <NavLink Path="about" hideNav={hideBars} Link="About" />
-            <NavLink Path="login" hideNav={hideBars} Link="Login" />
+            <NavLink Path="services" hideNav={hideBars} Link="Services" />
             <NavLink Path="ourteam" Link="Our Team" />
           </Nav>
         </Navbar.Collapse>
         <div className="user-menu">
-          <a href="#">
-            <FaListUl />
+          <button>
+            <FaThList />
             Post Job Free
-          </a>
-          <a href="#">
+          </button>
+          <button onClick={handleSignUpClick}>
             <BiUserCircle />
             Sign Up
-          </a>
-          <a href="#">
+          </button>
+          <button onClick={handleLoginClick}>
             <BiLogIn />
             Login
-          </a>
+          </button>
         </div>
       </Container>
+      <Modal show={authModal} handleClose={handleCloseAuthModal} />
     </Navbar>
   );
 }

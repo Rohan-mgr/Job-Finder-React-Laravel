@@ -5,6 +5,9 @@
     justify-content: center;
     align-items: center;
     background: url("../../Assets/Images/login-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
 }
 .login form {
     background-color: #fff;
@@ -18,4 +21,9 @@
     font-size: 1.1rem;
     margin-top: -4px;
     margin-right: 3px;
+}
+.login form span a {
+    font-weight: bolder;
+    color: #fb246a !important;
+    cursor: pointer;
 }

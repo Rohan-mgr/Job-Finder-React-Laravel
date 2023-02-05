@@ -1,0 +1,23 @@
+.modal-body svg {
+    color: #fb246a;
+    font-size: 2rem;
+}
+.modal-body p {
+    font-weight: bolder;
+    font-size: 1.2rem;
+    color: #fb246a;
+}
+.modal-body a {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 40px;
+    font-weight: 600;
+}
+.modal-body .btn-seeker{
+    background: #fcce31;
+    color: #535876;
+}
+.modal-body .btn-employer{
+    background: #fb246a;
+}

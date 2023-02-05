@@ -1,10 +1,12 @@
 import React from "react";
 import "./Login.css";
+import { useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Particle from "../../Components/Particle/Particle";
 import { AiFillLock } from "react-icons/ai";
 
 function Login() {
+  const { mode } = useParams();
   return (
     <div className="login">
       <Particle />
@@ -12,7 +14,7 @@ function Login() {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <p>
             <AiFillLock />
-            JOB SEEKER SIGN IN
+            {mode === "seeker" ? "JOB SEEKER" : "EMPLOYER"} SIGN IN
           </p>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -24,16 +26,19 @@ function Login() {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-        <button className="btn head-btn1" type="submit">
+        <button className="btn head-btn1 col-12" type="submit">
           submit
         </button>
         <Form.Group className="mb-3 mt-2" controlId="formBasicCheckbox">
           <span>
             Don't have an account?{" "}
-            <strong style={{ color: "#da2461" }}>Sign Up</strong>
+            <a
+              href={
+                mode === "seeker" ? "/register/seeker" : "/register/employer"
+              }
+            >
+              Sign Up
+            </a>
           </span>
         </Form.Group>
       </Form>
