@@ -3,56 +3,33 @@ import "./Modal.css";
 import Modal from "react-bootstrap/Modal";
 import { NavLink } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
+import { _getSecureLs } from "../../helper/storage";
 
 function AuthModal(props) {
-  //   const [show, setShow] = useState(false);
-
-  //   const handleClose = () => setShow(false);
-  //   const handleShow = () => setShow(true);
-  console.log(props.show.text);
+  const { modalType } = _getSecureLs("authModal");
 
   return (
     <>
-      {/* <button className="btn head-btn1" onClick={handleShow}>
-        Launch demo modal
-      </button> */}
-
-      <Modal show={props.show.status} onHide={props.handleClose}>
-        <Modal.Header closeButton>
-          {/* <Modal.Title className="text-center">Choose Login Option</Modal.Title> */}
-        </Modal.Header>
+      <Modal show={props.show} onHide={props.handleClose}>
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body className="text-center">
           <FaUserAlt />
-          <p>Choose {props.show.text} Option</p>
+          <p>Choose {modalType} Option</p>
           <NavLink
-            to={
-              props.show.text === "Login" ? "login/seeker" : "register/seeker"
-            }
+            to={modalType === "Login" ? "login/seeker" : "register/seeker"}
             className="btn-seeker"
             onClick={props.handleClose}
           >
             I'm a Jobseeker
           </NavLink>
           <NavLink
-            to={
-              props.show.text === "Login"
-                ? "login/employer"
-                : "register/employer"
-            }
+            to={modalType === "Login" ? "login/employer" : "register/employer"}
             className="btn-employer"
             onClick={props.handleClose}
           >
             I'm a Employer
           </NavLink>
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer> */}
       </Modal>
     </>
   );

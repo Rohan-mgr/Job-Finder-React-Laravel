@@ -1,35 +1,33 @@
 import React, { useRef, useState, useEffect } from "react";
+import "./Navbar.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import "./Navbar.css";
 import NavLink from "./NavLink/NavLink";
 import { BiLogIn, BiUserCircle } from "react-icons/bi";
 import { FaThList } from "react-icons/fa";
 import Modal from "../Modal/Modal";
+import { _getSecureLs, _setSecureLs, _remove } from "../../helper/storage";
 
 function NavigationBar() {
   const collapseRef = useRef(null);
-
-  const [authModal, setAuthModal] = useState({ status: false, text: "" });
+  const [authModal, setAuthModal] = useState(false);
 
   const handleCloseAuthModal = () => {
-    setAuthModal((prevState) => {
-      return {
-        ...prevState,
-        status: false,
-        text: authModal.text,
-      };
-    });
+    _remove("authModal");
+    setAuthModal(false);
   };
-  const handleShowAuthModal = (e) => {
-    setAuthModal((prevState) => {
-      return {
-        ...prevState,
-        status: true,
-        text: e.target.innerText,
-      };
+  const handleSignUpClick = () => {
+    _setSecureLs("authModal", {
+      modalType: "Signup",
     });
+    setAuthModal(true);
+  };
+  const handleLoginClick = () => {
+    _setSecureLs("authModal", {
+      modalType: "Login",
+    });
+    setAuthModal(true);
   };
 
   const [show, handleShow] = useState(false);
@@ -79,11 +77,11 @@ function NavigationBar() {
             <FaThList />
             Post Job Free
           </button>
-          <button onClick={(e) => handleShowAuthModal(e)}>
+          <button onClick={handleSignUpClick}>
             <BiUserCircle />
             Sign Up
           </button>
-          <button onClick={handleShowAuthModal}>
+          <button onClick={handleLoginClick}>
             <BiLogIn />
             Login
           </button>
