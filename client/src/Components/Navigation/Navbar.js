@@ -5,10 +5,32 @@ import Navbar from "react-bootstrap/Navbar";
 import "./Navbar.css";
 import NavLink from "./NavLink/NavLink";
 import { BiLogIn, BiUserCircle } from "react-icons/bi";
-import { FaListUl } from "react-icons/fa";
+import { FaThList } from "react-icons/fa";
+import Modal from "../Modal/Modal";
 
 function NavigationBar() {
   const collapseRef = useRef(null);
+
+  const [authModal, setAuthModal] = useState({ status: false, text: "" });
+
+  const handleCloseAuthModal = () => {
+    setAuthModal((prevState) => {
+      return {
+        ...prevState,
+        status: false,
+        text: authModal.text,
+      };
+    });
+  };
+  const handleShowAuthModal = (e) => {
+    setAuthModal((prevState) => {
+      return {
+        ...prevState,
+        status: true,
+        text: e.target.innerText,
+      };
+    });
+  };
 
   const [show, handleShow] = useState(false);
   useEffect(() => {
@@ -48,25 +70,26 @@ function NavigationBar() {
           <Nav className="text-center my-2">
             <NavLink Path="/" hideNav={hideBars} Link="Home" />
             <NavLink Path="about" hideNav={hideBars} Link="About" />
-            <NavLink Path="login" hideNav={hideBars} Link="Login" />
+            <NavLink Path="services" hideNav={hideBars} Link="Services" />
             <NavLink Path="ourteam" Link="Our Team" />
           </Nav>
         </Navbar.Collapse>
         <div className="user-menu">
-          <a href="#">
-            <FaListUl />
+          <button>
+            <FaThList />
             Post Job Free
-          </a>
-          <a href="#">
+          </button>
+          <button onClick={(e) => handleShowAuthModal(e)}>
             <BiUserCircle />
             Sign Up
-          </a>
-          <a href="#">
+          </button>
+          <button onClick={handleShowAuthModal}>
             <BiLogIn />
             Login
-          </a>
+          </button>
         </div>
       </Container>
+      <Modal show={authModal} handleClose={handleCloseAuthModal} />
     </Navbar>
   );
 }
