@@ -5,11 +5,13 @@ import Form from "react-bootstrap/Form";
 import Particle from "../../Components/Particle/Particle";
 import { AiFillLock } from "react-icons/ai";
 import { useFormik } from "formik";
-import { signupValidation } from "../../validation-schema/signupValidation";
+import {
+  signupSeekerValidation,
+  signupEmployerValidation,
+} from "../../validation-schema/signupValidation";
 
 function Register() {
   const { mode } = useParams();
-
   const formik = useFormik({
     initialValues: {
       fullName: "",
@@ -18,12 +20,13 @@ function Register() {
       number: "",
       password: "",
       confirmPassword: "",
-      acceptTerms: false,
+      termsAndConditions: false,
     },
-    validationSchema: signupValidation,
+    validationSchema:
+      mode === "employer" ? signupEmployerValidation : signupSeekerValidation,
     onSubmit: (values, { resetForm }) => {
       alert(JSON.stringify(values, null, 2));
-      resetForm({ values: "" });
+      resetForm();
     },
   });
 
@@ -163,19 +166,24 @@ function Register() {
         </div>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          {/* <Field
-            type="checkbox"
-            name="acceptTerms"
-            label="I have read and understood and agree to the Terms and Conditions governing the use of jobfinder.com"
-            component={Checkbox}
-          /> */}
           <Form.Check
             type="checkbox"
-            name="acceptTerms"
-            checked={formik.values.acceptTerms}
+            name="termsAndConditions"
+            value={formik.values.termsAndConditions}
+            isInvalid={
+              !!formik.errors.termsAndConditions &&
+              formik.touched.termsAndConditions
+            }
+            onBlur={formik.handleBlur}
             onChange={formik.handleChange}
             label="I have read and understood and agree to the Terms and Conditions governing the use of jobfinder.com"
           />
+          {formik.errors.termsAndConditions &&
+            formik.touched.termsAndConditions && (
+              <Form.Control.Feedback type="invalid">
+                {formik.errors.termsAndConditions}
+              </Form.Control.Feedback>
+            )}
         </Form.Group>
 
         <button
