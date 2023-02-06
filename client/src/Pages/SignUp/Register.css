@@ -49,3 +49,7 @@ input[type=number] {
         padding-top: 4.5rem;
     }
 }
+
+.invalid-feedback {
+    display: block !important;
+}
