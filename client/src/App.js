@@ -7,6 +7,7 @@ import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/SignUp/Register";
 import { Route, Routes } from "react-router-dom";
+import AdminLogin from "./Pages/Admin/AdminLogin/AdminLogin";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="dashboard" element={<p>This is dashboard</p>} />
           <Route path="company" element={<p>This is company</p>} />
         </Route>
+        <Route path="/adminlogin" element={<AdminLogin />} />
       </Routes>
     </div>
   );

@@ -1,27 +1,46 @@
 import React from "react";
-import "./Login.css";
-import { useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import Particle from "../../Components/Particle/Particle";
-import { AiFillLock } from "react-icons/ai";
-import { loginValidation } from "../../validation-schema/Validation";
 import { useFormik } from "formik";
+import Particle from "../../../Components/Particle/Particle";
+import { AiFillLock } from "react-icons/ai";
+import { loginValidation } from "../../../validation-schema/Validation";
+import { handleAdminLogin } from "../../../services/auth";
+import { _setSecureLs } from "../../../helper/storage";
 
-function Login() {
-  const { mode } = useParams();
-
+function AdminLogin() {
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: loginValidation,
-    onSubmit: (values, { resetForm }) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        let data;
+        data = await handleAdminLogin(values);
+        if (!data?.user?.id) {
+          console.log(data);
+          return;
+        }
+
+        const remainingMilliseconds = 60 * 60 * 1000;
+        const expiryDate = new Date(
+          new Date().getTime() + remainingMilliseconds
+        );
+        _setSecureLs("adminAuth", {
+          isLoggedIn: true,
+          token: data?.access_token,
+          user: data?.user?.id,
+          // mode: loginMode ? "company" : "user",
+          expiryDate: expiryDate.toISOString(),
+        });
+        console.log(data);
+      } catch (e) {
+        throw new Error(e);
+      }
       resetForm();
     },
   });
-
   return (
     <div className="login">
       <Particle />
@@ -29,7 +48,7 @@ function Login() {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <p>
             <AiFillLock />
-            {mode === "seeker" ? "JOB SEEKER" : "EMPLOYER"} SIGN IN
+            ADMIN LOGIN
           </p>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -67,24 +86,16 @@ function Login() {
             </Form.Control.Feedback>
           )}
         </Form.Group>
-        <button className="btn head-btn1 col-12" type="submit">
+        <button
+          className="btn head-btn1 col-12"
+          type="submit"
+          disabled={formik.isSubmitting}
+        >
           submit
         </button>
-        <Form.Group className="mb-3 mt-2" controlId="formBasicCheckbox">
-          <span>
-            Don't have an account?{" "}
-            <a
-              href={
-                mode === "seeker" ? "/register/seeker" : "/register/employer"
-              }
-            >
-              Sign Up
-            </a>
-          </span>
-        </Form.Group>
       </Form>
     </div>
   );
 }
 
-export default Login;
+export default AdminLogin;

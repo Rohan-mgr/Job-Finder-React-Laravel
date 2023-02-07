@@ -14,7 +14,7 @@ function NavigationBar() {
   const [authModal, setAuthModal] = useState(false);
 
   const handleCloseAuthModal = () => {
-    _remove("authModal");
+    // _remove("authModal");
     setAuthModal(false);
   };
   const handleSignUpClick = () => {

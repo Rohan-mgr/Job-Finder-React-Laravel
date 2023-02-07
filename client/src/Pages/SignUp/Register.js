@@ -8,7 +8,7 @@ import { useFormik } from "formik";
 import {
   signupSeekerValidation,
   signupEmployerValidation,
-} from "../../validation-schema/signupValidation";
+} from "../../validation-schema/Validation";
 
 function Register() {
   const { mode } = useParams();
@@ -191,7 +191,10 @@ function Register() {
           type="submit"
           disabled={formik.isSubmitting}
         >
-          CREATE {mode === "seeker" ? "JOBSEEKER" : "EMPLOYER"} Account
+          {/* CREATE {mode === "seeker" ? "JOBSEEKER" : "EMPLOYER"} Account */}
+          {formik.isSubmitting
+            ? "CREATING ACCOUNT"
+            : `CREATE ${mode === "seeker" ? "JOBSEEKER" : "EMPLOYER"} ACCOUNT`}
         </button>
       </Form>
     </div>
