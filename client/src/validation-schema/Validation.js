@@ -48,3 +48,8 @@ export const signupEmployerValidation = yup.object().shape({
     .bool()
     .oneOf([true], "Please accept the terms and condition"),
 });
+
+export const loginValidation = yup.object().shape({
+  email: yup.string().email().required("Please enter your email"),
+  password: yup.string().required("Please enter the password"),
+});

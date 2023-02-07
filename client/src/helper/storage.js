@@ -17,3 +17,8 @@ export const _remove = (key) => {
 export const _removeAllLs = () => {
   ls.removeAll();
 };
+
+export const getUserToken = () => {
+  const userData = ls.get("auth");
+  return userData?.token;
+};
