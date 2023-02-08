@@ -19,6 +19,6 @@ export const _removeAllLs = () => {
 };
 
 export const getUserToken = () => {
-  const userData = ls.get("auth");
+  const userData = ls.get("adminAuth");
   return userData?.token;
 };

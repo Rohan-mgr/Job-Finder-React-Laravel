@@ -6,8 +6,10 @@ import { AiFillLock } from "react-icons/ai";
 import { loginValidation } from "../../../validation-schema/Validation";
 import { handleAdminLogin } from "../../../services/auth";
 import { _setSecureLs } from "../../../helper/storage";
+import { useNavigate } from "react-router-dom";
 
 function AdminLogin() {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -18,9 +20,10 @@ function AdminLogin() {
       try {
         let data;
         data = await handleAdminLogin(values);
+        console.log(data);
         if (!data?.user?.id) {
-          console.log(data);
-          return;
+          throw new Error("Invalid credentials");
+          // return;
         }
 
         const remainingMilliseconds = 60 * 60 * 1000;
@@ -30,13 +33,14 @@ function AdminLogin() {
         _setSecureLs("adminAuth", {
           isLoggedIn: true,
           token: data?.access_token,
-          user: data?.user?.id,
+          user: data?.user,
           // mode: loginMode ? "company" : "user",
           expiryDate: expiryDate.toISOString(),
         });
-        console.log(data);
-      } catch (e) {
-        throw new Error(e);
+        navigate("/admin/dashboard");
+      } catch (error) {
+        console.log(error);
+        throw new Error(error);
       }
       resetForm();
     },
@@ -52,7 +56,9 @@ function AdminLogin() {
           </p>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>
+            Email<span style={{ color: "red" }}>*</span>
+          </Form.Label>
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -70,7 +76,9 @@ function AdminLogin() {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>
+            Password<span style={{ color: "red" }}>*</span>
+          </Form.Label>
           <Form.Control
             type="password"
             placeholder="Password"
@@ -91,7 +99,7 @@ function AdminLogin() {
           type="submit"
           disabled={formik.isSubmitting}
         >
-          submit
+          {formik.isSubmitting ? "Signing In..." : "Sign In"}
         </button>
       </Form>
     </div>
