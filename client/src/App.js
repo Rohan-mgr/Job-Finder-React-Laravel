@@ -8,6 +8,7 @@ import Login from "./Pages/Login/Login";
 import Register from "./Pages/SignUp/Register";
 import { Route, Routes } from "react-router-dom";
 import AdminLogin from "./Pages/Admin/AdminLogin/AdminLogin";
+import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -20,7 +21,14 @@ function App() {
           <Route path="register/:mode" element={<Register />} />
         </Route>
         <Route path="/ourteam" element={<OurTeam />} />
-        <Route path="/admin" element={<Dashboard />}>
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
           <Route path="dashboard" element={<p>This is dashboard</p>} />
           <Route path="company" element={<p>This is company</p>} />
         </Route>
