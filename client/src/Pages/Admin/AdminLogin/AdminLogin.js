@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { useFormik } from "formik";
 import Particle from "../../../Components/Particle/Particle";
@@ -7,9 +7,11 @@ import { loginValidation } from "../../../validation-schema/Validation";
 import { handleAdminLogin } from "../../../services/auth";
 import { _setSecureLs } from "../../../helper/storage";
 import { useNavigate } from "react-router-dom";
+import DismissableAlert from "../../../Components/Alert/Alert";
 
 function AdminLogin() {
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -39,16 +41,17 @@ function AdminLogin() {
         });
         navigate("/admin/dashboard");
       } catch (error) {
-        console.log(error);
+        setError(error);
+        resetForm();
         throw new Error(error);
       }
-      resetForm();
     },
   });
   return (
     <div className="login">
       <Particle />
       <Form className="col-10 col-md-8 col-lg-4" onSubmit={formik.handleSubmit}>
+        {error && <DismissableAlert>{error}</DismissableAlert>}
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <p>
             <AiFillLock />

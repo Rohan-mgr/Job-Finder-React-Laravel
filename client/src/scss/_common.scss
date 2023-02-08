@@ -274,19 +274,15 @@ hr {
 		width: 101%;
 		height: 101%;
 		background:#da2461;
-		z-index: 1;
+		z-index: -1;
 		border-radius: 5px;
 		transition: transform 0.5s;
 		transition-timing-function: ease;
-		transform-origin: 0 0;
 		transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
-		// 
-		transform: scaleX(0);
 		border-radius: 0;
 	}
 }
 .btn:hover::before {
-	transform: scaleX(1);
 	color: #fff !important;
 	z-index: -1;
 }
@@ -323,10 +319,10 @@ hr {
 
 
 // ot
-.btn.focus, .btn:focus {
-	outline: 0;
-	box-shadow:none; 
-}
+// .btn.focus, .btn:focus {
+// 	outline: 0;
+// 	box-shadow:none; 
+// }
 
 // Custom Btn
 
