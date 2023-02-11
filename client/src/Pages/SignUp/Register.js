@@ -1,6 +1,6 @@
 import React from "react";
 import "./Register.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Particle from "../../Components/Particle/Particle";
 import { AiFillLock } from "react-icons/ai";
@@ -9,8 +9,11 @@ import {
   signupSeekerValidation,
   signupEmployerValidation,
 } from "../../validation-schema/Validation";
+import { handleEmployerRegister } from "../../services/auth";
 
 function Register() {
+  const navigate = useNavigate();
+
   const { mode } = useParams();
   const formik = useFormik({
     initialValues: {
@@ -24,9 +27,17 @@ function Register() {
     },
     validationSchema:
       mode === "employer" ? signupEmployerValidation : signupSeekerValidation,
-    onSubmit: (values, { resetForm }) => {
-      alert(JSON.stringify(values, null, 2));
-      resetForm();
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        let data;
+        data = await handleEmployerRegister(values);
+        console.log(data);
+
+        navigate("/login/employer");
+      } catch (error) {
+        resetForm();
+        throw new Error(error);
+      }
     },
   });
 
