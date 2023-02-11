@@ -1,0 +1,42 @@
+.form-btn {
+    background: #fb246a ;
+    -moz-user-select: none;
+    text-transform: capitalize;
+    color: #fff !important;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 0;
+    margin-bottom: 0;
+    padding: 27px 44px;
+    border-radius: 0px;
+    margin: 10px;
+    cursor: pointer;
+    transition: color 0.4s linear;
+    position: relative;
+    z-index: 1;
+    border: 0;
+    overflow: hidden;
+    margin: 0;
+    z-index: 1;
+    border-radius: 5px;
+    transition: transform 0.5s;
+    transition-timing-function: ease;
+    transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+    /* r-radius: 0; */
+}
+.form-btn:hover {
+    background: #fb246a;
+}
+.form-btn:hover::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 101%;
+    height: 101%;
+    background: #da2461;
+    color: #fff !important;
+    z-index: -1;
+}

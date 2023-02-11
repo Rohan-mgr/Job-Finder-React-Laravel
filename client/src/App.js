@@ -9,6 +9,7 @@ import Register from "./Pages/SignUp/Register";
 import { Route, Routes } from "react-router-dom";
 import AdminLogin from "./Pages/Admin/AdminLogin/AdminLogin";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import ProtectedRoute from "./Components/PrivateRoute/ProtectedRoute";
 
 function App() {
   return (
@@ -21,6 +22,14 @@ function App() {
           <Route path="register/:mode" element={<Register />} />
         </Route>
         <Route path="/ourteam" element={<OurTeam />} />
+        <Route
+          path="/:mode/dashboard"
+          element={
+            <ProtectedRoute>
+              <p>employer or job seeker dashboard</p>
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/admin"
           element={

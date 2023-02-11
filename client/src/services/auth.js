@@ -6,6 +6,21 @@ export const handleAdminLogin = async (adminData) => {
   const URL = AUTH_ENDPOINT.adminLogin;
   console.log(URL);
   const response = await httpAuth.post(URL, JSON.stringify(adminData));
-  console.log(response);
+  return response;
+};
+export const handleEmployerLogin = async (employerCredentials) => {
+  const URL = AUTH_ENDPOINT.employerLogin;
+  console.log(URL);
+  const response = await httpAuth.post(
+    URL,
+    JSON.stringify(employerCredentials)
+  );
+  return response;
+};
+
+export const handleEmployerRegister = async (employerDetails) => {
+  const URL = AUTH_ENDPOINT.employerRegister;
+  console.log(URL);
+  const response = await httpAuth.post(URL, JSON.stringify(employerDetails));
   return response;
 };

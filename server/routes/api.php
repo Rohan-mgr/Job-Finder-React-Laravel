@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiTestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\EmployerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/adminlogin', [AuthController::class, 'login']);
+Route::post('/login/employer', [EmployerController::class, 'login']);
 
 Route::group(['middleware'=>'api'], function(){
     Route::post('logout', [AuthController::class, 'logout']);
@@ -34,4 +36,5 @@ Route::get('/', function () {
 });
 
 Route::get("/students", [ApiTestController::class, "getStudents"]);
+Route::post("/register/employer", [EmployerController::class, "employerRegistration"]);
 // Route::post("/adminlogin", [adminController::class, "adminLogin"]); 

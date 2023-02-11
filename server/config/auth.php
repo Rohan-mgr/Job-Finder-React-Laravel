@@ -40,6 +40,10 @@ return [
             'driver' => 'jwt',
             'provider' => 'users',
         ],
+        'apiemployer' => [
+            'driver' => 'jwt',
+            'provider' => 'employer',
+        ],
     ],
 
     /*
@@ -65,10 +69,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'employer' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\employer::class,
+        ],
     ],
 
     /*
