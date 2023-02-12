@@ -6,3 +6,33 @@
 .upload_profile h4 {
     border-bottom: 1px solid #ddd;
 }
+.preview_image {
+    margin: .5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+    text-align: center;
+    position: relative;
+}
+.preview_image::after {
+    content: "";
+    background-image: url("../../../Assets/Images/photo-gallery.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    height: 100%;
+    width: 100%;
+    opacity: .2;
+}
+.preview_image h5 {
+    padding: 3.5rem 0;
+}
+.preview_image img {
+    height: 44vh;
+    object-fit: contain;
+    object-position: center;
+}
