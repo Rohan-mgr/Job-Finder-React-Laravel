@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiTestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\SeekerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/adminlogin', [AuthController::class, 'login']);
 Route::post('/login/employer', [EmployerController::class, 'login']);
+Route::post('/login/seeker', [SeekerController::class, 'login']);
 
 Route::group(['middleware'=>'api'], function(){
     Route::post('logout', [AuthController::class, 'logout']);
@@ -37,4 +39,5 @@ Route::get('/', function () {
 
 Route::get("/students", [ApiTestController::class, "getStudents"]);
 Route::post("/register/employer", [EmployerController::class, "employerRegistration"]);
+Route::post("/register/seeker", [SeekerController::class, "seekerRegistration"]);
 // Route::post("/adminlogin", [adminController::class, "adminLogin"]); 

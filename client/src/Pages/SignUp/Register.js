@@ -9,7 +9,10 @@ import {
   signupSeekerValidation,
   signupEmployerValidation,
 } from "../../validation-schema/Validation";
-import { handleEmployerRegister } from "../../services/auth";
+import {
+  handleEmployerRegister,
+  handleSeekerRegister,
+} from "../../services/auth";
 
 function Register() {
   const navigate = useNavigate();
@@ -30,10 +33,14 @@ function Register() {
     onSubmit: async (values, { resetForm }) => {
       try {
         let data;
-        data = await handleEmployerRegister(values);
+        if (mode === "employer") {
+          data = await handleEmployerRegister(values);
+          navigate("/login/employer");
+        } else {
+          data = await handleSeekerRegister(values);
+          navigate("/login/seeker");
+        }
         console.log(data);
-
-        navigate("/login/employer");
       } catch (error) {
         resetForm();
         throw new Error(error);

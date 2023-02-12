@@ -9,7 +9,10 @@ import Register from "./Pages/SignUp/Register";
 import { Route, Routes } from "react-router-dom";
 import AdminLogin from "./Pages/Admin/AdminLogin/AdminLogin";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
-import ProtectedRoute from "./Components/PrivateRoute/ProtectedRoute";
+import ProtectedRouteEmployer from "./Components/PrivateRoute/ProtectedRouteEmployer";
+import ProtectedRouteSeeker from "./Components/PrivateRoute/ProtectedRouteSeeker";
+import UserDashboard from "./Pages/UserDashboard/Dashboard";
+import UploadProfile from "./Pages/UserDashboard/UploadProfile/UploadProfile";
 
 function App() {
   return (
@@ -23,13 +26,27 @@ function App() {
         </Route>
         <Route path="/ourteam" element={<OurTeam />} />
         <Route
-          path="/:mode/dashboard"
+          path="/account/employer"
           element={
-            <ProtectedRoute>
-              <p>employer or job seeker dashboard</p>
-            </ProtectedRoute>
+            <ProtectedRouteEmployer>
+              <UserDashboard />
+            </ProtectedRouteEmployer>
           }
-        />
+        >
+          <Route path="dashboard" element={<p>This is dashboard</p>} />
+          <Route path="upload_photo" element={<p>upload Photo</p>} />
+        </Route>
+        <Route
+          path="/account/seeker"
+          element={
+            <ProtectedRouteSeeker>
+              <UserDashboard />
+            </ProtectedRouteSeeker>
+          }
+        >
+          <Route path="dashboard" element={<p>This is dashboard</p>} />
+          <Route path="upload_photo" element={<UploadProfile />} />
+        </Route>
         <Route
           path="/admin"
           element={

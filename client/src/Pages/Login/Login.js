@@ -6,7 +6,7 @@ import Particle from "../../Components/Particle/Particle";
 import { AiFillLock } from "react-icons/ai";
 import { loginValidation } from "../../validation-schema/Validation";
 import { useFormik } from "formik";
-import { handleEmployerLogin } from "../../services/auth";
+import { handleEmployerLogin, handleSeekerLogin } from "../../services/auth";
 import { useNavigate } from "react-router-dom";
 import { _setSecureLs } from "../../helper/storage";
 import DismissableAlert from "../../Components/Alert/Alert";
@@ -25,30 +25,39 @@ function Login() {
     onSubmit: async (values, { resetForm }) => {
       try {
         let data;
-        data = await handleEmployerLogin(values);
-        console.log(data);
+        if (mode === "employer") {
+          data = await handleEmployerLogin(values);
+          const remainingMilliseconds = 60 * 60 * 1000;
+          const expiryDate = new Date(
+            new Date().getTime() + remainingMilliseconds
+          );
+          _setSecureLs("employerAuth", {
+            isLoggedIn: true,
+            token: data?.access_token,
+            user: data?.user,
+            expiryDate: expiryDate.toISOString(),
+          });
+        } else {
+          data = await handleSeekerLogin(values);
+          const remainingMilliseconds = 60 * 60 * 1000;
+          const expiryDate = new Date(
+            new Date().getTime() + remainingMilliseconds
+          );
+          _setSecureLs("seekerAuth", {
+            isLoggedIn: true,
+            token: data?.access_token,
+            user: data?.user,
+            expiryDate: expiryDate.toISOString(),
+          });
+        }
         if (!data?.user?.id) {
           throw new Error("Invalid credentials");
           // return;
         }
 
-        if (!data?.user?.id) {
-          throw new Error("Invalid credentials");
-          // return;
-        }
-
-        const remainingMilliseconds = 60 * 60 * 1000;
-        const expiryDate = new Date(
-          new Date().getTime() + remainingMilliseconds
+        navigate(
+          `/account/${mode === "employer" ? "employer" : "seeker"}/dashboard`
         );
-        _setSecureLs("userAuth", {
-          isLoggedIn: true,
-          token: data?.access_token,
-          user: data?.user,
-          // mode: loginMode ? "company" : "user",
-          expiryDate: expiryDate.toISOString(),
-        });
-        navigate("/employer/dashboard");
       } catch (error) {
         setError(error);
         resetForm();

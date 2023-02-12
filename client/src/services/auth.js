@@ -18,9 +18,22 @@ export const handleEmployerLogin = async (employerCredentials) => {
   return response;
 };
 
+export const handleSeekerLogin = async (seekerCredentials) => {
+  const URL = AUTH_ENDPOINT.seekerLogin;
+  console.log(URL);
+  const response = await httpAuth.post(URL, JSON.stringify(seekerCredentials));
+  return response;
+};
+
 export const handleEmployerRegister = async (employerDetails) => {
   const URL = AUTH_ENDPOINT.employerRegister;
   console.log(URL);
   const response = await httpAuth.post(URL, JSON.stringify(employerDetails));
+  return response;
+};
+export const handleSeekerRegister = async (seekerDetails) => {
+  const URL = AUTH_ENDPOINT.seekerRegister;
+  console.log(URL);
+  const response = await httpAuth.post(URL, JSON.stringify(seekerDetails));
   return response;
 };
