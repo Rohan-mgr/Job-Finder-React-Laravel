@@ -1,0 +1,14 @@
+.elevation-3{
+    box-shadow: none !important;
+}
+.sidebar-dark-primary {
+    background-color: #010b1d !important;
+}
+.main-sidebar a img {
+    margin-right: 0.2rem;
+    height: 50px; 
+    object-fit: contain;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active {
+    background-color: #fb246a !important;
+}
