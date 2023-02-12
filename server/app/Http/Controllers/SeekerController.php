@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\employer;
+use App\Models\seeker;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 
-class EmployerController extends Controller
+class SeekerController extends Controller
 {
     //
 
@@ -19,7 +19,7 @@ class EmployerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'employerRegistration']]);
+        $this->middleware('auth:api', ['except' => ['login', 'seekerRegistration']]);
     }
 
     /**
@@ -30,7 +30,7 @@ class EmployerController extends Controller
 
     public function login(Request $req)
     {
-        auth()->shouldUse('apiemployer');
+        auth()->shouldUse('apiseeker');
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
@@ -40,12 +40,11 @@ class EmployerController extends Controller
         return $this->respondWithToken($token);
     }
 
-    public function employerRegistration(Request $req) {
+    public function seekerRegistration(Request $req) {
         try{
 
-            employer::create([
+            seeker::create([
                 'name' => $req->fullName,
-                'companyName' => $req->companyName,
                 'mobile' => $req->number,
                 'email' => $req->email,
                 'password' => Hash::make($req->password),

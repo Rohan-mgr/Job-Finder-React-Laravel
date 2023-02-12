@@ -44,6 +44,10 @@ return [
             'driver' => 'jwt',
             'provider' => 'employer',
         ],
+        'apiseeker' => [
+            'driver' => 'jwt',
+            'provider' => 'seeker',
+        ],
     ],
 
     /*
@@ -72,6 +76,10 @@ return [
         'employer' => [
             'driver' => 'eloquent',
             'model' => App\Models\employer::class,
+        ],
+        'seeker' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\seeker::class,
         ],
     ],
 
