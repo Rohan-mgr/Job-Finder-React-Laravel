@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import "./UploadProfile.css";
 import { BsCameraFill } from "react-icons/bs";
 import Card from "react-bootstrap/Card";
+import { useFormik } from "formik";
+import { handleSeekerProfileUpdate } from "../../../services/seeker";
 
 function UploadProfile() {
-  const [selectedImage, setSelectedImage] = useState();
-
-  const handleImageChange = (e) => {
-    if (e.target.files && e.target.files.length > 0) {
-      setSelectedImage(e.target.files[0]);
-    }
-  };
+  const formik = useFormik({
+    initialValues: {
+      image: "",
+    },
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        let data;
+        data = await handleSeekerProfileUpdate(values);
+        console.log(data);
+      } catch (error) {
+        throw new Error(error);
+      }
+      resetForm({ values: "" });
+    },
+  });
 
   return (
     <div className="upload_profile">
@@ -24,26 +34,24 @@ function UploadProfile() {
         <p>
           <strong>Please Upload Your Profile Photo</strong>
         </p>
-        <form
-          action="{{route('upload-image')}}"
-          method="post"
-          encType="multipart/form-data"
-        >
-          <div class="mb-3">
+        <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
+          <div className="mb-3">
             <input
-              class="form-control"
+              className="form-control"
               name="image"
               type="file"
               id="formFile"
-              onChange={(e) => handleImageChange(e)}
+              onChange={(e) => {
+                formik.setFieldValue("image", e.currentTarget.files[0]);
+              }}
               accept="image/*"
             />
           </div>
           <div className="preview_image">
-            {selectedImage ? (
+            {formik.values.image ? (
               <Card.Img
                 variant="top"
-                src={URL.createObjectURL(selectedImage)}
+                src={URL.createObjectURL(formik.values.image)}
                 style={{ zIndex: "1" }}
               />
             ) : (
@@ -51,10 +59,6 @@ function UploadProfile() {
                 <strong>preview your selected image</strong>
               </h5>
             )}
-            {/* <img
-              src={require("../../../Assets/Images/ourteam_rohan-min.jpg")}
-              alt="chosen img"
-            /> */}
           </div>
           <button type="submit" class="btn head-btn1">
             Upload

@@ -7,3 +7,7 @@ export const AUTH_ENDPOINT = {
   employerLogin: config.baseURL + "/login/employer",
   seekerLogin: config.baseURL + "/login/seeker",
 };
+
+export const SEEKER_ENDPOINT = {
+  seekerUploadProfile: config.baseURL + "/account/seeker/upload_photo",
+};

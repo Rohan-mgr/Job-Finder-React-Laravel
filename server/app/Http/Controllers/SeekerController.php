@@ -19,7 +19,7 @@ class SeekerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'seekerRegistration']]);
+        $this->middleware('auth:api', ['except' => ['login', 'seekerRegistration', 'handleSeekerProfileUpload']]);
     }
 
     /**
@@ -70,5 +70,10 @@ class SeekerController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60, 
             'user' => auth()->user()
         ]);
+    }
+
+    public function handleSeekerProfileUpload(Request $req){
+        $img = $req->fileName;
+        return response()->json(['message' => $img]);
     }
 }
