@@ -40,4 +40,5 @@ Route::get('/', function () {
 Route::get("/students", [ApiTestController::class, "getStudents"]);
 Route::post("/register/employer", [EmployerController::class, "employerRegistration"]);
 Route::post("/register/seeker", [SeekerController::class, "seekerRegistration"]);
+Route::post("/account/seeker/upload_photo", [SeekerController::class, "handleSeekerProfileUpload"]);
 // Route::post("/adminlogin", [adminController::class, "adminLogin"]); 
