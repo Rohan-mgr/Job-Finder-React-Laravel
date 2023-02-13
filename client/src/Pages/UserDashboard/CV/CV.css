@@ -1,0 +1,59 @@
+.uploader {
+    display: block;
+    clear: both;
+    margin: 0 auto;
+    width: 100%;
+}
+.uploader label:hover {
+    border-color: #6cb940;
+    border-style: dotted;
+}
+.uploader label {
+    width: 100%;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    background: #fff;
+    border-radius: 7px;
+    border: 3px solid transparent;
+    transition: all .2s ease;
+    user-select: none;
+}
+.uploader #start {
+    float: left;
+    clear: both;
+    width: 100%;
+}
+.uploader div {
+    margin: 0 0 0.5rem;
+    color: #5f6982;
+}
+.uploader #start i.fa {
+    font-size: 50px;
+    margin-bottom: 1rem;
+    transition: all .2s ease-in-out;
+}
+#file-upload-btn {
+    display: inline-block;
+    text-align: center;
+}
+.cover_letter textarea {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    overflow: auto;
+    color:inherit;
+    writing-mode: horizontal-tb !important;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    resize: auto;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    background-color: field;
+    column-count: initial !important;
+}
+.cover_letter textarea:hover {
+    border: 3px dotted #6cb940;
+}

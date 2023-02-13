@@ -1,6 +1,5 @@
 import React from "react";
 // import "./SideNav.css";
-// import { ROUTES } from "../../helper/routes";
 // import { _removeAllLs, _getSecureLs } from "../../helper/storage";
 import {
   NavLink,
@@ -51,8 +50,33 @@ function SideNav() {
                   isActive ? "nav-link active" : "nav-link"
                 }
               >
-                <i className="nav-icon fa fa-building" aria-hidden="true"></i>
+                <i className="nav-icon fa fa-camera" aria-hidden="true"></i>
                 Upload A Photo
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="cv_cover_letter"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                <i className="nav-icon fa fa-bullhorn" aria-hidden="true"></i>
+                CV &amp; Cover Letter
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="change_password"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                <i className="nav-icon fa fa-key" aria-hidden="true"></i>
+                Change Password
               </NavLink>
             </li>
           </ul>
