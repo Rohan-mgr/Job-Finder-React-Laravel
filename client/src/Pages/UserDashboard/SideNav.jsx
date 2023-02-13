@@ -64,7 +64,7 @@ function SideNav() {
                 }
               >
                 <i className="nav-icon fa fa-bullhorn" aria-hidden="true"></i>
-                CV & Cover Letter
+                CV &amp; Cover Letter
               </NavLink>
             </li>
             <li className="nav-item">
