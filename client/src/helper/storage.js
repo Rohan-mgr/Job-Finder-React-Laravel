@@ -22,3 +22,7 @@ export const getUserToken = () => {
   const userData = ls.get("adminAuth");
   return userData?.token;
 };
+export const getSeekerToken = () => {
+  const seekerData = ls.get("seekerAuth");
+  return seekerData?.token;
+};

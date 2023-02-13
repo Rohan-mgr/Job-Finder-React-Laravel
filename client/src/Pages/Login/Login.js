@@ -43,6 +43,7 @@ function Login() {
           const expiryDate = new Date(
             new Date().getTime() + remainingMilliseconds
           );
+          console.log(data);
           _setSecureLs("seekerAuth", {
             isLoggedIn: true,
             token: data?.access_token,
