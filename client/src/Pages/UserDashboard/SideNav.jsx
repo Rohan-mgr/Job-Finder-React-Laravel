@@ -1,27 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import "./SideNav.css";
 // import { _removeAllLs, _getSecureLs } from "../../helper/storage";
 import {
   NavLink,
   // Routes,
   // useLocation,
-  // useNavigate,
+  useNavigate,
   // useParams,
   // useRoutes,
 } from "react-router-dom";
+import { getSeekerProfile } from "../../services/seeker";
+import { _getSecureLs } from "../../helper/storage";
 
 // import className from "classnames";
 
 function SideNav() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [seekerProfilePath, setSeekerProfilePath] = useState(null);
+  const { user } = _getSecureLs("seekerAuth");
   // const userMode = _getSecureLs("auth")?.mode;
   // console.log(userMode);
+
+  const getSeeker = async () => {
+    try {
+      const response = await getSeekerProfile(user?.id);
+      console.log(response);
+      setSeekerProfilePath(response?.imgPath);
+      navigate("/account/seeker/upload_photo");
+    } catch (e) {
+      throw new Error(e);
+    }
+  };
+
+  useEffect(() => {
+    getSeeker();
+  }, [seekerProfilePath]);
+  console.log(seekerProfilePath);
 
   return (
     <aside className="main-sidebar sidebar-dark-primary ">
       <div className="ourteam__image__wrapper">
         <img
-          src={require("../../Assets/Images/ourteam_rohan-min.jpg")}
+          src={
+            seekerProfilePath
+              ? `http://localhost:8000/${seekerProfilePath}`
+              : require("../../Assets/Images/user.png")
+          }
           alt="rohan-pic"
         />
       </div>
