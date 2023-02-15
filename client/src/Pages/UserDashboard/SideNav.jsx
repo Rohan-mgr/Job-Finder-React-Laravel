@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 // import "./SideNav.css";
 // import { _removeAllLs, _getSecureLs } from "../../helper/storage";
 import {
   NavLink,
   // Routes,
   // useLocation,
-  useNavigate,
+  // useNavigate,
   // useParams,
   // useRoutes,
 } from "react-router-dom";
@@ -15,26 +15,25 @@ import { _getSecureLs } from "../../helper/storage";
 // import className from "classnames";
 
 function SideNav() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [seekerProfilePath, setSeekerProfilePath] = useState(null);
   const { user } = _getSecureLs("seekerAuth");
   // const userMode = _getSecureLs("auth")?.mode;
   // console.log(userMode);
 
-  const getSeeker = async () => {
+  const getSeeker = useCallback(async () => {
     try {
       const response = await getSeekerProfile(user?.id);
       console.log(response);
       setSeekerProfilePath(response?.imgPath);
-      navigate("/account/seeker/upload_photo");
+      // navigate("/account/seeker/upload_photo");
     } catch (e) {
       throw new Error(e);
     }
-  };
-
+  }, [user?.id]);
   useEffect(() => {
     getSeeker();
-  }, [seekerProfilePath]);
+  }, [getSeeker]);
   console.log(seekerProfilePath);
 
   return (
@@ -101,6 +100,18 @@ function SideNav() {
               >
                 <i className="nav-icon fa fa-key" aria-hidden="true"></i>
                 Change Password
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="my_resume"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                <i class="nav-icon fa fa-file-text" aria-hidden="true"></i>
+                My Resume
               </NavLink>
             </li>
           </ul>

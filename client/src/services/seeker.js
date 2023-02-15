@@ -19,6 +19,18 @@ export const handleSeekerProfileUpdate = async (
   setSelectedImage(null);
   return response;
 };
+export const handleSeekerPasswordUpdate = async (passwordInfo, id) => {
+  const URL = SEEKER_ENDPOINT.seekerChangePassword;
+  const formData = {
+    oldPassword: passwordInfo.oldPassword,
+    newPassword: passwordInfo.newPassword,
+    confirmPassword: passwordInfo.confirmPassword,
+    id: id,
+  };
+  const response = await httpAuth.post(URL, JSON.stringify(formData));
+  console.log(response);
+  return response;
+};
 
 export const getSeekerProfile = async (id) => {
   const URL = SEEKER_ENDPOINT.getSeekerProfile + `/${id}`;

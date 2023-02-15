@@ -15,6 +15,7 @@ import UserDashboard from "./Pages/UserDashboard/Dashboard";
 import UploadProfile from "./Pages/UserDashboard/UploadProfile/UploadProfile";
 import ChangePassword from "./Pages/UserDashboard/ChangePassword/ChangePassword";
 import CV from "./Pages/UserDashboard/CV/CV";
+import Resume from "./Pages/UserDashboard/Resume/Resume";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
           <Route path="upload_photo" element={<UploadProfile />} />
           <Route path="change_password" element={<ChangePassword />} />
           <Route path="cv_cover_letter" element={<CV />} />
+          <Route path="my_resume" element={<Resume />} />
         </Route>
         <Route
           path="/admin"

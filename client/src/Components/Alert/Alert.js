@@ -6,7 +6,11 @@ function DismissableAlert(props) {
 
   if (show) {
     return (
-      <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+      <Alert
+        variant={props.Success ? "success" : "danger"}
+        onClose={() => setShow(false)}
+        dismissible
+      >
         <p style={{ padding: "0", margin: "0" }}>{props.children}</p>
       </Alert>
     );
