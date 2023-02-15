@@ -53,3 +53,12 @@ export const loginValidation = yup.object().shape({
   email: yup.string().email().required("Please enter your email"),
   password: yup.string().required("Please enter the password"),
 });
+export const updatePasswordValidation = yup.object().shape({
+  oldPassword: yup.string().required("Please enter old password"),
+  newPassword: yup.string().min(8).required("Please enter new password"),
+  confirmPassword: yup
+    .string()
+    .min(8)
+    .oneOf([yup.ref("newPassword"), null], "Password must match")
+    .required("Please enter password"),
+});

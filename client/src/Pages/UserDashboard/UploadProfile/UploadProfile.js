@@ -22,14 +22,15 @@ function UploadProfile() {
           <strong>Please Upload Your Profile Photo</strong>
         </p>
         <form
-          onSubmit={(e) =>
+          onSubmit={(e) => {
             handleSeekerProfileUpdate(
               e,
               selectedImage,
               user?.id,
               setSelectedImage
-            )
-          }
+            );
+            window.location.reload(true);
+          }}
           encType="multipart/form-data"
         >
           <div className="mb-3">
