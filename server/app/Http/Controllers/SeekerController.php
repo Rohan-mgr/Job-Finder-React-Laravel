@@ -104,32 +104,25 @@ class SeekerController extends Controller
             
          if ($validator->fails()) {
              return response()->json([
-                 'message'=>'Validation failed',
-                 'errors'=>$validator->errors()
+                 'message'=>$validator->errors()
              ],422);
          }
-          /*auth()->shouldUse('apiseeker');
-          $credentials = request(['email']);*/
-
-          /*$user=auth()->id();
-          dd($user);*/
-
-          /*$user=$req->user();*/
-          //auth('sanctum')->user()->id;
-          $user= $req->user();
+          $user= seeker::find($req->id);
           
-        if(Hash::check($req->input('oldPassword'),$user->password)){
+        if(Hash::check($req->oldPassword,$user->password)){
            
            $user->update([
                  'password'=>Hash::make($req->newPassword)
              ]);
              return response()->json([
                  'message'=>'Password successfully updated',
-             ],200);
-         }else{
-             return response()->json([
-                 'message'=>'Old password does not match',
-             ],400);
+                 'status'=>200,
+                ]);
+            }else{
+                return response()->json([
+                    'message'=>'Old password does not match',
+                    'status'=>400,
+             ]);
          }
     }
 
