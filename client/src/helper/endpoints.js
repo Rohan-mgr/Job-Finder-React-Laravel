@@ -10,4 +10,5 @@ export const AUTH_ENDPOINT = {
 
 export const SEEKER_ENDPOINT = {
   seekerUploadProfile: config.baseURL + "/account/seeker/upload_photo",
+  getSeekerProfile: config.baseURL + "/account/seeker/profile_pic",
 };

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->bigInteger('mobile')->unique();
             $table->string('password');
+            $table->string('img_path')->nullable();
             $table->timestamps();
         });
     }

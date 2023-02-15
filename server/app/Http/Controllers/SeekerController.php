@@ -20,7 +20,7 @@ class SeekerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'seekerRegistration', 'handleSeekerProfileUpload','ChangePassword']]);
+        $this->middleware('auth:api', ['except' => ['login', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword']]);
     }
 
     /**
@@ -74,8 +74,25 @@ class SeekerController extends Controller
     }
 
     public function handleSeekerProfileUpload(Request $req){
-        $img = $req->fileName;
-        return response()->json(['message' => $img]);
+        if($req->image !== "null"){
+            $user = seeker::find($req->userId);
+
+            $image = $req->image;
+            $imgName = time().'_'.$req->image->getClientOriginalName();
+            $image->move('images/', $imgName);
+            $path = "images/$imgName";
+
+            $user->img_path = $path;
+            $user->save();
+            return response()->json(['message' => 'profile picture uploaded successfully']);
+        } else {
+            return response()->json(['message' => "profile picture upload failed"]);
+        }
+    }
+
+    public function getSeekerProfilePic($id) {
+        $user = seeker::find($id);
+        return response()->json(['imgPath' => $user->img_path]);
     }
 
     public function ChangePassword(Request $req){

@@ -1,26 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./UploadProfile.css";
 import { BsCameraFill } from "react-icons/bs";
 import Card from "react-bootstrap/Card";
-import { useFormik } from "formik";
 import { handleSeekerProfileUpdate } from "../../../services/seeker";
+import { _getSecureLs } from "../../../helper/storage";
 
 function UploadProfile() {
-  const formik = useFormik({
-    initialValues: {
-      image: "",
-    },
-    onSubmit: async (values, { resetForm }) => {
-      try {
-        let data;
-        data = await handleSeekerProfileUpdate(values);
-        console.log(data);
-      } catch (error) {
-        throw new Error(error);
-      }
-      resetForm({ values: "" });
-    },
-  });
+  const [selectedImage, setSelectedImage] = useState(null);
+  const { user } = _getSecureLs("seekerAuth");
 
   return (
     <div className="upload_profile">
@@ -34,24 +21,36 @@ function UploadProfile() {
         <p>
           <strong>Please Upload Your Profile Photo</strong>
         </p>
-        <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
+        <form
+          onSubmit={(e) =>
+            handleSeekerProfileUpdate(
+              e,
+              selectedImage,
+              user?.id,
+              setSelectedImage
+            )
+          }
+          encType="multipart/form-data"
+        >
           <div className="mb-3">
             <input
               className="form-control"
               name="image"
               type="file"
-              id="formFile"
+              id="image"
               onChange={(e) => {
-                formik.setFieldValue("image", e.currentTarget.files[0]);
+                if (e.target.files[0] && e.target.files.length > 0) {
+                  setSelectedImage(e.target.files[0]);
+                }
               }}
               accept="image/*"
             />
           </div>
           <div className="preview_image">
-            {formik.values.image ? (
+            {selectedImage ? (
               <Card.Img
                 variant="top"
-                src={URL.createObjectURL(formik.values.image)}
+                src={URL.createObjectURL(selectedImage)}
                 style={{ zIndex: "1" }}
               />
             ) : (

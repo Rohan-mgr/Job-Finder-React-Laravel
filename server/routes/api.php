@@ -41,6 +41,11 @@ Route::get("/students", [ApiTestController::class, "getStudents"]);
 Route::post("/register/employer", [EmployerController::class, "employerRegistration"]);
 Route::post("/register/seeker", [SeekerController::class, "seekerRegistration"]);
 Route::post("/account/seeker/upload_photo", [SeekerController::class, "handleSeekerProfileUpload"]);
+<<<<<<< HEAD
 // Route::post("/adminlogin", [adminController::class, "adminLogin"]); 
 
 Route::post("/account/seeker/change_password", [SeekerController::class, "ChangePassword"])->middleware('auth:sanctum');
+=======
+Route::get("/account/seeker/profile_pic/{id}", [SeekerController::class, "getSeekerProfilePic"]);
+// Route::post("/adminlogin", [adminController::class, "adminLogin"]); 
+>>>>>>> 573284950d580a5cae014cdeca9807a18ccaba67
