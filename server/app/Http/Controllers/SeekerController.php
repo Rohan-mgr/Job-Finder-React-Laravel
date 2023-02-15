@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\seeker;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 
@@ -19,7 +20,7 @@ class SeekerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic']]);
+        $this->middleware('auth:api', ['except' => ['login', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword']]);
     }
 
     /**
@@ -93,4 +94,43 @@ class SeekerController extends Controller
         $user = seeker::find($id);
         return response()->json(['imgPath' => $user->img_path]);
     }
+
+    public function ChangePassword(Request $req){
+         $validator = Validator::make($req->all(), [
+             'oldPassword'=>'required',
+             'newPassword'=>'required|min:8|max:100',
+             'confirmPassword'=>'required|same:newPassword'
+         ]);
+            
+         if ($validator->fails()) {
+             return response()->json([
+                 'message'=>'Validation failed',
+                 'errors'=>$validator->errors()
+             ],422);
+         }
+          /*auth()->shouldUse('apiseeker');
+          $credentials = request(['email']);*/
+
+          /*$user=auth()->id();
+          dd($user);*/
+
+          /*$user=$req->user();*/
+          //auth('sanctum')->user()->id;
+          $user= $req->user();
+          
+        if(Hash::check($req->input('oldPassword'),$user->password)){
+           
+           $user->update([
+                 'password'=>Hash::make($req->newPassword)
+             ]);
+             return response()->json([
+                 'message'=>'Password successfully updated',
+             ],200);
+         }else{
+             return response()->json([
+                 'message'=>'Old password does not match',
+             ],400);
+         }
+    }
+
 }

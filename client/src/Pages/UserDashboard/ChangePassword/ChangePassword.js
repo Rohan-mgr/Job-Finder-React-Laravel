@@ -16,9 +16,10 @@ function ChangePassword() {
         <Form.Label>Confirm Password</Form.Label>
         <Form.Control type="password" name="confirmPassword" />
       </Form.Group>
-      <button type="submit" className="btn head-btn1">
+      <input type="submit" value='submit'></input>
+      {/* <button type="submit" className="btn head-btn1">
         Update
-      </button>
+      </button> */}
     </Form>
   );
 }
