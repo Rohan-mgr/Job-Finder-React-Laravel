@@ -42,3 +42,5 @@ Route::post("/register/employer", [EmployerController::class, "employerRegistrat
 Route::post("/register/seeker", [SeekerController::class, "seekerRegistration"]);
 Route::post("/account/seeker/upload_photo", [SeekerController::class, "handleSeekerProfileUpload"]);
 // Route::post("/adminlogin", [adminController::class, "adminLogin"]); 
+
+Route::post("/account/seeker/change_password", [SeekerController::class, "ChangePassword"])->middleware('auth:sanctum');
