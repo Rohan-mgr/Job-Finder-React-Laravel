@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CV.css";
+import { handleSeekerCVUpload } from "../../../services/seeker";
+import { _getSecureLs } from "../../../helper/storage";
 
 function CV() {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [coverLetter, setCoverLetter] = useState("");
+  const { user } = _getSecureLs("seekerAuth");
   return (
     <form
-      action=""
-      method="POST"
-      encType="multipart/form-data"
       className="uploader"
+      onSubmit={
+        (e) => handleSeekerCVUpload(e, selectedFile, coverLetter, user?.id)
+        // window.location.reload(true);
+      }
+      encType="multipart/form-data"
     >
       <label id="file-drag">
         <div id="start">
@@ -15,7 +22,17 @@ function CV() {
           <div>Select a file here</div>
           <div>Suitable file are .doc, .docx, rtf, pdf</div>
           <span id="file-upload-btn">
-            <input id="file-upload" type="file" name="cv_attachment" />
+            <input
+              name="upload_file"
+              type="file"
+              id="upload_file"
+              onChange={(e) => {
+                if (e.target.files[0] && e.target.files.length > 0) {
+                  setSelectedFile(e.target.files[0]);
+                }
+              }}
+              accept=".pdf, .doc, .docx"
+            />
           </span>
         </div>
       </label>
@@ -23,8 +40,13 @@ function CV() {
         <h4>Your Cover Letter</h4>
         <div className="form-group">
           <textarea
+            required
             rows="4"
             name="cover_letter"
+            value={coverLetter}
+            onChange={(e) => {
+              setCoverLetter(e.target.value);
+            }}
             style={{ width: "100%" }}
           ></textarea>
         </div>
