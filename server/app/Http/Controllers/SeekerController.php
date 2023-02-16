@@ -20,7 +20,7 @@ class SeekerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword']]);
+        $this->middleware('auth:api', ['except' => ['login', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword', 'handleCVUpload']]);
     }
 
     /**
@@ -90,6 +90,7 @@ class SeekerController extends Controller
         }
     }
 
+
     public function getSeekerProfilePic($id) {
         $user = seeker::find($id);
         return response()->json(['imgPath' => $user->img_path]);
@@ -124,6 +125,10 @@ class SeekerController extends Controller
                     'status'=>400,
              ]);
          }
+    }
+
+    public function handleCVUpload(Request $req) {
+        return response()->json(['resume'=>$req->upload_file, 'id' => $req->userId, 'letter'=>$req->cover_letter]);
     }
 
 }

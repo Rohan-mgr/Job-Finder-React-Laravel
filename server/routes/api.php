@@ -41,8 +41,8 @@ Route::get("/students", [ApiTestController::class, "getStudents"]);
 Route::post("/register/employer", [EmployerController::class, "employerRegistration"]);
 Route::post("/register/seeker", [SeekerController::class, "seekerRegistration"]);
 Route::post("/account/seeker/upload_photo", [SeekerController::class, "handleSeekerProfileUpload"]);
-// Route::post("/adminlogin", [adminController::class, "adminLogin"]); 
+Route::post("/account/seeker/cv_cover_letter", [SeekerController::class, "handleCVUpload"]);
+
 
 Route::post("/account/seeker/change_password", [SeekerController::class, "ChangePassword"]);
 Route::get("/account/seeker/profile_pic/{id}", [SeekerController::class, "getSeekerProfilePic"]);
-// Route::post("/adminlogin", [adminController::class, "adminLogin"]); 
