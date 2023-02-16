@@ -10,13 +10,33 @@ export const handleSeekerProfileUpdate = async (
 ) => {
   e.preventDefault();
   const URL = SEEKER_ENDPOINT.seekerUploadProfile;
-  console.log(URL);
+  console.log(URL, seekerProfile);
   const imgData = new FormData();
   imgData.append("image", seekerProfile);
   imgData.append("userId", userId);
   const response = await axios.post(URL, imgData);
   console.log(response);
   setSelectedImage(null);
+  return response;
+};
+export const handleSeekerCVUpload = async (
+  e,
+  seekerCV,
+  coverLetter,
+  userId
+) => {
+  e.preventDefault();
+  const URL = SEEKER_ENDPOINT.seekerUploadCV;
+  console.log(URL, seekerCV, coverLetter, userId);
+  const cvData = new FormData();
+  cvData.append("upload_file", seekerCV);
+  cvData.append("cover_letter", coverLetter);
+  cvData.append("userId", userId);
+  console.log(cvData);
+  const response = await axios.post(URL, cvData, {
+    headers: { "Content-Type": "application/pdf" },
+  });
+  console.log(response);
   return response;
 };
 export const handleSeekerPasswordUpdate = async (passwordInfo, id) => {
@@ -34,8 +54,6 @@ export const handleSeekerPasswordUpdate = async (passwordInfo, id) => {
 
 export const getSeekerProfile = async (id) => {
   const URL = SEEKER_ENDPOINT.getSeekerProfile + `/${id}`;
-  console.log(URL);
   const response = await httpAuth.get(URL);
-  console.log(response);
   return response;
 };

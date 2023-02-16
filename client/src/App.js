@@ -16,6 +16,7 @@ import UploadProfile from "./Pages/UserDashboard/UploadProfile/UploadProfile";
 import ChangePassword from "./Pages/UserDashboard/ChangePassword/ChangePassword";
 import CV from "./Pages/UserDashboard/CV/CV";
 import Resume from "./Pages/UserDashboard/Resume/Resume";
+import Logout from "./Components/Logout/Logout";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path="change_password" element={<ChangePassword />} />
           <Route path="cv_cover_letter" element={<CV />} />
           <Route path="my_resume" element={<Resume />} />
+          <Route path="logout" element={<Logout />} />
         </Route>
         <Route
           path="/admin"
