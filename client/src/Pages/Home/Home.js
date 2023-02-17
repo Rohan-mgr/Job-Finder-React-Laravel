@@ -4,7 +4,7 @@ import "../../scss/_common.scss";
 import { Outlet } from "react-router-dom";
 import Navbar from "../../Components/Navigation/Navbar";
 import { useLocation } from "react-router-dom";
-import Service from "./Service";
+import Categories from "./Categories";
 import Footer from "../Footer/Footer";
 
 function Home() {
@@ -57,7 +57,7 @@ function Home() {
               </div>
             </div>
           </div>
-          <Service />
+          <Categories />
         </>
       )}
       <Outlet />
