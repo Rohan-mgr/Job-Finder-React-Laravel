@@ -20,7 +20,7 @@ class SeekerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword', 'handleCVUpload']]);
+        $this->middleware('auth:api', ['except' => ['login', 'deleteSeekerAccount', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword', 'handleCVUpload', 'getSeekerResume']]);
     }
 
     /**
@@ -90,10 +90,45 @@ class SeekerController extends Controller
         }
     }
 
+    public function handleCVUpload(Request $req) {
+        if($req->upload_file !== "null" && $req->cover_letter !== null){
+            $user = seeker::find($req->userId);
+
+            $cv = $req->upload_file;
+            $cv_name = time().'_'.$req->upload_file->getClientOriginalName();
+            $cv->move('documents/', $cv_name);
+            $path = "documents/$cv_name";
+
+            $user->resume = $path;
+            $user->cover_letter = $req->cover_letter;
+            $user->save();
+
+            // return response()->json(['resume'=>$req->upload_file->getClientOriginalName(), 'id' => $req->userId, "cover_letter"=>$req->cover_letter]);
+            return response()->json(['message' => "Resume uploaded successfully"]);
+        } else {
+            return response()->json(['message' => "Failed to upload your cv"]);
+        }
+    }
+
 
     public function getSeekerProfilePic($id) {
         $user = seeker::find($id);
         return response()->json(['imgPath' => $user->img_path]);
+    }
+    public function deleteSeekerAccount($id) {
+        $user = seeker::find($id);
+        if(!$user) {
+            return response()->json(['message' => "Account does not exists"]);
+        }
+        $user->delete();
+        return response()->json(['message' => "Account Deleted Successfully"]);
+    }
+
+    public function getSeekerResume($id) {
+        $user = seeker::find($id);
+        // $pdfFilePath = $request->input(public_path('documents/1676550473_cv_resume.pdf'));
+        // return response()->json(['resume' => $user->resume])->header('Content-Type', 'application/pdf');
+        return response($user->resume, 200)->header('Content-Type', 'application/pdf');
     }
 
     public function ChangePassword(Request $req){
@@ -125,10 +160,6 @@ class SeekerController extends Controller
                     'status'=>400,
              ]);
          }
-    }
-
-    public function handleCVUpload(Request $req) {
-        return response()->json(['resume'=>$req->upload_file, 'id' => $req->userId, 'letter'=>$req->cover_letter]);
     }
 
 }
