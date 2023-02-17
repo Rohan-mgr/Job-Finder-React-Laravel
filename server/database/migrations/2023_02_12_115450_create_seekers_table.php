@@ -20,6 +20,8 @@ return new class extends Migration
             $table->bigInteger('mobile')->unique();
             $table->string('password');
             $table->string('img_path')->nullable();
+            $table->string('resume')->nullable();
+            $table->string('cover_letter')->nullable();
             $table->timestamps();
         });
     }

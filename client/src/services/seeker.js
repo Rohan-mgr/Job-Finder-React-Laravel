@@ -57,3 +57,18 @@ export const getSeekerProfile = async (id) => {
   const response = await httpAuth.get(URL);
   return response;
 };
+
+export const getSeekerResume = async (id) => {
+  const URL = SEEKER_ENDPOINT.getSeekerResume + `/${id}`;
+  const response = await httpAuth.get(URL);
+  return response;
+};
+export const deleteSeekerAccount = async (e, id, setMsg) => {
+  e.preventDefault();
+  const URL = SEEKER_ENDPOINT.deleteSeekerAccount + `/${id}`;
+  console.log(URL);
+  const response = await httpAuth.get(URL);
+  setMsg(response);
+  console.log(response);
+  return response;
+};

@@ -46,3 +46,5 @@ Route::post("/account/seeker/cv_cover_letter", [SeekerController::class, "handle
 
 Route::post("/account/seeker/change_password", [SeekerController::class, "ChangePassword"]);
 Route::get("/account/seeker/profile_pic/{id}", [SeekerController::class, "getSeekerProfilePic"]);
+Route::get("/account/seeker/my_resume/{id}", [SeekerController::class, "getSeekerResume"]);
+Route::get("/account/seeker/delete_account/{id}", [SeekerController::class, "deleteSeekerAccount"]);
