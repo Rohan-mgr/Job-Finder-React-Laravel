@@ -10,10 +10,12 @@ function CV() {
   return (
     <form
       className="uploader"
-      onSubmit={
-        (e) => handleSeekerCVUpload(e, selectedFile, coverLetter, user?.id)
+      onSubmit={(e) => {
+        handleSeekerCVUpload(e, selectedFile, coverLetter, user?.id);
+        setSelectedFile(null);
+        setCoverLetter("");
         // window.location.reload(true);
-      }
+      }}
       encType="multipart/form-data"
     >
       <label id="file-drag">

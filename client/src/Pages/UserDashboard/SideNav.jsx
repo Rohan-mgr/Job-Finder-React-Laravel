@@ -107,13 +107,13 @@ function SideNav() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="deactivate_account"
+                to="delete_account"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
                 }
               >
                 <i class="nav-icon fa fa-power-off" aria-hidden="true"></i>
-                Deactivate Account
+                Delete Account
               </NavLink>
             </li>
             <li className="nav-item">
@@ -127,22 +127,9 @@ function SideNav() {
                 <i class="nav-icon fa fa-sign-out" aria-hidden="true"></i>
                 Logout
               </NavLink>
-              {/* <button>Logout</button> */}
             </li>
           </ul>
         </nav>
-
-        {/* <div class="sidebar-custom">
-          <button
-            onClick={() => {
-              _removeAllLs();
-              navigate(ROUTES.LOGIN);
-            }}
-            class="mt-2 btn btn-secondary hide-on-collapse pos-right"
-          >
-            <i class="fas fa-sign-out-alt"></i> Logout
-          </button>
-        </div> */}
       </div>
     </aside>
   );
