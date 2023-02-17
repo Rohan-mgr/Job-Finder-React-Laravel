@@ -11,7 +11,7 @@ import { BsJournalCode } from "react-icons/bs";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { HiOutlineNewspaper } from "react-icons/hi";
 
-function Service() {
+function Categories() {
   return (
     <div className="our-services section-pad-t30">
       <div className="container">
@@ -146,4 +146,4 @@ function Service() {
   );
 }
 
-export default Service;
+export default Categories;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { _getSecureLs } from "../../../helper/storage";
 import { getSeekerResume } from "../../../services/seeker";
-import PdfViewer from "./PdfViewer";
+// import PdfViewer from "./PdfViewer";
 import axios from "axios";
 function Resume() {
   const [resumePath, setResumePath] = useState(null);
@@ -44,7 +44,7 @@ function Resume() {
       <h1>Resume</h1>
       <p>{user?.name}</p>
       <p>{resumePath}</p>
-      <PdfViewer />
+      {/* <PdfViewer /> */}
     </div>
   );
 }
