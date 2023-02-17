@@ -127,8 +127,8 @@ class SeekerController extends Controller
     public function getSeekerResume($id) {
         $user = seeker::find($id);
         // $pdfFilePath = $request->input(public_path('documents/1676550473_cv_resume.pdf'));
-        // return response()->json(['resume' => $user->resume])->header('Content-Type', 'application/pdf');
-        return response($user->resume, 200)->header('Content-Type', 'application/pdf');
+        return response()->json(['resume' => $user->resume])->header('Content-Type', 'application/pdf');
+        // return response($user->resume, 200)->header('Content-Type', 'application/pdf');
     }
 
     public function ChangePassword(Request $req){
