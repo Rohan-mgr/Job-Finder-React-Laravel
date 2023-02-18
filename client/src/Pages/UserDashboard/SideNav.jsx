@@ -8,32 +8,54 @@ import {
   // useRoutes,
 } from "react-router-dom";
 import { getSeekerProfile } from "../../services/seeker";
+import { getEmpoyerProfile } from "../../services/employer";
 import { _getSecureLs } from "../../helper/storage";
 
 function SideNav() {
   const [seekerProfilePath, setSeekerProfilePath] = useState(null);
-  const { user } = _getSecureLs("seekerAuth");
+  const [employerProfilePath, setEmployerProfilePath] = useState(null);
+  let User;
+  const { userMode } = _getSecureLs("seekerAuth");
+  if (userMode === "seeker") {
+    User = _getSecureLs("seekerAuth");
+  } else {
+    User = _getSecureLs("employerAuth");
+  }
+  console.log(User?.userMode);
 
-  const getSeeker = useCallback(async () => {
+  const getLoggedInUser = useCallback(async () => {
     try {
-      const response = await getSeekerProfile(user?.id);
-      setSeekerProfilePath(response?.imgPath);
+      let response;
+      if (userMode === "seeker") {
+        response = await getSeekerProfile(User?.user?.id);
+        setSeekerProfilePath(response?.imgPath);
+      } else {
+        response = await getEmpoyerProfile(User?.user?.id);
+        setEmployerProfilePath(response?.imgPath);
+      }
     } catch (e) {
       throw new Error(e);
     }
-  }, [user?.id]);
+  }, [User?.user?.id, userMode]);
   useEffect(() => {
-    getSeeker();
-  }, [getSeeker]);
+    getLoggedInUser();
+  }, [getLoggedInUser, User]);
 
   return (
     <aside className="main-sidebar sidebar-dark-primary ">
       <div className="ourteam__image__wrapper">
         <img
+          // src={
+          //   seekerProfilePath
+          //     ? `http://localhost:8000/${seekerProfilePath}`
+          //     : require("../../Assets/Images/user.png")
+          // }
           src={
-            seekerProfilePath
+            seekerProfilePath === null && employerProfilePath === null
+              ? require("../../Assets/Images/user.png")
+              : seekerProfilePath
               ? `http://localhost:8000/${seekerProfilePath}`
-              : require("../../Assets/Images/user.png")
+              : `http://localhost:8000/${employerProfilePath}`
           }
           alt="rohan-pic"
         />
@@ -67,19 +89,71 @@ function SideNav() {
                 Upload A Photo
               </NavLink>
             </li>
-
-            <li className="nav-item">
-              <NavLink
-                exact
-                to="cv_cover_letter"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                <i className="nav-icon fa fa-bullhorn" aria-hidden="true"></i>
-                CV &amp; Cover Letter
-              </NavLink>
-            </li>
+            {User?.userMode === "seeker" && (
+              <>
+                <li className="nav-item">
+                  <NavLink
+                    exact
+                    to="cv_cover_letter"
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                  >
+                    <i
+                      className="nav-icon fa fa-bullhorn"
+                      aria-hidden="true"
+                    ></i>
+                    CV &amp; Cover Letter
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    exact
+                    to="my_resume"
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                  >
+                    <i class="nav-icon fa fa-file-text" aria-hidden="true"></i>
+                    My Resume
+                  </NavLink>
+                </li>
+              </>
+            )}
+            {User?.userMode === "employer" && (
+              <>
+                <li className="nav-item">
+                  <NavLink
+                    exact
+                    to="post_job"
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                  >
+                    <i
+                      className="nav-icon fa fa-bullhorn"
+                      aria-hidden="true"
+                    ></i>
+                    Post A New Job
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink
+                    exact
+                    to="job_lists"
+                    className={({ isActive }) =>
+                      isActive ? "nav-link active" : "nav-link"
+                    }
+                  >
+                    <i
+                      className="nav-icon fa fa-list-ul"
+                      aria-hidden="true"
+                    ></i>
+                    List Of Jobs
+                  </NavLink>
+                </li>
+              </>
+            )}
             <li className="nav-item">
               <NavLink
                 exact
@@ -92,18 +166,7 @@ function SideNav() {
                 Change Password
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink
-                exact
-                to="my_resume"
-                className={({ isActive }) =>
-                  isActive ? "nav-link active" : "nav-link"
-                }
-              >
-                <i class="nav-icon fa fa-file-text" aria-hidden="true"></i>
-                My Resume
-              </NavLink>
-            </li>
+
             <li className="nav-item">
               <NavLink
                 exact
