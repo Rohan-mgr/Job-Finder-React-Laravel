@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\employer;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+
 
 class EmployerController extends Controller
 {
@@ -19,7 +21,7 @@ class EmployerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'employerRegistration']]);
+        $this->middleware('auth:api', ['except' => ['login','ChangePassword', 'deleteEmployerAccount', 'getEmployerProfilePic', 'employerRegistration', 'handleEmployerProfileUpload']]);
     }
 
     /**
@@ -71,5 +73,67 @@ class EmployerController extends Controller
             'expires_in' => auth()->factory()->getTTL() * 60, 
             'user' => auth()->user()
         ]);
+    }
+
+    public function handleEmployerProfileUpload(Request $req){
+        if($req->image !== "null"){
+            $user = employer::find($req->userId);
+
+            $image = $req->image;
+            $imgName = time().'_'.$req->image->getClientOriginalName();
+            $image->move('imagesEmployer/', $imgName);
+            $path = "imagesEmployer/$imgName";
+
+            $user->img_path = $path;
+            $user->save();
+            return response()->json(['message' => 'profile picture uploaded successfully']);
+        } else {
+            return response()->json(['message' => "profile picture upload failed"]);
+        }
+    }
+
+    public function getEmployerProfilePic($id) {
+        $user = employer::find($id);
+        return response()->json(['imgPath' => $user->img_path]);
+    }
+
+    public function deleteEmployerAccount($id) {
+        $user = employer::find($id);
+        if(!$user) {
+            return response()->json(['message' => "Account does not exists"]);
+        }
+        $user->delete();
+        return response()->json(['message' => "Account Deleted Successfully"]);
+    }
+
+    public function ChangePassword(Request $req){
+         $validator = Validator::make($req->all(), [
+             'oldPassword'=>'required',
+             'newPassword'=>'required|min:8|max:100',
+             'confirmPassword'=>'required|same:newPassword'
+         ]);
+            
+         if ($validator->fails()) {
+             return response()->json([
+                 'message'=>$validator->errors()
+             ],422);
+         }
+          $user= employer::find($req->id);
+          
+        if(Hash::check($req->oldPassword,$user->password)){
+           
+           $user->update([
+                 'password'=>Hash::make($req->newPassword)
+             ]);
+             return response()->json([
+                 'message'=>'Password successfully updated',
+                 'status'=>200,
+                ]);
+            }else{
+                return response()->json([
+                    'message'=>'Old password does not match',
+                    'status'=>400,
+             ]);
+         }
     }
 }
