@@ -1,22 +1,35 @@
 import React, { useState } from "react";
 import { deleteSeekerAccount } from "../../services/seeker";
+import { deleteEmployerAccount } from "../../services/employer";
 import { _getSecureLs, _remove } from "../../helper/storage";
 import { useNavigate } from "react-router-dom";
 import DismissableAlert from "../Alert/Alert";
 
-function DeleteAccount() {
+function DeleteAccount(props) {
   const navigate = useNavigate();
-  const { user } = _getSecureLs("seekerAuth");
+  let User;
+  if (props.Mode === "seeker") {
+    User = _getSecureLs("seekerAuth")?.user;
+  } else {
+    User = _getSecureLs("employerAuth")?.user;
+  }
   const [msg, setMsg] = useState(null);
   console.log(msg);
+  console.log(User, props.Mode);
 
   return (
     <div>
       <form
         onSubmit={(e) => {
-          deleteSeekerAccount(e, user?.id, setMsg);
-          _remove("seekerAuth");
-          navigate("/register/seeker");
+          if (props.Mode === "seeker") {
+            deleteSeekerAccount(e, User?.id, setMsg);
+            _remove("seekerAuth");
+            navigate("/register/seeker");
+          } else {
+            deleteEmployerAccount(e, User?.id, setMsg);
+            _remove("employerAuth");
+            navigate("/register/employer");
+          }
         }}
       >
         {msg && <DismissableAlert>{msg?.message}</DismissableAlert>}

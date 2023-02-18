@@ -1,12 +1,12 @@
 .avatar {
   background-color: #189091;
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  font-size: 1.5rem;
   color: white;
 }
 
@@ -15,3 +15,4 @@
   column-gap: 10px;
   align-items: center;
 }
+

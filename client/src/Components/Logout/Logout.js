@@ -4,12 +4,21 @@ import { _remove } from "../../helper/storage";
 
 function Logout(props) {
   function signout() {
-    _remove("seekerAuth");
+    if (props.Mode === "seeker") {
+      _remove("seekerAuth");
+    } else {
+      _remove("employerAuth");
+    }
   }
   useEffect(() => {
     signout();
   }, []);
-  return <Navigate to="/login/seeker" replace={true} />;
+  return (
+    <Navigate
+      to={props.Mode === "seeker" ? "/login/seeker" : "/login/employer"}
+      replace={true}
+    />
+  );
 }
 
 export default Logout;

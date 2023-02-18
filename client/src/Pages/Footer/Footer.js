@@ -1,5 +1,6 @@
 import React from "react";
 import "../../scss/_footer.scss";
+import NavLink from "../../Components/Navigation/NavLink/NavLink";
 
 function Footer() {
   return (
@@ -49,19 +50,16 @@ function Footer() {
                   <h4>Important Link</h4>
                   <ul>
                     <li>
-                      <a href="#"> View Project</a>
+                      <NavLink Path="/" Link="Home" />
                     </li>
                     <li>
-                      <a href="#">Contact Us</a>
+                      <NavLink Path="about" Link="About" />
                     </li>
                     <li>
-                      <a href="#">Testimonial</a>
+                      <NavLink Path="services" Link="Services" />
                     </li>
                     <li>
-                      <a href="#">Proparties</a>
-                    </li>
-                    <li>
-                      <a href="#">Support</a>
+                      <NavLink Path="ourteam" Link="Our Team" />
                     </li>
                   </ul>
                 </div>

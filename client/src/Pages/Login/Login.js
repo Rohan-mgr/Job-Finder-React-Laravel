@@ -35,6 +35,7 @@ function Login() {
             isLoggedIn: true,
             token: data?.access_token,
             user: data?.user,
+            userMode: "employer",
             expiryDate: expiryDate.toISOString(),
           });
         } else {
@@ -48,6 +49,7 @@ function Login() {
             isLoggedIn: true,
             token: data?.access_token,
             user: data?.user,
+            userMode: "seeker",
             expiryDate: expiryDate.toISOString(),
           });
         }

@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import { handleSeekerPasswordUpdate } from "../../../services/seeker";
+import { handleEmployerPasswordUpdate } from "../../../services/employer";
 import { useFormik } from "formik";
 import DismissableAlert from "../../../Components/Alert/Alert";
 import { _getSecureLs } from "../../../helper/storage";
 import { updatePasswordValidation } from "../../../validation-schema/Validation";
 
-function ChangePassword() {
+function ChangePassword(props) {
   const [error, setError] = useState(null);
-  const { user } = _getSecureLs("seekerAuth");
+  let User;
+  if (props.Mode === "seeker") {
+    User = _getSecureLs("seekerAuth")?.user;
+  } else {
+    User = _getSecureLs("employerAuth")?.user;
+  }
   const formik = useFormik({
     initialValues: {
       oldPassword: "",
@@ -19,7 +25,11 @@ function ChangePassword() {
     onSubmit: async (values, { resetForm }) => {
       try {
         let data;
-        data = await handleSeekerPasswordUpdate(values, user?.id);
+        if (props.Mode === "seeker") {
+          data = await handleSeekerPasswordUpdate(values, User?.id);
+        } else {
+          data = await handleEmployerPasswordUpdate(values, User?.id);
+        }
 
         console.log(data);
         setError(data);

@@ -19,6 +19,9 @@ import CV from "./Pages/UserDashboard/CV/CV";
 import Resume from "./Pages/UserDashboard/Resume/Resume";
 import Logout from "./Components/Logout/Logout";
 import DeleteAccount from "./Components/DeleteAccount/DeleteAccount";
+import CommonDashboard from "./Pages/UserDashboard/CommonDashboard";
+import PostJob from "./Pages/UserDashboard/PostJob/PostJob";
+import JobList from "./Pages/UserDashboard/JobList/JobList";
 
 function App() {
   return (
@@ -39,8 +42,20 @@ function App() {
             </ProtectedRouteEmployer>
           }
         >
-          <Route path="dashboard" element={<p>This is dashboard</p>} />
-          <Route path="upload_photo" element={<p>upload Photo</p>} />
+          <Route path="dashboard" element={<CommonDashboard />} />
+          <Route path="upload_photo" element={<UploadProfile />} />
+          <Route path="logout" element={<Logout Mode="employer" />} />
+          <Route path="post_job" element={<PostJob />} />
+          <Route path="job_lists" element={<JobList />} />
+          <Route
+            path="change_password"
+            element={<ChangePassword Mode="employer" />}
+          />
+
+          <Route
+            path="delete_account"
+            element={<DeleteAccount Mode="employer" />}
+          />
         </Route>
         <Route
           path="/account/seeker"
@@ -50,13 +65,19 @@ function App() {
             </ProtectedRouteSeeker>
           }
         >
-          <Route path="dashboard" element={<p>This is dashboard</p>} />
+          <Route path="dashboard" element={<CommonDashboard />} />
           <Route path="upload_photo" element={<UploadProfile />} />
-          <Route path="change_password" element={<ChangePassword />} />
+          <Route
+            path="change_password"
+            element={<ChangePassword Mode="seeker" />}
+          />
           <Route path="cv_cover_letter" element={<CV />} />
           <Route path="my_resume" element={<Resume />} />
-          <Route path="delete_account" element={<DeleteAccount />} />
-          <Route path="logout" element={<Logout />} />
+          <Route
+            path="delete_account"
+            element={<DeleteAccount Mode="seeker" />}
+          />
+          <Route path="logout" element={<Logout Mode="seeker" />} />
         </Route>
         <Route
           path="/admin"

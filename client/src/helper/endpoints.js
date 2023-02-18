@@ -16,3 +16,10 @@ export const SEEKER_ENDPOINT = {
   getSeekerResume: config.baseURL + "/account/seeker/my_resume",
   deleteSeekerAccount: config.baseURL + "/account/seeker/delete_account",
 };
+
+export const EMPLOYER_ENDPOINT = {
+  employerUploadProfile: config.baseURL + "/account/employer/upload_photo",
+  getEmployerProfile: config.baseURL + "/account/employer/profile_pic",
+  deleteEmployerAccount: config.baseURL + "/account/employer/delete_account",
+  employerChangePassword: config.baseURL + "/account/employer/change_password",
+};

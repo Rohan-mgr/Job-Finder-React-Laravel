@@ -11,6 +11,7 @@ import { _getSecureLs, _setSecureLs, _remove } from "../../helper/storage";
 
 function NavigationBar() {
   const collapseRef = useRef(null);
+  const { user } = _getSecureLs("seekerAuth");
   const [authModal, setAuthModal] = useState(false);
 
   const handleCloseAuthModal = () => {
@@ -70,6 +71,11 @@ function NavigationBar() {
             <NavLink Path="about" hideNav={hideBars} Link="About" />
             <NavLink Path="services" hideNav={hideBars} Link="Services" />
             <NavLink Path="ourteam" Link="Our Team" />
+            {user && (
+              <a href="/account/seeker/dashboard" style={{ color: "red" }}>
+                Welcome, {user?.name}
+              </a>
+            )}
           </Nav>
         </Navbar.Collapse>
         <div className="user-menu">

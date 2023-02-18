@@ -3,11 +3,18 @@ import "./UploadProfile.css";
 import { BsCameraFill } from "react-icons/bs";
 import Card from "react-bootstrap/Card";
 import { handleSeekerProfileUpdate } from "../../../services/seeker";
+import { handleEmployerProfileUpdate } from "../../../services/employer";
 import { _getSecureLs } from "../../../helper/storage";
 
 function UploadProfile() {
   const [selectedImage, setSelectedImage] = useState(null);
-  const { user } = _getSecureLs("seekerAuth");
+  const { userMode } = _getSecureLs("seekerAuth");
+  let User;
+  if (userMode === "seeker") {
+    User = _getSecureLs("seekerAuth")?.user;
+  } else {
+    User = _getSecureLs("employerAuth")?.user;
+  }
 
   return (
     <div className="upload_profile">
@@ -23,12 +30,21 @@ function UploadProfile() {
         </p>
         <form
           onSubmit={(e) => {
-            handleSeekerProfileUpdate(
-              e,
-              selectedImage,
-              user?.id,
-              setSelectedImage
-            );
+            if (userMode === "seeker") {
+              handleSeekerProfileUpdate(
+                e,
+                selectedImage,
+                User?.id,
+                setSelectedImage
+              );
+            } else {
+              handleEmployerProfileUpdate(
+                e,
+                selectedImage,
+                User?.id,
+                setSelectedImage
+              );
+            }
             window.location.reload(true);
           }}
           encType="multipart/form-data"
