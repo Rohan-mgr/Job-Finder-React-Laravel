@@ -47,3 +47,29 @@ export const handleEmployerPasswordUpdate = async (passwordInfo, id) => {
   console.log(response);
   return response;
 };
+
+export const handlePostJob = async (e, jobInfo, empId) => {
+  e.preventDefault();
+  const URL = EMPLOYER_ENDPOINT.postJob;
+  console.log(URL);
+  console.log(jobInfo);
+
+  const jobData = new FormData();
+  jobData.append("jobTitle", jobInfo.jobTitle);
+  jobData.append("companyLogo", jobInfo.companyLogo);
+  jobData.append("jobCategory", jobInfo.jobCategory);
+  jobData.append("jobType", jobInfo.jobType);
+  jobData.append("jobLevel", jobInfo.jobLevel);
+  jobData.append("vacancy", jobInfo.vacancy);
+  jobData.append("jobLocation", jobInfo.jobLocation);
+  jobData.append("skills", jobInfo.skills);
+  jobData.append("education", jobInfo.education);
+  jobData.append("experience", jobInfo.experience);
+  jobData.append("salary", jobInfo.salary);
+  jobData.append("description", jobInfo.description);
+  jobData.append("empId", empId);
+
+  const response = await axios.post(URL, jobData);
+  console.log(response);
+  return response;
+};
