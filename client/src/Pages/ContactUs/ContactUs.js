@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function About() {
+function ContactUs() {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function About() {
   }, []);
   return (
     <div>
-      <p>About Page</p>
+      <p>Contact Us Page</p>
       {students?.map((s) => {
         return (
           <div key={s.id}>
@@ -31,4 +31,4 @@ function About() {
   );
 }
 
-export default About;
+export default ContactUs;
