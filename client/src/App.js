@@ -45,7 +45,7 @@ function App() {
           <Route path="dashboard" element={<CommonDashboard />} />
           <Route path="upload_photo" element={<UploadProfile />} />
           <Route path="logout" element={<Logout Mode="employer" />} />
-          <Route path="post_job" element={<PostJob />} />
+          <Route path="post_job" element={<PostJob />} /> 
           <Route path="job_lists" element={<JobList />} />
           <Route
             path="change_password"
