@@ -18,7 +18,7 @@ function About() {
   }, []);
   return (
     <div>
-      <p>About Page</p>
+      <p>Contact Page</p>
       {students?.map((s) => {
         return (
           <div key={s.id}>
