@@ -68,7 +68,7 @@ function NavigationBar() {
         >
           <Nav className="text-center my-2">
             <NavLink Path="/" hideNav={hideBars} Link="Home" />
-            <NavLink Path="about" hideNav={hideBars} Link="About" />
+            <NavLink Path="contact_us" hideNav={hideBars} Link="Contact Us" />
             <NavLink Path="services" hideNav={hideBars} Link="Services" />
             <NavLink Path="ourteam" Link="Our Team" />
             {user && (

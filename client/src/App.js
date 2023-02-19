@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import OurTeam from "./Pages/Team/OurTeam";
 import Dashboard from "./Pages/Admin/Dashboard";
-import About from "./Pages/About/About";
+import ContactUs from "./Pages/ContactUs/ContactUs";
 import Home from "./Pages/Home/Home";
 import Services from "./Pages/Services/Services";
 import Login from "./Pages/Login/Login";
@@ -28,7 +28,7 @@ function App() {
     <div className="app">
       <Routes>
         <Route path="/" element={<Home />}>
-          <Route path="about" element={<About />} />
+          <Route path="contact_us" element={<ContactUs />} />
           <Route path="services" element={<Services />} />
           <Route path="login/:mode" element={<Login />} />
           <Route path="register/:mode" element={<Register />} />
