@@ -53,3 +53,4 @@ Route::post("/account/employer/upload_photo", [EmployerController::class, "handl
 Route::get("/account/employer/profile_pic/{id}", [EmployerController::class, "getEmployerProfilePic"]);
 Route::get("/account/employer/delete_account/{id}", [EmployerController::class, "deleteEmployerAccount"]);
 Route::post("/account/employer/change_password", [EmployerController::class, "ChangePassword"]);
+Route::post("/account/employer/post_job", [EmployerController::class, "handlePostJob"]);

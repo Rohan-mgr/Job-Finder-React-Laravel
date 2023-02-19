@@ -22,4 +22,5 @@ export const EMPLOYER_ENDPOINT = {
   getEmployerProfile: config.baseURL + "/account/employer/profile_pic",
   deleteEmployerAccount: config.baseURL + "/account/employer/delete_account",
   employerChangePassword: config.baseURL + "/account/employer/change_password",
+  postJob: config.baseURL + "/account/employer/post_job",
 };
