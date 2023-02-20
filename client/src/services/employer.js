@@ -79,3 +79,9 @@ export const getEmployerPostedJob = async (id) => {
   const response = await httpAuth.get(URL);
   return response;
 };
+export const handleDeleteJob = async (id) => {
+  const URL = EMPLOYER_ENDPOINT.deleteJob + `/${id}`;
+  console.log(URL);
+  const response = await httpAuth.delete(URL);
+  return response;
+};
