@@ -8,6 +8,7 @@ use App\Models\seeker;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Models\job;
 
 class SeekerController extends Controller
 {
@@ -20,7 +21,7 @@ class SeekerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'deleteSeekerAccount', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword', 'handleCVUpload', 'getSeekerResume']]);
+        $this->middleware('auth:api', ['except' => ['login','getRecentJobs', 'deleteSeekerAccount', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword', 'handleCVUpload', 'getSeekerResume']]);
     }
 
     /**
@@ -160,6 +161,11 @@ class SeekerController extends Controller
                     'status'=>400,
              ]);
          }
+    }
+
+    public function getRecentJobs(Request $req) {
+        $recentJobs = job::all();
+        return response()->json(['jobs'=> $recentJobs]);
     }
 
 }

@@ -48,6 +48,7 @@ Route::post("/account/seeker/change_password", [SeekerController::class, "Change
 Route::get("/account/seeker/profile_pic/{id}", [SeekerController::class, "getSeekerProfilePic"]);
 Route::get("/account/seeker/my_resume/{id}", [SeekerController::class, "getSeekerResume"]);
 Route::get("/account/seeker/delete_account/{id}", [SeekerController::class, "deleteSeekerAccount"]);
+Route::get("/", [SeekerController::class, "getRecentJobs"]);
 
 Route::post("/account/employer/upload_photo", [EmployerController::class, "handleEmployerProfileUpload"]);
 Route::get("/account/employer/profile_pic/{id}", [EmployerController::class, "getEmployerProfilePic"]);
@@ -55,3 +56,4 @@ Route::get("/account/employer/delete_account/{id}", [EmployerController::class, 
 Route::post("/account/employer/change_password", [EmployerController::class, "ChangePassword"]);
 Route::post("/account/employer/post_job", [EmployerController::class, "handlePostJob"]);
 Route::get("/account/employer/job_lists/{id}", [EmployerController::class, "getEmployerPostedJob"]);
+Route::delete("/account/employer/delete_job/{id}", [EmployerController::class, "deletePostedJob"]);
