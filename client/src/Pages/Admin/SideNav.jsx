@@ -56,6 +56,18 @@ function SideNav() {
                 Workspaces
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="EmployerList"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                <i className="nav-icon fa fa-building" aria-hidden="true"></i>
+                Registered Employers
+              </NavLink>
+            </li>
           </ul>
         </nav>
 

@@ -22,6 +22,7 @@ import DeleteAccount from "./Components/DeleteAccount/DeleteAccount";
 import CommonDashboard from "./Pages/UserDashboard/CommonDashboard";
 import PostJob from "./Pages/UserDashboard/PostJob/PostJob";
 import JobList from "./Pages/UserDashboard/JobList/JobList";
+import RegisteredEmployes from "./Pages/Admin/EmployerList/EmployerList";
 
 function App() {
   return (
@@ -89,6 +90,7 @@ function App() {
         >
           <Route path="dashboard" element={<p>This is dashboard</p>} />
           <Route path="company" element={<p>This is company</p>} />
+          <Route path="EmployerList" element={<RegisteredEmployes/>} />
         </Route>
         <Route path="/adminlogin" element={<AdminLogin />} />
       </Routes>
