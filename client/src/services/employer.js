@@ -73,3 +73,9 @@ export const handlePostJob = async (e, jobInfo, empId) => {
   console.log(response);
   return response;
 };
+
+export const getEmployerPostedJob = async (id) => {
+  const URL = EMPLOYER_ENDPOINT.getPostedJob + `/${id}`;
+  const response = await httpAuth.get(URL);
+  return response;
+};
