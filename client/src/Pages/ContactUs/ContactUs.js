@@ -1,6 +1,5 @@
 import React from "react";
 import "./ContactUs.css";
-// import emailjs from "@emailjs/browser";
 import { Form, Button } from "react-bootstrap";
 
 // function ContactUs() {
