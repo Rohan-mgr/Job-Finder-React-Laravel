@@ -6,6 +6,7 @@ import Navbar from "../../Components/Navigation/Navbar";
 import { useLocation } from "react-router-dom";
 import Categories from "./Categories";
 import Footer from "../Footer/Footer";
+import RecentJobs from "./RecentJobs";
 
 function Home() {
   const { pathname } = useLocation();
@@ -58,6 +59,7 @@ function Home() {
             </div>
           </div>
           <Categories />
+          <RecentJobs />
         </>
       )}
       <Outlet />

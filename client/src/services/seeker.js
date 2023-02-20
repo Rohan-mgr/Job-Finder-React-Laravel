@@ -72,3 +72,10 @@ export const deleteSeekerAccount = async (e, id, setMsg) => {
   console.log(response);
   return response;
 };
+
+export const getRecentJobs = async () => {
+  const URL = "/";
+  console.log(URL);
+  const response = await httpAuth.get(URL);
+  return response;
+};

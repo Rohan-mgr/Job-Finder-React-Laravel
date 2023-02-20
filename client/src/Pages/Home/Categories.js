@@ -132,7 +132,7 @@ function Categories() {
         </div>
         {/* More Btn */}
         {/* Section Button */}
-        <div className="row">
+        {/* <div className="row">
           <div className="col-lg-12">
             <div className="browse-btn2 text-center mt-50">
               <a href="job_listing.html" className="border-btn2">
@@ -140,7 +140,7 @@ function Categories() {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
