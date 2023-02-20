@@ -8,6 +8,7 @@ use App\Models\employer;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Models\job;
 
 
 class EmployerController extends Controller
@@ -21,7 +22,7 @@ class EmployerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','ChangePassword', 'deleteEmployerAccount', 'getEmployerProfilePic', 'employerRegistration', 'handleEmployerProfileUpload']]);
+        $this->middleware('auth:api', ['except' => ['login', 'deletePostedJob','getEmployerPostedJob', 'handlePostJob','ChangePassword', 'deleteEmployerAccount', 'getEmployerProfilePic', 'employerRegistration', 'handleEmployerProfileUpload']]);
     }
 
     /**
@@ -29,6 +30,35 @@ class EmployerController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+    public function handlePostJob(Request $req) {
+        $jobObj = new job();
+
+        if($req->companyLogo !== "null"){
+
+            $logo = $req->companyLogo;
+            $logoName = time().'_'.$req->companyLogo->getClientOriginalName();
+            $logo->move('companyLogo/', $logoName);
+            $path = "companyLogo/$logoName";
+
+            $jobObj->companyLogo = $path;
+        }
+        $jobObj->jobTitle = $req->jobTitle;
+        $jobObj->employer_id = $req->empId;
+        $jobObj->jobCategory = $req->jobCategory;
+        $jobObj->jobType = $req->jobType;
+        $jobObj->jobLevel = $req->jobLevel;
+        $jobObj->vacancy = $req->vacancy;
+        $jobObj->jobLocation = $req->jobLocation;
+        $jobObj->skills = $req->skills;
+        $jobObj->education = $req->education;
+        $jobObj->experience = $req->experience;
+        $jobObj->salary = $req->salary;
+        $jobObj->description = $req->description;
+
+        $jobObj->save();
+        return response()->json(['message' => "Job posted successfully"]);
+    } 
 
     public function login(Request $req)
     {
@@ -135,5 +165,15 @@ class EmployerController extends Controller
                     'status'=>400,
              ]);
          }
+    }
+
+    public function getEmployerPostedJob(Request $req) {
+        $jobs = job::where('employer_id', '=', $req->id)->get();
+        return response()->json(['message'=> $jobs]);
+    }
+    public function deletePostedJob(Request $req) {
+        $job = job::find($req->id);
+        $job->delete();
+        return response()->json(['message'=> "job deleted successfully"]);
     }
 }

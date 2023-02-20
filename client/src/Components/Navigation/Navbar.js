@@ -68,6 +68,10 @@ function NavigationBar() {
         >
           <Nav className="text-center my-2">
             <NavLink Path="/" hideNav={hideBars} Link="Home" />
+<<<<<<< HEAD
+=======
+            <NavLink Path="contact_us" hideNav={hideBars} Link="Contact Us" />
+>>>>>>> a9f7f9e0f08f96977931f00b3b76d4c5f7becc1d
             <NavLink Path="services" hideNav={hideBars} Link="Services" />
             <NavLink Path="contact_us" hideNav={hideBars} Link="Contact Us" />
             <NavLink Path="ourteam" Link="Our Team" />

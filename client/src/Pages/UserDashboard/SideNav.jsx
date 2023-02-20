@@ -21,7 +21,6 @@ function SideNav() {
   } else {
     User = _getSecureLs("employerAuth");
   }
-  console.log(User?.userMode);
 
   const getLoggedInUser = useCallback(async () => {
     try {
