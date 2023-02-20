@@ -1,31 +1,38 @@
-import React, { useState } from "react";
+//import React, { useState } from "react";
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { div, Form, Button, Row, Col } from "react-bootstrap";
 
-function ContactUs() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+// function ContactUs() {
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [subject, setSubject] = useState("");
+//   const [message, setMessage] = useState("");
+  export const ContactUs = () => {
+    const form = useRef();
 
-  const handleSubmit = (e) => {
+    const sendEmail = (e) => {
     e.preventDefault();
-    // Here you can add code to handle the form submission
-    console.log(
-      `Name: ${name}, Email: ${email}, Subject: ${subject}, Message: ${message}`
-    );
+
+    emailjs.sendForm('service_kxy4p9o', 'template_9vzqa7s', form.current, 'CSJgHzw331hxJitkL')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
   };
 
   return (
     <div className="container">
       <h2 className="text-center">Contact Us</h2>
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={sendEmail}>
         <Form.Group>
           <Form.Label>Full Name/Username</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your name"
             name="name"
-            value={name}
+            value={user_name}
           />
         </Form.Group>
 
@@ -35,7 +42,7 @@ function ContactUs() {
             type="email"
             name="email"
             placeholder="Enter your email"
-            value={email}
+            value={user_email}
           />
         </Form.Group>
         <Form.Group>
