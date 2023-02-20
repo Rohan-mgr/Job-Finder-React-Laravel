@@ -32,8 +32,6 @@ function RecentJobs() {
         </div>
         <div className="row justify-content-center">
           <div className="col-xl-10">
-            {/* single-job-content */}
-            {/* {recentJobs?.length > 0 ? ( */}
             {recentJobs?.reverse().map((job) => {
               return (
                 <div className="single-job-items mb-30">
