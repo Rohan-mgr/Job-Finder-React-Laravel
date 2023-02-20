@@ -22,7 +22,7 @@ class EmployerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','handlePostJob','ChangePassword', 'deleteEmployerAccount', 'getEmployerProfilePic', 'employerRegistration', 'handleEmployerProfileUpload']]);
+        $this->middleware('auth:api', ['except' => ['login','getEmployerPostedJob', 'handlePostJob','ChangePassword', 'deleteEmployerAccount', 'getEmployerProfilePic', 'employerRegistration', 'handleEmployerProfileUpload']]);
     }
 
     /**
@@ -165,5 +165,10 @@ class EmployerController extends Controller
                     'status'=>400,
              ]);
          }
+    }
+
+    public function getEmployerPostedJob(Request $req) {
+        $jobs = job::where('employer_id', '=', $req->id)->get();
+        return response()->json(['message'=> $jobs]);
     }
 }
