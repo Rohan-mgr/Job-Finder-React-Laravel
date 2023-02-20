@@ -1,0 +1,35 @@
+.breadCrum {
+    width: 100% !important;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    background-image: url("../../Assets/Images/breadcrum.png");
+    background-size: contain;
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-color: #d5eaf7;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 480px) {
+    .breadCrum {
+        padding:1rem;
+        margin-top: 1.6rem;
+    }
+}
+@media (max-width: 769px) {
+    .breadCrum {
+        padding:1rem;
+        margin-top: 2.2rem;
+    }
+}
+
+
+.breadCrum h2 {
+    color: #567890;
+    font-weight: 700;
+}
+.breadCrum h4 {
+    color: #567890;
+    font-weight: 600;
+}
