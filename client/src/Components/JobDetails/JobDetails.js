@@ -29,7 +29,7 @@ function JobDetails() {
         <div
           className="single-slider section-overly slider-height2 d-flex align-items-center"
           style={{
-            background: `url(${require("../../Assets/Images/job_details_banner.jpg")})`,
+            backgroundImage: `url(${require("../../Assets/Images/job_details_banner.jpg")})`,
           }}
         >
           <div className="container">
