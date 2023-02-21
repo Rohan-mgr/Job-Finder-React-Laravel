@@ -20,7 +20,7 @@ function OurTeam() {
       ) : (
         <Container fluid className="our_team">
           <Particle />
-          <span onClick={() => navigate(-1)}>
+          <span onClick={() => navigate("/")}>
             <BiArrowBack className="back__btn" />
             Our Team
           </span>
