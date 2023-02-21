@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import Categories from "./Categories";
 import Footer from "../Footer/Footer";
 import RecentJobs from "./RecentJobs";
+import ApplyProcess from "./ApplyProcess/ApplyProcess";
 
 function Home() {
   const { pathname } = useLocation();
@@ -60,6 +61,7 @@ function Home() {
           </div>
           <Categories />
           <RecentJobs />
+          <ApplyProcess />
         </>
       )}
       <Outlet />
