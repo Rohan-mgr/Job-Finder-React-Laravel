@@ -53,7 +53,7 @@ function Footer() {
                       <NavLink Path="/" Link="Home" />
                     </li>
                     <li>
-                      <NavLink Path="about" Link="About" />
+                      <NavLink Path="contact_us" Link="Contact Us" />
                     </li>
                     <li>
                       <NavLink Path="services" Link="Services" />
