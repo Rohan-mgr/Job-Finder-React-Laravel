@@ -1,1 +1,0 @@
-export { finishSearch } from "./jobSearch";
