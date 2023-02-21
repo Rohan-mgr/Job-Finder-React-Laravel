@@ -1,11 +1,9 @@
 import React, { useState, useCallback, useEffect } from "react";
 import "../../scss/_job_listing.scss";
-import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { handleJobSearch } from "../../services/seeker";
 
-function JobListings(props) {
-  console.log(props.searchedJobs);
+function JobListings() {
   const [searchJobs, setSearchJobs] = useState([]);
 
   const search = useLocation().search;
@@ -179,10 +177,4 @@ function JobListings(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    searchedJobs: state.searchedJob,
-  };
-};
-
-export default connect(mapStateToProps)(JobListings);
+export default JobListings;
