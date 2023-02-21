@@ -7,6 +7,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\SeekerController;
+use App\Http\Controllers\AdminControllerController;
+
+
 
 /*
 |--------------------------------------------------------------------------
