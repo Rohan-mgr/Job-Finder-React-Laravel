@@ -7,6 +7,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\SeekerController;
+use App\Http\Controllers\AdminControllerController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +61,5 @@ Route::post("/account/employer/change_password", [EmployerController::class, "Ch
 Route::post("/account/employer/post_job", [EmployerController::class, "handlePostJob"]);
 Route::get("/account/employer/job_lists/{id}", [EmployerController::class, "getEmployerPostedJob"]);
 Route::delete("/account/employer/delete_job/{id}", [EmployerController::class, "deletePostedJob"]);
+
+Route::get("/admin/EmployerList",[AdminControllerController::Class, "EmployerList"]);
