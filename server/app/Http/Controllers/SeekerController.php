@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\Models\job;
+use App\Models\employer;
 
 class SeekerController extends Controller
 {
@@ -21,7 +22,7 @@ class SeekerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','getRecentJobs', 'deleteSeekerAccount', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword', 'handleCVUpload', 'getSeekerResume']]);
+        $this->middleware('auth:api', ['except' => ['login', 'getJobDetails', 'getRecentJobs', 'deleteSeekerAccount', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword', 'handleCVUpload', 'getSeekerResume']]);
     }
 
     /**
@@ -166,6 +167,11 @@ class SeekerController extends Controller
     public function getRecentJobs(Request $req) {
         $recentJobs = job::all();
         return response()->json(['jobs'=> $recentJobs]);
+    }
+    public function getJobDetails(Request $req) {
+        $recentJobs = job::find($req->id);
+        $companyName = employer::find($recentJobs->employer_id);
+        return response()->json(['job'=> $recentJobs, "companyInfo"=>$companyName]);
     }
 
 }
