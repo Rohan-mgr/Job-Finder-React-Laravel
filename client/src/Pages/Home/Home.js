@@ -8,8 +8,6 @@ import Categories from "./Categories";
 import Footer from "../Footer/Footer";
 import RecentJobs from "./RecentJobs";
 import { useFormik } from "formik";
-import * as actions from "../../store/action/index";
-import { connect } from "react-redux";
 
 function Home(props) {
   const { pathname } = useLocation();
@@ -103,11 +101,4 @@ function Home(props) {
   );
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onSearchingJobs: (searchResults) =>
-      dispatch(actions.finishSearch(searchResults)),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(Home);
+export default Home;
