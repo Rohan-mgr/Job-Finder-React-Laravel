@@ -1,0 +1,104 @@
+.apply-bg {
+  background-image: url("../../../../src/Assets/Images/how-applybg.png");
+  background-size: cover;
+  margin-bottom: 4rem;
+  background-repeat: no-repeat;
+  padding: 8rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 767px) {
+  .apply-process-area {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .apply-process-area {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-tittle h2 {
+    font-size: 30px;
+    line-height: 1.4;
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .apply-process-area .single-process {
+    padding: 34px 10px;
+  }
+}
+
+.pb-150 {
+  padding-bottom: 150px;
+}
+
+.pt-150 {
+  padding-top: 150px;
+}
+
+.section-tittle span {
+  color: #fb246a;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: block;
+}
+
+h2,
+h5 {
+  font-family: "Muli", sans-serif;
+  color: #0b1c39;
+  margin-top: 0px;
+  font-style: normal;
+  font-weight: 500;
+  text-transform: normal;
+}
+
+.apply-process-area .single-process {
+  padding: 44px 28px;
+  background: #26317f;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.apply-process-area .single-process .process-ion span {
+  font-size: 60px;
+  margin-bottom: 13px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.apply-process-area .single-process .process-cap h5 {
+  font-weight: 700;
+  font-size: 24px;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+
+.apply-process-area .single-process .process-cap p {
+  color: #a5aaca;
+}
+
+p {
+  font-family: "Muli", sans-serif;
+  color: #506172;
+  font-size: 16px;
+  line-height: 30px;
+  margin-bottom: 15px;
+  font-weight: normal;
+}

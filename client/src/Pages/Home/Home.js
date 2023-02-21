@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import Categories from "./Categories";
 import Footer from "../Footer/Footer";
 import RecentJobs from "./RecentJobs";
+import ApplyProcess from "./ApplyProcess/ApplyProcess";
 import { useFormik } from "formik";
 
 function Home(props) {
@@ -93,6 +94,7 @@ function Home(props) {
           </div>
           <Categories />
           <RecentJobs />
+          <ApplyProcess />
         </>
       )}
       <Outlet />
