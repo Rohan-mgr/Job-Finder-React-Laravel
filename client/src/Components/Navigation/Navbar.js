@@ -7,10 +7,12 @@ import NavLink from "./NavLink/NavLink";
 import { BiLogIn, BiUserCircle } from "react-icons/bi";
 import { FaThList } from "react-icons/fa";
 import Modal from "../Modal/Modal";
+import { useNavigate } from "react-router-dom";
 import { _getSecureLs, _setSecureLs, _remove } from "../../helper/storage";
 
 function NavigationBar() {
   const collapseRef = useRef(null);
+  const navigate = useNavigate();
   const { user } = _getSecureLs("seekerAuth");
   const [authModal, setAuthModal] = useState(false);
 
@@ -68,12 +70,8 @@ function NavigationBar() {
         >
           <Nav className="text-center my-2">
             <NavLink Path="/" hideNav={hideBars} Link="Home" />
-<<<<<<< HEAD
-=======
             <NavLink Path="contact_us" hideNav={hideBars} Link="Contact Us" />
->>>>>>> a9f7f9e0f08f96977931f00b3b76d4c5f7becc1d
             <NavLink Path="services" hideNav={hideBars} Link="Services" />
-            <NavLink Path="contact_us" hideNav={hideBars} Link="Contact Us" />
             <NavLink Path="ourteam" Link="Our Team" />
             {user && (
               <a href="/account/seeker/dashboard" style={{ color: "red" }}>
@@ -83,7 +81,7 @@ function NavigationBar() {
           </Nav>
         </Navbar.Collapse>
         <div className="user-menu">
-          <button>
+          <button onClick={() => navigate("/register/employer")}>
             <FaThList />
             Post Job Free
           </button>

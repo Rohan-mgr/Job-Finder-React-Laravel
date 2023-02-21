@@ -75,7 +75,19 @@ export const deleteSeekerAccount = async (e, id, setMsg) => {
 
 export const getRecentJobs = async () => {
   const URL = "/";
-  console.log(URL);
   const response = await httpAuth.get(URL);
+  return response;
+};
+
+export const getJobDetails = async (jobId) => {
+  const URL = "/job_details/" + jobId;
+  const response = await httpAuth.get(URL);
+  return response;
+};
+
+export const handleJobSearch = async (searchParams) => {
+  const URL = "/search_jobs";
+  console.log(URL, searchParams);
+  const response = await httpAuth.post(URL, JSON.stringify(searchParams));
   return response;
 };

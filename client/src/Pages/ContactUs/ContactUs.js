@@ -1,69 +1,50 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
+import React from "react";
+import "./ContactUs.css";
+import { Form, Button } from "react-bootstrap";
+import { useFormik } from "formik";
+import { handleUserMessage } from "../../services/auth";
+import { toast } from "react-toastify";
 
-function About() {
-  const [students, setStudents] = useState([]);
+export const ContactUs = () => {
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      user_email: "",
+      subject: "",
+      message: "",
+    },
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const data = await handleUserMessage(values);
+        console.log(data);
+        if (!data) {
+          throw new Error("Message can't be send");
+        }
+        resetForm({ values: "" });
+        toast("Message Sent Successfully");
+        window.scrollTo(0, 0);
+      } catch (e) {
+        toast.error(e);
+        console.log("error", e);
+      }
+    },
+  });
 
-  useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/students")
-      .then((res) => {
-        return res.json();
-      })
-      .then((result) => {
-        console.log(result);
-        setStudents(result);
-      })
-      .catch((error) => {
-        throw new Error(error);
-      });
-  }, []);
   return (
     <div>
-      <p>Contact Page</p>
-      {students?.map((s) => {
-        return (
-          <div key={s.id}>
-            <p>{s.name}</p>
-            <p>{s.id}</p>
-          </div>
-        );
-      })}
-=======
-//import React, { useState } from "react";
-import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
-import { div, Form, Button, Row, Col } from "react-bootstrap";
-
-// function ContactUs() {
-//   const [name, setName] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [subject, setSubject] = useState("");
-//   const [message, setMessage] = useState("");
-  export const ContactUs = () => {
-    const form = useRef();
-
-    const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs.sendForm('service_kxy4p9o', 'template_9vzqa7s', form.current, 'CSJgHzw331hxJitkL')
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
-  };
-
-  return (
-    <div className="container">
-      <h2 className="text-center">Contact Us</h2>
-      <Form onSubmit={sendEmail}>
+      <div className="breadCrum">
+        <h2>Contact Us</h2>
+        <h4>Take your career to the next level.</h4>
+      </div>
+      <Form className="container" onSubmit={formik.handleSubmit}>
         <Form.Group>
           <Form.Label>Full Name/Username</Form.Label>
           <Form.Control
             type="text"
             placeholder="Enter your name"
             name="name"
-            value={user_name}
+            value={formik.values.name}
+            onChange={formik.handleChange}
           />
         </Form.Group>
 
@@ -71,9 +52,10 @@ import { div, Form, Button, Row, Col } from "react-bootstrap";
           <Form.Label>Email</Form.Label>
           <Form.Control
             type="email"
-            name="email"
+            name="user_email"
             placeholder="Enter your email"
-            value={user_email}
+            value={formik.values.user_email}
+            onChange={formik.handleChange}
           />
         </Form.Group>
         <Form.Group>
@@ -82,36 +64,38 @@ import { div, Form, Button, Row, Col } from "react-bootstrap";
             type="text"
             name="subject"
             placeholder="Enter subject"
-            value={subject}
+            value={formik.values.subject}
+            onChange={formik.handleChange}
           />
         </Form.Group>
         <Form.Group>
           <Form.Label>Message</Form.Label>
-          <Form.Control as="textarea" rows={5} value={message} name="comment" />
+          <Form.Control
+            as="textarea"
+            rows={5}
+            name="message"
+            value={formik.values.message}
+            onChange={formik.handleChange}
+          />
         </Form.Group>
         <Button className="my-4" type="submit" block>
-          Submit
+          {formik.isSubmitting ? "Submitting your message" : "Submit"}
         </Button>
       </Form>
 
-      <div className="">
+      <div className="google_map">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.2122654837285!2d85.32525975!3d27.71073175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1908c874a40b%3A0x87a26cbf3b75037c!2sKamal%20Pokhari!5e0!3m2!1sen!2snp!4v1676814746137!5m2!1sen!2snp"
           width="100%"
           height="450"
-          style={{border:0}}
+          style={{ border: 0 }}
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
       </div>
->>>>>>> a9f7f9e0f08f96977931f00b3b76d4c5f7becc1d
     </div>
   );
-}
+};
 
-<<<<<<< HEAD
-export default About;
-=======
 export default ContactUs;
->>>>>>> a9f7f9e0f08f96977931f00b3b76d4c5f7becc1d
