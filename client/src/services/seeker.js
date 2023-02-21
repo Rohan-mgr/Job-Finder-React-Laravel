@@ -79,3 +79,10 @@ export const getRecentJobs = async () => {
   const response = await httpAuth.get(URL);
   return response;
 };
+
+export const getJobDetails = async (jobId) => {
+  const URL = "/job_details/" + jobId;
+  console.log(URL);
+  const response = await httpAuth.get(URL);
+  return response;
+};

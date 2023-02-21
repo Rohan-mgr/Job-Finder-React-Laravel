@@ -1,6 +1,7 @@
 // import { _getSecureLs, _setSecureLs } from "../helper/storage";
 import { httpAuth } from "../helper/http";
 import { AUTH_ENDPOINT } from "../helper/endpoints";
+import emailjs from "@emailjs/browser";
 
 export const handleAdminLogin = async (adminData) => {
   const URL = AUTH_ENDPOINT.adminLogin;
@@ -35,5 +36,15 @@ export const handleSeekerRegister = async (seekerDetails) => {
   const URL = AUTH_ENDPOINT.seekerRegister;
   console.log(URL);
   const response = await httpAuth.post(URL, JSON.stringify(seekerDetails));
+  return response;
+};
+
+export const handleUserMessage = async (visitorInfo) => {
+  const response = await emailjs.send(
+    "service_s489jlg",
+    "template_or3f7qy",
+    visitorInfo,
+    "ktE6rh4ERLhuaR3XL"
+  );
   return response;
 };

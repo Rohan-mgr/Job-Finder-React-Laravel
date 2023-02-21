@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import OurTeam from "./Pages/Team/OurTeam";
 import Dashboard from "./Pages/Admin/Dashboard";
 import ContactUs from "./Pages/ContactUs/ContactUs";
@@ -22,6 +24,7 @@ import DeleteAccount from "./Components/DeleteAccount/DeleteAccount";
 import CommonDashboard from "./Pages/UserDashboard/CommonDashboard";
 import PostJob from "./Pages/UserDashboard/PostJob/PostJob";
 import JobList from "./Pages/UserDashboard/JobList/JobList";
+import JobDetails from "./Components/JobDetails/JobDetails";
 
 function App() {
   return (
@@ -32,6 +35,7 @@ function App() {
           <Route path="services" element={<Services />} />
           <Route path="login/:mode" element={<Login />} />
           <Route path="register/:mode" element={<Register />} />
+          <Route path="/job_details/:id" element={<JobDetails />} />
         </Route>
         <Route path="/ourteam" element={<OurTeam />} />
         <Route
@@ -92,6 +96,19 @@ function App() {
         </Route>
         <Route path="/adminlogin" element={<AdminLogin />} />
       </Routes>
+
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }
