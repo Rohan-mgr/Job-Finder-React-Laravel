@@ -16,6 +16,9 @@ function NavItem(props) {
     case "Our Team":
       icon = "fa fa-users";
       break;
+    case "Find Jobs":
+      icon = "fa fa-briefcase";
+      break;
     default:
       break;
   }

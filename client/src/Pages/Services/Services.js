@@ -1,23 +1,26 @@
 import React from "react";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { BiTime, BiCube } from "react-icons/bi";
-import { BsFillPersonFill, BsFillSuitHeartFill, BsNewspaper } from "react-icons/bs";
+import {
+  BsFillPersonFill,
+  BsFillSuitHeartFill,
+  BsNewspaper,
+} from "react-icons/bs";
 import { FiMonitor, FiSave } from "react-icons/fi";
 import { SlDiamond } from "react-icons/sl";
 import { HiServerStack } from "react-icons/hi2";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { IoIosChatbubbles } from "react-icons/io";
 import { FaFreeCodeCamp } from "react-icons/fa";
-import "../../scss/_services-page.scss";
-import "../../Pages/ContactUs/ContactUs.css"
 
+import "../../scss/_services-page.scss";
 
 function Services() {
   return (
-    <div className="mb-5">
-      <div className="breadCrum">
-      <h2>Services</h2>
-      <h4>Take your career to the next level</h4>
+    <div className="container mx-auto" style={{ width: "800px" }}>
+      <div className="service-opener">
+        <h3>Services</h3>
+        <span>Take your career to the next level</span>
       </div>
     <div className="container mx-auto">
       
@@ -30,7 +33,11 @@ function Services() {
           </div>
           <div className="text">
             <h5>Advanced algorithm for search</h5>
-            <p>We consider search to be one of the most important feature for Job seekers and Employers. Therefore, we have implemented the most advanced search algorithms to find a job or a candidate for a job.</p>
+            <p>
+              We consider search to be one of the most important feature for Job
+              seekers and Employers. Therefore, we have implemented the most
+              advanced search algorithms to find a job or a candidate for a job.
+            </p>
           </div>
         </div>
 
@@ -42,7 +49,12 @@ function Services() {
           </div>
           <div className="text">
             <h5>Separate sections for IT/Engineering and Non-IT Jobs</h5>
-            <p>We have separate sections for IT/Engineering and Non-IT jobs to save time of the jobseekers and also to make sure that right job reaches the right person. This feature makes it easy to navigate through the jobs by creating a distinctive space for both fields.</p>
+            <p>
+              We have separate sections for IT/Engineering and Non-IT jobs to
+              save time of the jobseekers and also to make sure that right job
+              reaches the right person. This feature makes it easy to navigate
+              through the jobs by creating a distinctive space for both fields.
+            </p>
           </div>
         </div>
         <div className="service">
@@ -53,7 +65,11 @@ function Services() {
           </div>
           <div className="text">
             <h5>Easy Registration & CV Creation</h5>
-            <p>We have an easy registration section which allows you to directly sign-up to our network through Facebook or gmail. You can also create a very professional looking CV from our website.</p>
+            <p>
+              We have an easy registration section which allows you to directly
+              sign-up to our network through Facebook or gmail. You can also
+              create a very professional looking CV from our website.
+            </p>
           </div>
         </div>
         <div className="service">
@@ -64,7 +80,11 @@ function Services() {
           </div>
           <div className="text">
             <h5>Preference to find a right job</h5>
-            <p>With JobFinder, you can setup preference for the kind of job you are looking for. This will automatically fill your dashboard with a list of your preferred jobs.</p>
+            <p>
+              With JobAxle, you can setup preference for the kind of job you are
+              looking for. This will automatically fill your dashboard with a
+              list of your preferred jobs.
+            </p>
           </div>
         </div>
         <div className="service">
@@ -75,7 +95,14 @@ function Services() {
           </div>
           <div className="text">
             <h5>Workshop and training to enhance skills</h5>
-            <p>JobFinder in collaboration with TechAxis hosts various training workshops to enhance the skills of individual and help them grab their dream job. We believe that people have a unique talent and trainings will help him or her amplify their talents. The Training section in our website helps you find trainings and seminars to enhance your skills and outgrow your dreams.</p>
+            <p>
+              JobAxle in collaboration with TechAxis hosts various training
+              workshops to enhance the skills of individual and help them grab
+              their dream job. We believe that people have a unique talent and
+              trainings will help him or her amplify their talents. The Training
+              section in our website helps you find trainings and seminars to
+              enhance your skills and outgrow your dreams.
+            </p>
           </div>
         </div>
         <div className="service">
@@ -85,8 +112,13 @@ function Services() {
             </div>
           </div>
           <div className="text">
-            <h5>Refer from JobFinder</h5>
-            <p>Due to the intense competition in the job market, sometimes even a deserving candidate might have to struggle to find a job. JobFinder organizes aptitude tests for candidates and refers them to organizations on the merit basis.</p>
+            <h5>Refer from JobAxle</h5>
+            <p>
+              Due to the intense competition in the job market, sometimes even a
+              deserving candidate might have to struggle to find a job. JobAxle
+              organizes aptitude tests for candidates and refers them to
+              organizations on the merit basis.
+            </p>
           </div>
         </div>
         <div className="service">
@@ -152,7 +184,10 @@ function Services() {
           </div>
           <div className="text">
             <h5>Intern/Freelancing</h5>
-            <p>We have introduced a separate section for Freelancing or Internship to accommodate to the need of the market.</p>
+            <p>
+              We have introduced a separate section for Freelancing or
+              Internship to accommodate to the need of the market.
+            </p>
           </div>
         </div>
         <div className="service">
@@ -170,7 +205,6 @@ function Services() {
     </div>
     </div>
   );
-
 }
 
 export default Services;
