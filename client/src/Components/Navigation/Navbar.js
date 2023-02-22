@@ -72,6 +72,11 @@ function NavigationBar() {
             <NavLink Path="/" hideNav={hideBars} Link="Home" />
             <NavLink Path="contact_us" hideNav={hideBars} Link="Contact Us" />
             <NavLink Path="services" hideNav={hideBars} Link="Services" />
+            <NavLink
+              Path="search_jobs/job_listings"
+              hideNav={hideBars}
+              Link="Find Jobs"
+            />
             <NavLink Path="ourteam" Link="Our Team" />
             {user && (
               <a href="/account/seeker/dashboard" style={{ color: "red" }}>

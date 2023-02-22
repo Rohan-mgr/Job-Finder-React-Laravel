@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import "../../scss/_job_listing.scss";
 import { useLocation } from "react-router-dom";
 import { handleJobSearch } from "../../services/seeker";
+import { getRecentJobs } from "../../services/seeker";
 
 function JobListings() {
   const [searchJobs, setSearchJobs] = useState([]);
@@ -9,6 +10,7 @@ function JobListings() {
   const search = useLocation().search;
   const title = new URLSearchParams(search).get("jobTitle");
   const location = new URLSearchParams(search).get("jobLocation");
+  console.log(title, location);
 
   const handleSearchJobs = useCallback(async () => {
     try {
@@ -23,10 +25,25 @@ function JobListings() {
     }
   }, [location, title]);
 
+  const getAllJobs = useCallback(async () => {
+    try {
+      const response = await getRecentJobs();
+      console.log(response, "allJobs");
+      setSearchJobs(response?.jobs);
+      //   setRecentJobs(response?.jobs.reverse());
+    } catch (e) {
+      throw new Error(e);
+    }
+  }, []);
+
   useEffect(() => {
-    handleSearchJobs();
-  }, [handleSearchJobs]);
-  console.log(title, location);
+    if (title !== null || location !== null) {
+      handleSearchJobs();
+    } else {
+      getAllJobs();
+    }
+  }, [handleSearchJobs, getAllJobs, title, location]);
+
   return (
     <div>
       <main>
@@ -51,37 +68,72 @@ function JobListings() {
         </div>
         {/* Hero Area End */}
         {/* Job List Area Start */}
-        {searchJobs.length > 0 ? (
-          <div className="job-listing-area pt-120 pb-120">
-            <div className="container">
-              <div className="row">
-                {/* Right content */}
-                <div className="col-12">
-                  {/* Featured_job_start */}
-                  <section className="featured-job-area">
-                    <div className="container">
-                      {/* Count of Job list Start */}
-                      <div className="row">
-                        <div className="col-lg-12">
-                          <div className="count-job mb-35">
-                            <span>{searchJobs.length} Jobs found</span>
-                            {/* Select job items start */}
-                            <div className="select-job-items">
-                              <span>Sort by</span>
-                              <select name="select">
-                                <option value>None</option>
-                                <option value>job list</option>
-                                <option value>job list</option>
-                                <option value>job list</option>
-                              </select>
-                            </div>
-                            {/*  Select job items End*/}
+        {/* {searchJobs.length > 0 ? ( */}
+        <div className="job-listing-area pt-120 pb-120">
+          <div className="container">
+            <div className="row">
+              {/* Right content */}
+              <div className="col-12">
+                {/* Featured_job_start */}
+                <section className="featured-job-area">
+                  <div className="container">
+                    {/* Count of Job list Start */}
+                    <div className="row">
+                      <div className="col-lg-12">
+                        <div className="count-job mb-35">
+                          <span
+                            style={{
+                              display: "inline-flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            <strong>{searchJobs.length} Jobs found</strong>
+                          </span>
+                          {/* Select job items start */}
+                          <div className="select-job-items">
+                            <form
+                              className="search-box"
+                              // onSubmit={formik.handleSubmit}
+                            >
+                              <div className="input-form">
+                                <input
+                                  type="text"
+                                  name="jobTitle"
+                                  placeholder="Job Tittle or Keyword"
+                                  // value={formik.values.jobTitle}
+                                  // onChange={formik.handleChange}
+                                />
+                              </div>
+                              <div className="select-form">
+                                <div className="input-form w-100">
+                                  <input
+                                    type="text"
+                                    name="jobLocation"
+                                    placeholder="Location (eg. district name)"
+                                    //   value={formik.values.jobLocation}
+                                    //   onChange={formik.handleChange}
+                                  />
+                                </div>
+                              </div>
+                              <div className="search-form">
+                                <button
+                                  type="submit"
+                                  className="btn head-btn1 w-100"
+                                  style={{ padding: "2.2rem" }}
+                                >
+                                  Search
+                                </button>
+                              </div>
+                            </form>
                           </div>
+                          {/*  Select job items End*/}
                         </div>
                       </div>
-                      {/* Count of Job list End */}
-                      {/* single-job-content */}
-                      {searchJobs?.map((j) => {
+                    </div>
+                    {/* Count of Job list End */}
+                    {/* single-job-content */}
+                    {searchJobs?.length > 0 ? (
+                      searchJobs?.map((j) => {
                         return (
                           <div className="single-job-items mb-30">
                             <div className="job-items">
@@ -121,22 +173,27 @@ function JobListings() {
                             </div>
                           </div>
                         );
-                      })}
-                    </div>
-                  </section>
-                  {/* Featured_job_end */}
-                </div>
+                      })
+                    ) : (
+                      <h2 className="text-center m-5 text-danger">
+                        Sorry 😔 No jobs found
+                      </h2>
+                    )}
+                  </div>
+                </section>
+                {/* Featured_job_end */}
               </div>
             </div>
           </div>
-        ) : (
+        </div>
+        {/* ) : (
           <h2 className="text-center m-5 text-danger">
             Sorry 😔 No jobs found
-          </h2>
-        )}
+          </h2> */}
+        {/* )} */}
         {/* Job List Area End */}
         {/*Pagination Start  */}
-        <div className="pagination-area pb-115 text-center">
+        {/* <div className="pagination-area pb-115 text-center">
           <div className="container">
             <div className="row">
               <div className="col-xl-12">
@@ -169,10 +226,9 @@ function JobListings() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         {/*Pagination End  */}
       </main>
-      ;
     </div>
   );
 }
