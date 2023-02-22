@@ -25,6 +25,7 @@ import CommonDashboard from "./Pages/UserDashboard/CommonDashboard";
 import PostJob from "./Pages/UserDashboard/PostJob/PostJob";
 import JobList from "./Pages/UserDashboard/JobList/JobList";
 import JobDetails from "./Components/JobDetails/JobDetails";
+import JobListings from "./Pages/JobListings/JobListings";
 
 function App() {
   return (
@@ -36,7 +37,9 @@ function App() {
           <Route path="login/:mode" element={<Login />} />
           <Route path="register/:mode" element={<Register />} />
           <Route path="/job_details/:id" element={<JobDetails />} />
+          <Route path="/search_jobs/job_listings" element={<JobListings />} />
         </Route>
+
         <Route path="/ourteam" element={<OurTeam />} />
         <Route
           path="/account/employer"

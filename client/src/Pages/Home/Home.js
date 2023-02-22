@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../scss/_h1-hero.scss";
 import "../../scss/_common.scss";
-import { Outlet } from "react-router-dom";
+import { useNavigate, Outlet } from "react-router-dom";
 import Navbar from "../../Components/Navigation/Navbar";
 import { useLocation } from "react-router-dom";
 import Categories from "./Categories";
@@ -9,8 +9,27 @@ import Footer from "../Footer/Footer";
 import RecentJobs from "./RecentJobs";
 import ApplyProcess from "./ApplyProcess";
 
-function Home() {
+function Home(props) {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const formik = useFormik({
+    initialValues: {
+      jobTitle: "",
+      jobLocation: "",
+    },
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        resetForm({ values: "" });
+        navigate(
+          `/search_jobs/job_listings?jobTitle=${values.jobTitle}&jobLocation=${values.jobLocation}`
+        );
+      } catch (e) {
+        throw new Error(e);
+      }
+    },
+  });
+
   return (
     <div>
       <Navbar />
@@ -32,25 +51,38 @@ function Home() {
                   <div className="row">
                     <div className="col-xl-8">
                       {/* form */}
-                      <form action="#" className="search-box">
+                      <form
+                        className="search-box"
+                        onSubmit={formik.handleSubmit}
+                      >
                         <div className="input-form">
                           <input
                             type="text"
-                            placeholder="Job Tittle or keyword"
+                            name="jobTitle"
+                            placeholder="Job Tittle or Keyword"
+                            value={formik.values.jobTitle}
+                            onChange={formik.handleChange}
                           />
                         </div>
                         <div className="select-form">
-                          <div className="select-itms nice-select">
-                            <select name="select" id="select1">
-                              <option value>Location BD</option>
-                              <option value>Location PK</option>
-                              <option value>Location US</option>
-                              <option value>Location UK</option>
-                            </select>
+                          <div className="input-form w-100">
+                            <input
+                              type="text"
+                              name="jobLocation"
+                              placeholder="Location (eg. district name)"
+                              value={formik.values.jobLocation}
+                              onChange={formik.handleChange}
+                            />
                           </div>
                         </div>
                         <div className="search-form">
-                          <a href="#">Find job</a>
+                          <button
+                            type="submit"
+                            className="btn head-btn1 w-100"
+                            style={{ padding: "2.2rem" }}
+                          >
+                            Find Job
+                          </button>
                         </div>
                       </form>
                     </div>

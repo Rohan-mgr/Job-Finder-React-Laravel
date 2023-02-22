@@ -22,7 +22,7 @@ class EmployerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'deletePostedJob','getEmployerPostedJob', 'handlePostJob','ChangePassword', 'deleteEmployerAccount', 'getEmployerProfilePic', 'employerRegistration', 'handleEmployerProfileUpload']]);
+        $this->middleware('auth:api', ['except' => ['login', 'searchJobs', 'deletePostedJob','getEmployerPostedJob', 'handlePostJob','ChangePassword', 'deleteEmployerAccount', 'getEmployerProfilePic', 'employerRegistration', 'handleEmployerProfileUpload']]);
     }
 
     /**
@@ -175,5 +175,24 @@ class EmployerController extends Controller
         $job = job::find($req->id);
         $job->delete();
         return response()->json(['message'=> "job deleted successfully"]);
+    }
+
+    public function searchJobs(Request $req){
+        $searchedJobs = null;
+        
+        if($req->jobTitle) {
+            $searchedJobs = job::where("jobTitle", "LIKE", "%".$req->jobTitle."%")->get();
+        }
+        if($req->jobLocation) {
+            $searchedJobs = job::where("jobLocation", "LIKE", "%".$req->jobLocation."%")->get();
+        }
+        if($req->jobTitle && $req->jobLocation) {
+            $searchedJobs = job::where("jobTitle", "LIKE", "%".$req->jobTitle."%")->
+                            where("jobLocation", "LIKE", "%".$req->jobLocation."%")->get();
+        }
+        if(count($searchedJobs) === null) {
+            return response()->json(['jobs' => []]);
+        }
+        return response()->json(['jobs' => $searchedJobs]);
     }
 }

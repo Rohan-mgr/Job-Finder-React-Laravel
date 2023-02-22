@@ -7,10 +7,12 @@ import NavLink from "./NavLink/NavLink";
 import { BiLogIn, BiUserCircle } from "react-icons/bi";
 import { FaThList } from "react-icons/fa";
 import Modal from "../Modal/Modal";
+import { useNavigate } from "react-router-dom";
 import { _getSecureLs, _setSecureLs, _remove } from "../../helper/storage";
 
 function NavigationBar() {
   const collapseRef = useRef(null);
+  const navigate = useNavigate();
   const { user } = _getSecureLs("seekerAuth");
   const [authModal, setAuthModal] = useState(false);
 
@@ -79,7 +81,7 @@ function NavigationBar() {
           </Nav>
         </Navbar.Collapse>
         <div className="user-menu">
-          <button>
+          <button onClick={() => navigate("/register/employer")}>
             <FaThList />
             Post Job Free
           </button>
