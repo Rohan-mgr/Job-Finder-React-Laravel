@@ -19,4 +19,5 @@ class AdminControllerController extends Controller
         $user = employer::all();
         return response()->json($user);
     }
+    //helo
 }
