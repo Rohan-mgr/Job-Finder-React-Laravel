@@ -1,32 +1,8 @@
 @import "./variables.scss";
 @import "./mixins.scss";
 
-// .container{
-//     max-width: 900px;
-//     margin-right: auto;
 
-//     margin-left: auto;
-
-//     .circle{
-//         width: 70px;
-//         height: 70px;
-//         border-radius: 50%;
-//         border: 3px solid #014b85;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-
-//       .services_icon {
-//         color: #014b85;
-//         font-size: 34px;
-//       }
-
-//
-//
 .service{
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
     margin-top: 50px;
 
     .circle {
@@ -42,6 +18,9 @@
       .icon {
         color: #e90064;
         font-size: 36px;
+        width: 60px;
+        height: 60px;
+        text-align: center;
       }
     }
     .text{
