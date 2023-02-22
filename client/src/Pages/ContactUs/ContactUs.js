@@ -36,7 +36,7 @@ export const ContactUs = () => {
         <h2>Contact Us</h2>
         <h4>Take your career to the next level.</h4>
       </div>
-      <Form className="container" onSubmit={formik.handleSubmit}>
+      <Form className="container mt-5" onSubmit={formik.handleSubmit}>
         <Form.Group>
           <Form.Label>Full Name/Username</Form.Label>
           <Form.Control
@@ -83,7 +83,7 @@ export const ContactUs = () => {
         </Button>
       </Form>
 
-      <div className="google_map">
+      <div className="google_map my-5">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.2122654837285!2d85.32525975!3d27.71073175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1908c874a40b%3A0x87a26cbf3b75037c!2sKamal%20Pokhari!5e0!3m2!1sen!2snp!4v1676814746137!5m2!1sen!2snp"
           width="100%"

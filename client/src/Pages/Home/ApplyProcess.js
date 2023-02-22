@@ -1,8 +1,10 @@
 import React from "react";
-import "../ApplyProcess/ApplyProcess.css";
+import "../../scss/_apply-proces.scss";
+// import "../ApplyProcess/ApplyProcess.css";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { SiSymantec } from "react-icons/si";
+// import "../../../scss/_apply-process.scss";
 
 function ApplyProcess() {
   return (
