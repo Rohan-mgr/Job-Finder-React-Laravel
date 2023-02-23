@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import Categories from "./Categories";
 import Footer from "../Footer/Footer";
 import RecentJobs from "./RecentJobs";
-import ApplyProcess from "./ApplyProcess/ApplyProcess";
+import ApplyProcess from "./ApplyProcess";
 import { useFormik } from "formik";
 
 function Home(props) {
@@ -37,7 +37,7 @@ function Home(props) {
       {pathname === "/" && (
         <>
           <div className="slider-area">
-            {/* Mobile Menu */}
+            {/* Mobile Menu */} 
             <div className="slider-active">
               <div className="single-slider slider-height d-flex align-items-center">
                 <div className="container">
