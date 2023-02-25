@@ -58,4 +58,6 @@ Route::post("/account/employer/change_password", [EmployerController::class, "Ch
 Route::post("/account/employer/post_job", [EmployerController::class, "handlePostJob"]);
 Route::get("/account/employer/job_lists/{id}", [EmployerController::class, "getEmployerPostedJob"]);
 
-Route::get("/admin/Employer-List",[AdminControllerController::class, "index"]);
+Route::get("/admin/EmployerList/{id}",[AdminControllerController::Class, "EmployerList"]);
+Route::put("/admin/EmployerUpdate/{id}",[AdminControllerController::Class, "UpdateEmployer"]);
+Route::delete("/admin/deleteEmployer/{id}", [AdminControllerController::class, "deleteEmployer"]);
