@@ -53,6 +53,7 @@ Route::get("/account/seeker/my_resume/{id}", [SeekerController::class, "getSeeke
 Route::get("/account/seeker/delete_account/{id}", [SeekerController::class, "deleteSeekerAccount"]);
 Route::get("/", [SeekerController::class, "getRecentJobs"]);
 Route::get("/job_details/{id}", [SeekerController::class, "getJobDetails"]);
+Route::post("/apply_for_job/{id}", [SeekerController::class, "handleJobApplication"]);
 
 Route::post("/account/employer/upload_photo", [EmployerController::class, "handleEmployerProfileUpload"]);
 Route::get("/account/employer/profile_pic/{id}", [EmployerController::class, "getEmployerProfilePic"]);

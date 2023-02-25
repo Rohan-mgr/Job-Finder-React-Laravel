@@ -22,7 +22,7 @@ class SeekerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'getJobDetails', 'getRecentJobs', 'deleteSeekerAccount', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword', 'handleCVUpload', 'getSeekerResume']]);
+        $this->middleware('auth:api', ['except' => ['login', 'handleJobApplication', 'getJobDetails', 'getRecentJobs', 'deleteSeekerAccount', 'seekerRegistration', 'handleSeekerProfileUpload', 'getSeekerProfilePic','ChangePassword', 'handleCVUpload', 'getSeekerResume']]);
     }
 
     /**
@@ -172,6 +172,11 @@ class SeekerController extends Controller
         $recentJobs = job::find($req->id);
         $companyName = employer::find($recentJobs->employer_id);
         return response()->json(['job'=> $recentJobs, "companyInfo"=>$companyName]);
+    }
+
+    public function handleJobApplication(Request $req){
+        $appliedJob = job::find($req->id);
+        return response()->json(['job'=>$appliedJob ]);
     }
 
 }
