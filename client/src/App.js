@@ -26,6 +26,7 @@ import PostJob from "./Pages/UserDashboard/PostJob/PostJob";
 import JobList from "./Pages/UserDashboard/JobList/JobList";
 import JobDetails from "./Components/JobDetails/JobDetails";
 import JobListings from "./Pages/JobListings/JobListings";
+import Page404 from "./Pages/404/404";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/job_details/:id" element={<JobDetails />} />
           <Route path="/search_jobs/job_listings" element={<JobListings />} />
         </Route>
+        <Route path="*" element={<Page404 />} />
 
         <Route path="/ourteam" element={<OurTeam />} />
         <Route
