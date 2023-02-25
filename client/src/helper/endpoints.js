@@ -15,6 +15,7 @@ export const SEEKER_ENDPOINT = {
   seekerUploadCV: config.baseURL + "/account/seeker/cv_cover_letter",
   getSeekerResume: config.baseURL + "/account/seeker/my_resume",
   deleteSeekerAccount: config.baseURL + "/account/seeker/delete_account",
+  applyForJob: config.baseURL + "/apply_for_job",
 };
 
 export const EMPLOYER_ENDPOINT = {

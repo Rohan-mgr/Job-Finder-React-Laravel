@@ -1,16 +1,33 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { getJobDetails } from "../../services/seeker";
+import { getJobDetails, handleApplyForJob } from "../../services/seeker";
+import { _getSecureLs } from "../../helper/storage";
+import { useNavigate } from "react-router-dom";
 
 function JobDetails() {
+  const navigate = useNavigate();
+  const { user } = _getSecureLs("seekerAuth");
   const { id } = useParams();
   const [recentJob, setRecentJob] = useState(null);
   const [companyInfo, setcompanyInfo] = useState(null);
+  // console.log(user?.id);
+
+  const handleApplyProcess = async () => {
+    if (user?.id === undefined || user?.id === null) {
+      navigate("/login/seeker");
+    } else {
+      try {
+        const response = await handleApplyForJob(id);
+        console.log(response);
+      } catch (e) {
+        throw new Error(e);
+      }
+    }
+  };
 
   const getCurrentJobDetails = useCallback(async () => {
     try {
       const response = await getJobDetails(id);
-      console.log(response);
       setRecentJob(response?.job);
       setcompanyInfo(response?.companyInfo);
     } catch (e) {
@@ -21,7 +38,7 @@ function JobDetails() {
   useEffect(() => {
     getCurrentJobDetails();
   }, [getCurrentJobDetails]);
-  console.log(companyInfo);
+  // console.log(companyInfo);
   return (
     <main>
       {/* Hero Area Start*/}
@@ -149,9 +166,12 @@ function JobDetails() {
                   </li>
                 </ul>
                 <div className="apply-btn2">
-                  <a href="#" className="btn">
+                  <button
+                    className="btn head-btn1"
+                    onClick={handleApplyProcess}
+                  >
                     Apply Now
-                  </a>
+                  </button>
                 </div>
               </div>
               <div className="post-details4  mb-50">

@@ -91,3 +91,10 @@ export const handleJobSearch = async (searchParams) => {
   const response = await httpAuth.post(URL, JSON.stringify(searchParams));
   return response;
 };
+
+export const handleApplyForJob = async (jobId) => {
+  const URL = SEEKER_ENDPOINT.applyForJob + `/${jobId}`;
+  console.log(URL);
+  const response = await httpAuth.post(URL);
+  return response;
+};
