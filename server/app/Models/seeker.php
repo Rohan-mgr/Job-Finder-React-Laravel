@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
+use App\Models\job;
+
 
 class seeker extends Authenticatable implements JWTSubject
 {
@@ -26,6 +28,10 @@ class seeker extends Authenticatable implements JWTSubject
         'email',
         'password',
     ];
+
+    public function ApplyJobs() {
+        return $this->belongsToMany(job::class, 'applicants');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
