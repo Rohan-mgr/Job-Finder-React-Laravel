@@ -24,6 +24,7 @@ import DeleteAccount from "./Components/DeleteAccount/DeleteAccount";
 import CommonDashboard from "./Pages/UserDashboard/CommonDashboard";
 import PostJob from "./Pages/UserDashboard/PostJob/PostJob";
 import JobList from "./Pages/UserDashboard/JobList/JobList";
+import Applicants from "./Pages/UserDashboard/JobList/Applicants";
 import JobDetails from "./Components/JobDetails/JobDetails";
 import JobListings from "./Pages/JobListings/JobListings";
 import Page404 from "./Pages/404/404";
@@ -56,6 +57,7 @@ function App() {
           <Route path="logout" element={<Logout Mode="employer" />} />
           <Route path="post_job" element={<PostJob />} />
           <Route path="job_lists" element={<JobList />} />
+          <Route path="job_lists/applicants" element={<Applicants />} />
           <Route
             path="change_password"
             element={<ChangePassword Mode="employer" />}
@@ -112,7 +114,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme="colored"
       />
     </div>
   );

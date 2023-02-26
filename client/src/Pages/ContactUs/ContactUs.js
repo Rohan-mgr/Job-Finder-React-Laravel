@@ -24,7 +24,7 @@ export const ContactUs = () => {
           throw new Error("Message can't be send");
         }
         resetForm({ values: "" });
-        toast("Message Sent Successfully");
+        toast.success("Message Sent Successfully");
         window.scrollTo(0, 0);
       } catch (e) {
         toast.error(e);
@@ -48,7 +48,6 @@ export const ContactUs = () => {
                   className="reg_form white_box_bg"
                   onSubmit={formik.handleSubmit}
                 >
-              
                   <Form.Group>
                     <Form.Label>Full Name/Username</Form.Label>
                     <Form.Control
@@ -91,7 +90,9 @@ export const ContactUs = () => {
                     />
                   </Form.Group>
                   <Button className="my-4" type="submit" block>
-                    {formik.isSubmitting ? "Submitting your message" : "Submit"}
+                    {formik.isSubmitting
+                      ? "Submitting your message..."
+                      : "Submit"}
                   </Button>
                 </Form>
               </div>
@@ -99,19 +100,27 @@ export const ContactUs = () => {
                 <div className="contact_info">
                   <ul>
                     <li>
-                      <i className="fa"><ImLocation/></i>
+                      <i className="fa">
+                        <ImLocation />
+                      </i>
                       <span>Kamalpokhari, kathmandu, Nepal</span>
                     </li>
                     <li>
-                      <i className="fa"><IoIosCall/></i>
+                      <i className="fa">
+                        <IoIosCall />
+                      </i>
                       <span>Call Us : 01-2492340</span>
                     </li>
                     <li>
-                      <i className="fa"><MdContactPhone/></i>
+                      <i className="fa">
+                        <MdContactPhone />
+                      </i>
                       <span>Office: 01-3210987</span>
                     </li>
                     <li>
-                      <i className="fa"><MdMailOutline/></i>
+                      <i className="fa">
+                        <MdMailOutline />
+                      </i>
                       <span>info@jobfinder.com</span>
                     </li>
                   </ul>

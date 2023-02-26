@@ -31,6 +31,7 @@ function SideNav() {
       } else {
         response = await getEmpoyerProfile(User?.user?.id);
         setEmployerProfilePath(response?.imgPath);
+        console.log(response);
       }
     } catch (e) {
       throw new Error(e);
@@ -44,11 +45,6 @@ function SideNav() {
     <aside className="main-sidebar sidebar-dark-primary ">
       <div className="ourteam__image__wrapper">
         <img
-          // src={
-          //   seekerProfilePath
-          //     ? `http://localhost:8000/${seekerProfilePath}`
-          //     : require("../../Assets/Images/user.png")
-          // }
           src={
             seekerProfilePath === null && employerProfilePath === null
               ? require("../../Assets/Images/user.png")
