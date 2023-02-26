@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { getJobDetails, handleApplyForJob } from "../../services/seeker";
 import { _getSecureLs } from "../../helper/storage";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function JobDetails() {
   const navigate = useNavigate();
@@ -17,8 +18,10 @@ function JobDetails() {
       navigate("/login/seeker");
     } else {
       try {
-        const response = await handleApplyForJob(id);
+        const response = await handleApplyForJob(id, user?.id);
         console.log(response);
+        navigate("/search_jobs/job_listings");
+        toast.success(response?.message);
       } catch (e) {
         throw new Error(e);
       }
@@ -168,6 +171,7 @@ function JobDetails() {
                 <div className="apply-btn2">
                   <button
                     className="btn head-btn1"
+                    disabled={+recentJob?.vacancy === 0}
                     onClick={handleApplyProcess}
                   >
                     Apply Now

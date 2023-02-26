@@ -176,7 +176,13 @@ class SeekerController extends Controller
 
     public function handleJobApplication(Request $req){
         $appliedJob = job::find($req->id);
-        return response()->json(['job'=>$appliedJob ]);
+        $jobSeekerInfo = seeker::find($req->seekerId);
+        
+        $jobSeekerInfo->ApplyJobs()->attach($req->id);
+        $appliedJob->vacancy = $appliedJob->vacancy - 1;
+        $appliedJob->save();
+        
+        return response()->json(['message' => "Your Application was Successfully submitted" ]);
     }
 
 }
