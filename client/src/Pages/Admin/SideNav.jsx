@@ -25,7 +25,7 @@ function SideNav() {
         className="brand-link d-flex align-items-center"
       >
         <img src={require("../../Assets/Images/logo.png")} alt="logo" />
-        <span className="brand-text font-weight-light">Find Your Job</span>
+        <span className="brand-text font-weight-light">JobFinder.com</span>
       </a>
 
       <div className="sidebar ">
@@ -54,6 +54,18 @@ function SideNav() {
               >
                 <i className="nav-icon fa fa-building" aria-hidden="true"></i>
                 Workspaces
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="logout"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                <i class="nav-icon fa fa-sign-out" aria-hidden="true"></i>
+                Logout
               </NavLink>
             </li>
           </ul>

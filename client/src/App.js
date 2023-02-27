@@ -28,6 +28,7 @@ import Applicants from "./Pages/UserDashboard/JobList/Applicants";
 import JobDetails from "./Components/JobDetails/JobDetails";
 import JobListings from "./Pages/JobListings/JobListings";
 import Page404 from "./Pages/404/404";
+import AdminDashboard from "./Pages/Admin/AdminDashboard/AdminDashboard";
 
 function App() {
   return (
@@ -98,8 +99,9 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route path="dashboard" element={<p>This is dashboard</p>} />
+          <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="company" element={<p>This is company</p>} />
+          <Route path="logout" element={<Logout Mode="admin" />} />
         </Route>
         <Route path="/adminlogin" element={<AdminLogin />} />
       </Routes>

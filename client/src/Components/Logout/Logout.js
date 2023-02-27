@@ -6,8 +6,10 @@ function Logout(props) {
   function signout() {
     if (props.Mode === "seeker") {
       _remove("seekerAuth");
-    } else {
+    } else if (props.Mode === "employer") {
       _remove("employerAuth");
+    } else {
+      _remove("adminAuth");
     }
   }
   useEffect(() => {
@@ -15,7 +17,13 @@ function Logout(props) {
   }, []);
   return (
     <Navigate
-      to={props.Mode === "seeker" ? "/login/seeker" : "/login/employer"}
+      to={
+        props.Mode === "seeker"
+          ? "/login/seeker"
+          : props.Mode === "employer"
+          ? "/login/employer"
+          : "/adminlogin"
+      }
       replace={true}
     />
   );

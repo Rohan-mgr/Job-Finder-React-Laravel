@@ -38,6 +38,12 @@ export const handleSeekerRegister = async (seekerDetails) => {
   const response = await httpAuth.post(URL, JSON.stringify(seekerDetails));
   return response;
 };
+export const handleAdminDashboardDetails = async () => {
+  const URL = AUTH_ENDPOINT.adminDashboard;
+  console.log(URL);
+  const response = await httpAuth.get(URL);
+  return response;
+};
 
 export const handleUserMessage = async (visitorInfo) => {
   const response = await emailjs.send(
