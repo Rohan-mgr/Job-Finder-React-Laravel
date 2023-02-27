@@ -64,3 +64,5 @@ Route::get("/account/employer/job_lists/{id}", [EmployerController::class, "getE
 Route::get("/account/employer/job_lists/applicant/{id}", [EmployerController::class, "getApplicantDetails"]);
 Route::delete("/account/employer/delete_job/{id}", [EmployerController::class, "deletePostedJob"]);
 Route::post("/search_jobs", [EmployerController::class, "searchJobs"]);
+
+Route::get("/admin/dashboard", [AdminControllerController::class, "dashboardDetails"]);
