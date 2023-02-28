@@ -8,7 +8,9 @@ export const AUTH_ENDPOINT = {
   seekerLogin: config.baseURL + "/login/seeker",
   adminDashboard: config.baseURL + "/admin/dashboard",
   adminEmployerDetails: config.baseURL + "/admin/employer_details",
+  adminSeekerDetails: config.baseURL + "/admin/seeker_details",
   adminEmployerDelete: config.baseURL + "/admin/employer_delete",
+  adminSeekerDelete: config.baseURL + "/admin/seeker_delete",
 };
 
 export const SEEKER_ENDPOINT = {

@@ -6,7 +6,7 @@ import {
 import Table from "react-bootstrap/Table";
 import { FaUserCircle } from "react-icons/fa";
 
-function SeekerEmployerDetails() {
+function EmployerDetails() {
   const [employerDetails, setEmployerDetails] = useState(null);
   const employerDetailsAdmin = useCallback(async (jobId) => {
     try {
@@ -109,4 +109,4 @@ function SeekerEmployerDetails() {
   );
 }
 
-export default SeekerEmployerDetails;
+export default EmployerDetails;

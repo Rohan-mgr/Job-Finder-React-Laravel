@@ -29,7 +29,8 @@ import JobDetails from "./Components/JobDetails/JobDetails";
 import JobListings from "./Pages/JobListings/JobListings";
 import Page404 from "./Pages/404/404";
 import AdminDashboard from "./Pages/Admin/AdminDashboard/AdminDashboard";
-import SeekerEmployerDetails from "./Pages/Admin/AdminDashboard/SeekerEmployerDetails";
+import EmployerDetails from "./Pages/Admin/AdminDashboard/EmployerDetails";
+import SeekerDetails from "./Pages/Admin/AdminDashboard/SeekerDetails";
 
 function App() {
   return (
@@ -101,7 +102,8 @@ function App() {
           }
         >
           <Route path="dashboard" element={<AdminDashboard />} />
-          <Route path="employer_details" element={<SeekerEmployerDetails />} />
+          <Route path="employer_details" element={<EmployerDetails />} />
+          <Route path="seeker_details" element={<SeekerDetails />} />
           <Route path="logout" element={<Logout Mode="admin" />} />
         </Route>
         <Route path="/adminlogin" element={<AdminLogin />} />
