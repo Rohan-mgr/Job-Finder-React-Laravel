@@ -26,7 +26,7 @@ class AdminControllerController extends Controller
         $employers->delete();
         return response()->json(['message'=> "employer deleted successfully"]);
     }
-    //helo
+    
     public function dashboardDetails() {
         $totalJobs = count(job::all());
         $totalSeekers = count(seeker::all());

@@ -47,13 +47,13 @@ function SideNav() {
             <li className="nav-item">
               <NavLink
                 exact
-                to="company"
+                to="employer_details"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
                 }
               >
-                <i className="nav-icon fa fa-building" aria-hidden="true"></i>
-                Workspaces
+                <i className="nav-icon fa fa-list-alt" aria-hidden="true"></i>
+                Employer List
               </NavLink>
             </li>
             <li className="nav-item">

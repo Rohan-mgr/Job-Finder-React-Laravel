@@ -54,3 +54,16 @@ export const handleUserMessage = async (visitorInfo) => {
   );
   return response;
 };
+
+export const adminEmployerDetails = async () => {
+  const URL = AUTH_ENDPOINT.adminEmployerDetails;
+  const response = await httpAuth.get(URL);
+  return response;
+};
+
+export const adminEmployerDelete = async (eid) => {
+  const URL = AUTH_ENDPOINT.adminEmployerDelete + `/${eid}`;
+  console.log(URL);
+  const response = await httpAuth.delete(URL);
+  return response;
+};
