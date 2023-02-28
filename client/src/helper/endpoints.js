@@ -6,6 +6,7 @@ export const AUTH_ENDPOINT = {
   seekerRegister: config.baseURL + "/register/seeker",
   employerLogin: config.baseURL + "/login/employer",
   seekerLogin: config.baseURL + "/login/seeker",
+  adminDashboard: config.baseURL + "/admin/dashboard",
 };
 
 export const SEEKER_ENDPOINT = {
@@ -15,6 +16,7 @@ export const SEEKER_ENDPOINT = {
   seekerUploadCV: config.baseURL + "/account/seeker/cv_cover_letter",
   getSeekerResume: config.baseURL + "/account/seeker/my_resume",
   deleteSeekerAccount: config.baseURL + "/account/seeker/delete_account",
+  applyForJob: config.baseURL + "/apply_for_job",
 };
 
 export const EMPLOYER_ENDPOINT = {
@@ -24,4 +26,6 @@ export const EMPLOYER_ENDPOINT = {
   employerChangePassword: config.baseURL + "/account/employer/change_password",
   postJob: config.baseURL + "/account/employer/post_job",
   getPostedJob: config.baseURL + "/account/employer/job_lists",
+  getApplicantDetails: config.baseURL + "/account/employer/job_lists/applicant",
+  deleteJob: config.baseURL + "/account/employer/delete_job",
 };

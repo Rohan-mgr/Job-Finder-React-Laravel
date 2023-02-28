@@ -22,12 +22,6 @@ function Header({ currentUser }) {
             <i className="fas fa-expand-arrows-alt" />
           </a>
         </li>
-
-        <li className="nav-item">
-          <a className="nav-link" href="#" role="button">
-            <i className="fas fa-user" /> {currentUser?.fname}
-          </a>
-        </li>
       </ul>
     </nav>
   );

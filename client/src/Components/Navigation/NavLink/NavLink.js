@@ -16,13 +16,18 @@ function NavItem(props) {
     case "Our Team":
       icon = "fa fa-users";
       break;
+    case "Find Jobs":
+      icon = "fa fa-briefcase";
+      break;
     default:
       break;
   }
   return (
     <NavLink
       to={props.Path}
-      className="nav-link"
+      className={
+        props.Link === "Apply for a job" ? "btn head-btn1" : "nav-link"
+      }
       onClick={() => props.hideNav()}
     >
       <i class={icon} style={{ marginRight: "5px" }} aria-hidden="true"></i>

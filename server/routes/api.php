@@ -50,6 +50,9 @@ Route::post("/account/seeker/change_password", [SeekerController::class, "Change
 Route::get("/account/seeker/profile_pic/{id}", [SeekerController::class, "getSeekerProfilePic"]);
 Route::get("/account/seeker/my_resume/{id}", [SeekerController::class, "getSeekerResume"]);
 Route::get("/account/seeker/delete_account/{id}", [SeekerController::class, "deleteSeekerAccount"]);
+Route::get("/", [SeekerController::class, "getRecentJobs"]);
+Route::get("/job_details/{id}", [SeekerController::class, "getJobDetails"]);
+Route::post("/apply_for_job/{id}", [SeekerController::class, "handleJobApplication"]);
 
 Route::post("/account/employer/upload_photo", [EmployerController::class, "handleEmployerProfileUpload"]);
 Route::get("/account/employer/profile_pic/{id}", [EmployerController::class, "getEmployerProfilePic"]);
@@ -61,3 +64,8 @@ Route::get("/account/employer/job_lists/{id}", [EmployerController::class, "getE
 Route::get("/admin/EmployerList/{id}",[AdminControllerController::Class, "EmployerList"]);
 Route::put("/admin/EmployerUpdate/{id}",[AdminControllerController::Class, "UpdateEmployer"]);
 Route::delete("/admin/deleteEmployer/{id}", [AdminControllerController::class, "deleteEmployer"]);
+Route::get("/account/employer/job_lists/applicant/{id}", [EmployerController::class, "getApplicantDetails"]);
+Route::delete("/account/employer/delete_job/{id}", [EmployerController::class, "deletePostedJob"]);
+Route::post("/search_jobs", [EmployerController::class, "searchJobs"]);
+
+Route::get("/admin/dashboard", [AdminControllerController::class, "dashboardDetails"]);

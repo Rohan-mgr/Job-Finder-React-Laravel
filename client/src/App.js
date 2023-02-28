@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import OurTeam from "./Pages/Team/OurTeam";
 import Dashboard from "./Pages/Admin/Dashboard";
 import ContactUs from "./Pages/ContactUs/ContactUs";
@@ -23,6 +25,11 @@ import CommonDashboard from "./Pages/UserDashboard/CommonDashboard";
 import PostJob from "./Pages/UserDashboard/PostJob/PostJob";
 import JobList from "./Pages/UserDashboard/JobList/JobList";
 import RegisteredEmployes from "./Pages/Admin/EmployerList/EmployerList";
+import Applicants from "./Pages/UserDashboard/JobList/Applicants";
+import JobDetails from "./Components/JobDetails/JobDetails";
+import JobListings from "./Pages/JobListings/JobListings";
+import Page404 from "./Pages/404/404";
+import AdminDashboard from "./Pages/Admin/AdminDashboard/AdminDashboard";
 
 function App() {
   return (
@@ -33,7 +40,11 @@ function App() {
           <Route path="services" element={<Services />} />
           <Route path="login/:mode" element={<Login />} />
           <Route path="register/:mode" element={<Register />} />
+          <Route path="/job_details/:id" element={<JobDetails />} />
+          <Route path="/search_jobs/job_listings" element={<JobListings />} />
         </Route>
+        <Route path="*" element={<Page404 />} />
+
         <Route path="/ourteam" element={<OurTeam />} />
         <Route
           path="/account/employer"
@@ -46,8 +57,9 @@ function App() {
           <Route path="dashboard" element={<CommonDashboard />} />
           <Route path="upload_photo" element={<UploadProfile />} />
           <Route path="logout" element={<Logout Mode="employer" />} />
-          <Route path="post_job" element={<PostJob />} /> 
+          <Route path="post_job" element={<PostJob />} />
           <Route path="job_lists" element={<JobList />} />
+          <Route path="job_lists/applicants" element={<Applicants />} />
           <Route
             path="change_password"
             element={<ChangePassword Mode="employer" />}
@@ -88,12 +100,26 @@ function App() {
             </PrivateRoute>
           }
         >
-          <Route path="dashboard" element={<p>This is dashboard</p>} />
+          <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="company" element={<p>This is company</p>} />
           <Route path="EmployerList" element={<RegisteredEmployes/>} />
+          <Route path="logout" element={<Logout Mode="admin" />} />
         </Route>
         <Route path="/adminlogin" element={<AdminLogin />} />
       </Routes>
+
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }

@@ -34,7 +34,6 @@ function Categories() {
                 <h5>
                   <a href="job_listing.html">Design &amp; Creative</a>
                 </h5>
-                <span>(653)</span>
               </div>
             </div>
           </div>
@@ -47,7 +46,6 @@ function Categories() {
                 <h5>
                   <a href="job_listing.html">Design &amp; Development</a>
                 </h5>
-                <span>(658)</span>
               </div>
             </div>
           </div>
@@ -60,7 +58,6 @@ function Categories() {
                 <h5>
                   <a href="job_listing.html">Sales &amp; Marketing</a>
                 </h5>
-                <span>(658)</span>
               </div>
             </div>
           </div>
@@ -73,7 +70,6 @@ function Categories() {
                 <h5>
                   <a href="job_listing.html">Mobile Application</a>
                 </h5>
-                <span>(658)</span>
               </div>
             </div>
           </div>
@@ -86,7 +82,6 @@ function Categories() {
                 <h5>
                   <a href="job_listing.html">Construction</a>
                 </h5>
-                <span>(658)</span>
               </div>
             </div>
           </div>
@@ -99,7 +94,6 @@ function Categories() {
                 <h5>
                   <a href="job_listing.html">Information Technology</a>
                 </h5>
-                <span>(658)</span>
               </div>
             </div>
           </div>
@@ -112,7 +106,6 @@ function Categories() {
                 <h5>
                   <a href="job_listing.html">Real Estate</a>
                 </h5>
-                <span>(658)</span>
               </div>
             </div>
           </div>
@@ -125,14 +118,13 @@ function Categories() {
                 <h5>
                   <a href="job_listing.html">Content Writer</a>
                 </h5>
-                <span>(658)</span>
               </div>
             </div>
           </div>
         </div>
         {/* More Btn */}
         {/* Section Button */}
-        <div className="row">
+        {/* <div className="row">
           <div className="col-lg-12">
             <div className="browse-btn2 text-center mt-50">
               <a href="job_listing.html" className="border-btn2">
@@ -140,7 +132,7 @@ function Categories() {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

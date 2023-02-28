@@ -1,0 +1,15 @@
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #dcc5cc;
+}
+.error-box {
+    text-align: center;
+}
+.error-box h1 {
+    font-size: 8rem;
+    font-weight: 700;
+    color: #fb246a;
+}

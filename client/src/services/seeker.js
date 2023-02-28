@@ -72,3 +72,31 @@ export const deleteSeekerAccount = async (e, id, setMsg) => {
   console.log(response);
   return response;
 };
+
+export const getRecentJobs = async () => {
+  const URL = "/";
+  const response = await httpAuth.get(URL);
+  return response;
+};
+
+export const getJobDetails = async (jobId) => {
+  const URL = "/job_details/" + jobId;
+  const response = await httpAuth.get(URL);
+  return response;
+};
+
+export const handleJobSearch = async (searchParams) => {
+  const URL = "/search_jobs";
+  console.log(URL, searchParams);
+  const response = await httpAuth.post(URL, JSON.stringify(searchParams));
+  return response;
+};
+
+export const handleApplyForJob = async (jobId, seekerId) => {
+  const URL = SEEKER_ENDPOINT.applyForJob + `/${jobId}`;
+  console.log(URL);
+  const userInfo = new FormData();
+  userInfo.append("seekerId", seekerId);
+  const response = await httpAuth.post(URL, userInfo);
+  return response;
+};

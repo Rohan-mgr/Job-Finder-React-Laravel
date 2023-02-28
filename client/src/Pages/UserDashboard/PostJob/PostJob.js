@@ -30,14 +30,20 @@ function PostJob() {
       };
     });
   };
+
+  const handleSubmit = async (e) => {
+    try {
+      const response = await handlePostJob(e, jobInfo, user?.id);
+      navigate("/account/employer/job_lists");
+    } catch (e) {
+      throw new Error(e);
+    }
+  };
   return (
     <div className="Post_Job">
       <Form
         className="col-12 col-md-9 col-lg-10"
-        onSubmit={(e) => {
-          handlePostJob(e, jobInfo, user?.id);
-          navigate("/account/employer/job_lists");
-        }}
+        onSubmit={(e) => handleSubmit(e)}
       >
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <h2>Post a new job</h2>
@@ -220,7 +226,7 @@ function PostJob() {
             className="mb-3 col-12 col-md-6 col-lg-6"
             controlId="formBasicPassword2"
           >
-            <Form.Label>Experience</Form.Label>
+            <Form.Label>Experience(in years)</Form.Label>
             <Form.Control
               type="text"
               name="experience"

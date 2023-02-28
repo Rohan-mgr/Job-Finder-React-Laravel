@@ -22,7 +22,7 @@ class EmployerController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login','getEmployerPostedJob', 'handlePostJob','ChangePassword', 'deleteEmployerAccount', 'getEmployerProfilePic', 'employerRegistration', 'handleEmployerProfileUpload']]);
+        $this->middleware('auth:api', ['except' => ['login','getApplicantDetails', 'searchJobs', 'deletePostedJob','getEmployerPostedJob', 'handlePostJob','ChangePassword', 'deleteEmployerAccount', 'getEmployerProfilePic', 'employerRegistration', 'handleEmployerProfileUpload']]);
     }
 
     /**
@@ -126,6 +126,12 @@ class EmployerController extends Controller
         $user = employer::find($id);
         return response()->json(['imgPath' => $user->img_path]);
     }
+    public function getApplicantDetails(Request $req) {
+        // $user = employer::find($id);
+        $jobApplicants = Job::find($req->id)->JobSeeker;
+        return response()->json(['applicant' => $jobApplicants]);
+    }
+
 
     public function deleteEmployerAccount($id) {
         $user = employer::find($id);
@@ -169,6 +175,34 @@ class EmployerController extends Controller
 
     public function getEmployerPostedJob(Request $req) {
         $jobs = job::where('employer_id', '=', $req->id)->get();
-        return response()->json(['message'=> $jobs]);
+        $jobApplicantCount = null;
+        foreach($jobs as $index => $job) {
+            $jobApplicantCount[$index] = count($job->JobSeeker);
+        }
+        return response()->json(['message'=> $jobs, "applicants" => $jobApplicantCount]);
+    }
+    public function deletePostedJob(Request $req) {
+        $job = job::find($req->id);
+        $job->delete();
+        return response()->json(['message'=> "job deleted successfully"]);
+    }
+
+    public function searchJobs(Request $req){
+        $searchedJobs = null;
+        
+        if($req->jobTitle) {
+            $searchedJobs = job::where("jobTitle", "LIKE", "%".$req->jobTitle."%")->get();
+        }
+        if($req->jobLocation) {
+            $searchedJobs = job::where("jobLocation", "LIKE", "%".$req->jobLocation."%")->get();
+        }
+        if($req->jobTitle && $req->jobLocation) {
+            $searchedJobs = job::where("jobTitle", "LIKE", "%".$req->jobTitle."%")->
+                            where("jobLocation", "LIKE", "%".$req->jobLocation."%")->get();
+        }
+        if(count($searchedJobs) === null) {
+            return response()->json(['jobs' => []]);
+        }
+        return response()->json(['jobs' => $searchedJobs]);
     }
 }
