@@ -10,7 +10,6 @@ use App\Http\Controllers\SeekerController;
 use App\Http\Controllers\AdminControllerController;
 
 
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -61,6 +60,10 @@ Route::get("/account/employer/delete_account/{id}", [EmployerController::class, 
 Route::post("/account/employer/change_password", [EmployerController::class, "ChangePassword"]);
 Route::post("/account/employer/post_job", [EmployerController::class, "handlePostJob"]);
 Route::get("/account/employer/job_lists/{id}", [EmployerController::class, "getEmployerPostedJob"]);
+
+Route::get("/admin/EmployerList/{id}",[AdminControllerController::Class, "EmployerList"]);
+Route::put("/admin/EmployerUpdate/{id}",[AdminControllerController::Class, "UpdateEmployer"]);
+Route::delete("/admin/deleteEmployer/{id}", [AdminControllerController::class, "deleteEmployer"]);
 Route::get("/account/employer/job_lists/applicant/{id}", [EmployerController::class, "getApplicantDetails"]);
 Route::delete("/account/employer/delete_job/{id}", [EmployerController::class, "deletePostedJob"]);
 Route::post("/search_jobs", [EmployerController::class, "searchJobs"]);

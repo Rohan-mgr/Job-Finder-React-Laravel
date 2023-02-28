@@ -14,12 +14,19 @@ class AdminControllerController extends Controller
         $students = $req->email;
         return response()->json($students);
     }
+
     public function EmployerList()
     {
-        $employers = employer::all();
-        return response()->json($employers);
+        $user = employer::all();
+        return response()->json($user);
     }
-
+    public function deleteEmployer(Request $req)
+    {
+        $employers = employer::find($req->id);
+        $employers->delete();
+        return response()->json(['message'=> "employer deleted successfully"]);
+    }
+    //helo
     public function dashboardDetails() {
         $totalJobs = count(job::all());
         $totalSeekers = count(seeker::all());

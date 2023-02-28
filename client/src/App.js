@@ -24,6 +24,7 @@ import DeleteAccount from "./Components/DeleteAccount/DeleteAccount";
 import CommonDashboard from "./Pages/UserDashboard/CommonDashboard";
 import PostJob from "./Pages/UserDashboard/PostJob/PostJob";
 import JobList from "./Pages/UserDashboard/JobList/JobList";
+import RegisteredEmployes from "./Pages/Admin/EmployerList/EmployerList";
 import Applicants from "./Pages/UserDashboard/JobList/Applicants";
 import JobDetails from "./Components/JobDetails/JobDetails";
 import JobListings from "./Pages/JobListings/JobListings";
@@ -101,6 +102,7 @@ function App() {
         >
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="company" element={<p>This is company</p>} />
+          <Route path="EmployerList" element={<RegisteredEmployes/>} />
           <Route path="logout" element={<Logout Mode="admin" />} />
         </Route>
         <Route path="/adminlogin" element={<AdminLogin />} />
