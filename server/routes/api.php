@@ -70,4 +70,6 @@ Route::post("/search_jobs", [EmployerController::class, "searchJobs"]);
 
 Route::get("/admin/dashboard", [AdminControllerController::class, "dashboardDetails"]);
 Route::get("/admin/employer_details", [AdminControllerController::class, "EmployerList"]);
+Route::get("/admin/seeker_details", [AdminControllerController::class, "SeekerList"]);
 Route::delete("/admin/employer_delete/{id}", [AdminControllerController::class, "deleteEmployer"]);
+Route::delete("/admin/seeker_delete/{id}", [AdminControllerController::class, "deleteSeeker"]);
