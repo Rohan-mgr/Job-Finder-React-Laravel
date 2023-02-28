@@ -60,9 +60,20 @@ export const adminEmployerDetails = async () => {
   const response = await httpAuth.get(URL);
   return response;
 };
+export const adminSeekerDetails = async () => {
+  const URL = AUTH_ENDPOINT.adminSeekerDetails;
+  const response = await httpAuth.get(URL);
+  return response;
+};
 
 export const adminEmployerDelete = async (eid) => {
   const URL = AUTH_ENDPOINT.adminEmployerDelete + `/${eid}`;
+  console.log(URL);
+  const response = await httpAuth.delete(URL);
+  return response;
+};
+export const adminSeekerDelete = async (sid) => {
+  const URL = AUTH_ENDPOINT.adminSeekerDelete + `/${sid}`;
   console.log(URL);
   const response = await httpAuth.delete(URL);
   return response;

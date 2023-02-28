@@ -59,6 +59,18 @@ function SideNav() {
             <li className="nav-item">
               <NavLink
                 exact
+                to="seeker_details"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                <i class="nav-icon fa fa-list-ul" aria-hidden="true"></i>
+                Seeker List
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
                 to="logout"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"

@@ -20,11 +20,22 @@ class AdminControllerController extends Controller
         $user = employer::all();
         return response()->json($user);
     }
+    public function SeekerList()
+    {
+        $user = seeker::all();
+        return response()->json($user);
+    }
     public function deleteEmployer(Request $req)
     {
         $employers = employer::find($req->id);
         $employers->delete();
         return response()->json(['message'=> "employer deleted successfully"]);
+    }
+    public function deleteSeeker(Request $req)
+    {
+        $seekers = seeker::find($req->id);
+        $seekers->delete();
+        return response()->json(['message'=> "seekers deleted successfully"]);
     }
     
     public function dashboardDetails() {
