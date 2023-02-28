@@ -66,3 +66,4 @@ Route::delete("/account/employer/delete_job/{id}", [EmployerController::class, "
 Route::post("/search_jobs", [EmployerController::class, "searchJobs"]);
 
 Route::get("/admin/dashboard", [AdminControllerController::class, "dashboardDetails"]);
+Route::get("/admin/employer_details", [AdminControllerController::class, "EmployerList"]);
