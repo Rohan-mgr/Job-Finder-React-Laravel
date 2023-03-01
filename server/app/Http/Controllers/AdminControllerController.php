@@ -7,6 +7,7 @@ use App\Models\employer;
 use App\Models\job;
 use App\Models\seeker;
 use App\Models\applicants;
+use App\Models\testimonials;
 
 class AdminControllerController extends Controller
 {
@@ -44,5 +45,55 @@ class AdminControllerController extends Controller
         $totalEmployers = count(employer::all());
         $totalApplicants = count(applicants::all());
         return response()->json(['jobCount' => $totalJobs, 'seekerCount' => $totalSeekers, 'employerCount'=>$totalEmployers, 'applicantCount'=> $totalApplicants]);
+    }
+    public function handleTestimonialPost(Request $req) {
+        $testimonialObj = new testimonials();
+        if($req->clientProfile !== "null"){
+            $logo = $req->clientProfile;
+            $logoName = time().'_'.$req->clientProfile->getClientOriginalName();
+            $logo->move('testimonials/', $logoName);
+            $path = "testimonials/$logoName";
+
+            $testimonialObj->profile = $path;
+        }
+        
+        $testimonialObj->clientName = $req->clientName;
+        $testimonialObj->companyName = $req->companyName;
+        $testimonialObj->designation = $req->designation;
+        $testimonialObj->description = $req->description;
+        $testimonialObj->save();
+        return response()->json(['message' => "Testimonials Added Successfully"]);
+    }
+
+    public function fetchTestimonials() {
+        $testimonials = testimonials::all();
+        return response()->json($testimonials);
+    }
+
+    public function deleteTestimonial(Request $req) {
+        $testimonial = testimonials::find($req->id);
+        $testimonial->delete();
+        return response()->json(["message"=> "Testimonial deleted successfully"]);
+    }
+    public function EditTestimonial(Request $req) {
+        $testimonialObj = testimonials::find($req->id);
+        if($testimonialObj->profile === $req->clientProfile){
+            $testimonialObj->profile = $req->clientProfile;
+        } else {
+            if($req->clientProfile !== "null"){
+            $logo = $req->clientProfile;
+            $logoName = time().'_'.$req->clientProfile->getClientOriginalName();
+            $logo->move('testimonials/', $logoName);
+            $path = "testimonials/$logoName";
+
+            $testimonialObj->profile = $path;
+            }
+        }
+        $testimonialObj->clientName = $req->clientName;
+        $testimonialObj->companyName = $req->companyName;
+        $testimonialObj->designation = $req->designation;
+        $testimonialObj->description = $req->description;
+        $testimonialObj->save();
+        return response()->json(["message" => $req->clientProfile]);
     }
 }
