@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "../../scss/_h1-hero.scss";
 import "../../scss/_common.scss";
 import { useNavigate, Outlet } from "react-router-dom";
@@ -37,7 +37,7 @@ function Home(props) {
       {pathname === "/" && (
         <>
           <div className="slider-area">
-            {/* Mobile Menu */} 
+            {/* Mobile Menu */}
             <div className="slider-active">
               <div className="single-slider slider-height d-flex align-items-center">
                 <div className="container">

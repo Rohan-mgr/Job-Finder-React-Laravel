@@ -73,3 +73,7 @@ Route::get("/admin/employer_details", [AdminControllerController::class, "Employ
 Route::get("/admin/seeker_details", [AdminControllerController::class, "SeekerList"]);
 Route::delete("/admin/employer_delete/{id}", [AdminControllerController::class, "deleteEmployer"]);
 Route::delete("/admin/seeker_delete/{id}", [AdminControllerController::class, "deleteSeeker"]);
+Route::post("/admin/testimonials", [AdminControllerController::class, "handleTestimonialPost"]);
+Route::get("/admin/fetch_testimonials", [AdminControllerController::class, "fetchTestimonials"]);
+Route::delete("/admin/delete_testimonial/{id}", [AdminControllerController::class, "deleteTestimonial"]);
+Route::post("/admin/edit_testimonial/{id}", [AdminControllerController::class, "EditTestimonial"]);

@@ -2,6 +2,7 @@
 import { httpAuth } from "../helper/http";
 import { AUTH_ENDPOINT } from "../helper/endpoints";
 import emailjs from "@emailjs/browser";
+import axios from "axios";
 
 export const handleAdminLogin = async (adminData) => {
   const URL = AUTH_ENDPOINT.adminLogin;
@@ -76,5 +77,49 @@ export const adminSeekerDelete = async (sid) => {
   const URL = AUTH_ENDPOINT.adminSeekerDelete + `/${sid}`;
   console.log(URL);
   const response = await httpAuth.delete(URL);
+  return response;
+};
+
+export const handlePostTestimonial = async (e, testimonialInfo) => {
+  e.preventDefault();
+  const URL = AUTH_ENDPOINT.adminTestimonial;
+  console.log(URL, testimonialInfo);
+
+  const testimonialData = new FormData();
+  testimonialData.append("clientName", testimonialInfo.clientName);
+  testimonialData.append("clientProfile", testimonialInfo.clientProfile);
+  testimonialData.append("designation", testimonialInfo.designation);
+  testimonialData.append("companyName", testimonialInfo.companyName);
+  testimonialData.append("description", testimonialInfo.description);
+
+  const response = await axios.post(URL, testimonialData);
+  return response;
+};
+
+export const fetchTestimonials = async () => {
+  const URL = AUTH_ENDPOINT.adminFetchTestimonials;
+  console.log(URL);
+  const response = await httpAuth.get(URL);
+  return response;
+};
+
+export const handleDeleteTestimonial = async (id) => {
+  const URL = AUTH_ENDPOINT.adminDeleteTestimonial + `/${id}`;
+  console.log(URL);
+  const response = await httpAuth.delete(URL);
+  return response;
+};
+export const handleEditTestimonial = async (e, tid, editInfo) => {
+  e.preventDefault();
+  const URL = AUTH_ENDPOINT.adminEditTestimonial + `/${tid}`;
+  console.log(URL, tid, editInfo);
+
+  const editedTestimonialData = new FormData();
+  editedTestimonialData.append("clientName", editInfo.clientName);
+  editedTestimonialData.append("clientProfile", editInfo.clientProfile);
+  editedTestimonialData.append("designation", editInfo.designation);
+  editedTestimonialData.append("companyName", editInfo.companyName);
+  editedTestimonialData.append("description", editInfo.description);
+  const response = await httpAuth.post(URL, editedTestimonialData);
   return response;
 };
