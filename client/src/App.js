@@ -31,6 +31,7 @@ import Page404 from "./Pages/404/404";
 import AdminDashboard from "./Pages/Admin/AdminDashboard/AdminDashboard";
 import EmployerDetails from "./Pages/Admin/AdminDashboard/EmployerDetails";
 import SeekerDetails from "./Pages/Admin/AdminDashboard/SeekerDetails";
+import Testimonial from "./Pages/Admin/AdminDashboard/Testimonial";
 
 function App() {
   return (
@@ -104,6 +105,7 @@ function App() {
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="employer_details" element={<EmployerDetails />} />
           <Route path="seeker_details" element={<SeekerDetails />} />
+          <Route path="testimonials" element={<Testimonial />} />
           <Route path="logout" element={<Logout Mode="admin" />} />
         </Route>
         <Route path="/adminlogin" element={<AdminLogin />} />

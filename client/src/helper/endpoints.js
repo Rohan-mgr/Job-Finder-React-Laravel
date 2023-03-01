@@ -11,6 +11,10 @@ export const AUTH_ENDPOINT = {
   adminSeekerDetails: config.baseURL + "/admin/seeker_details",
   adminEmployerDelete: config.baseURL + "/admin/employer_delete",
   adminSeekerDelete: config.baseURL + "/admin/seeker_delete",
+  adminTestimonial: config.baseURL + "/admin/testimonials",
+  adminFetchTestimonials: config.baseURL + "/admin/fetch_testimonials",
+  adminDeleteTestimonial: config.baseURL + "/admin/delete_testimonial",
+  adminEditTestimonial: config.baseURL + "/admin/edit_testimonial",
 };
 
 export const SEEKER_ENDPOINT = {

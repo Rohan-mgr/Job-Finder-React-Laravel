@@ -2,22 +2,9 @@ import React from "react";
 import "./SideNav.css";
 // import { ROUTES } from "../../helper/routes";
 // import { _removeAllLs, _getSecureLs } from "../../helper/storage";
-import {
-  NavLink,
-  Routes,
-  useLocation,
-  useNavigate,
-  useParams,
-  useRoutes,
-} from "react-router-dom";
-
-import className from "classnames";
+import { NavLink } from "react-router-dom";
 
 function SideNav() {
-  const navigate = useNavigate();
-  // const userMode = _getSecureLs("auth")?.mode;
-  // console.log(userMode);
-
   return (
     <aside className="main-sidebar sidebar-dark-primary ">
       <a
@@ -66,6 +53,18 @@ function SideNav() {
               >
                 <i class="nav-icon fa fa-list-ul" aria-hidden="true"></i>
                 Seeker List
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                exact
+                to="testimonials"
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                <i class="nav-icon fa fa-commenting" aria-hidden="true"></i>
+                Testimonials
               </NavLink>
             </li>
             <li className="nav-item">
