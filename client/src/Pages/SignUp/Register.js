@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Register.css";
 import { useNavigate, useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
@@ -47,6 +47,11 @@ function Register() {
       }
     },
   });
+
+  useEffect(() => {
+    document.title = "Jobfinder.com | Sign Up";
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="register">

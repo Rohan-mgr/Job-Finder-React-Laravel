@@ -120,6 +120,6 @@ export const handleEditTestimonial = async (e, tid, editInfo) => {
   editedTestimonialData.append("designation", editInfo.designation);
   editedTestimonialData.append("companyName", editInfo.companyName);
   editedTestimonialData.append("description", editInfo.description);
-  const response = await httpAuth.post(URL, editedTestimonialData);
+  const response = await httpAuth.put(URL, editedTestimonialData);
   return response;
 };

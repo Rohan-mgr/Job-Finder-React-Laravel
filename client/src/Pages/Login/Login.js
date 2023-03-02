@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
@@ -69,6 +69,11 @@ function Login() {
       resetForm();
     },
   });
+
+  useEffect(() => {
+    document.title = "Jobfinder.com | Sign In";
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="login">

@@ -11,7 +11,7 @@ function OurTeam() {
   const navigate = useNavigate();
   const [showAnimatedPage, setAnimatedPage] = useState(true);
   useEffect(() => {
-    document.title = "React App | Our Team";
+    document.title = "Jobfinder.com | Our Team";
   }, []);
   return (
     <>

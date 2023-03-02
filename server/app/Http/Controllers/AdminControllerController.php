@@ -77,23 +77,11 @@ class AdminControllerController extends Controller
     }
     public function EditTestimonial(Request $req) {
         $testimonialObj = testimonials::find($req->id);
-        if($testimonialObj->profile === $req->clientProfile){
-            $testimonialObj->profile = $req->clientProfile;
-        } else {
-            if($req->clientProfile !== "null"){
-            $logo = $req->clientProfile;
-            $logoName = time().'_'.$req->clientProfile->getClientOriginalName();
-            $logo->move('testimonials/', $logoName);
-            $path = "testimonials/$logoName";
-
-            $testimonialObj->profile = $path;
-            }
-        }
         $testimonialObj->clientName = $req->clientName;
         $testimonialObj->companyName = $req->companyName;
         $testimonialObj->designation = $req->designation;
         $testimonialObj->description = $req->description;
         $testimonialObj->save();
-        return response()->json(["message" => $req->clientProfile]);
+        return response()->json(["message" => "Testimonial Updated Successfully"]);
     }
 }

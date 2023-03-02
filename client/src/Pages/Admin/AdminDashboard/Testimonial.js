@@ -52,8 +52,8 @@ function Testimonial() {
       } else {
         response = await handleEditTestimonial(e, tid, testimonials);
       }
-      console.log(response);
       toast.success(response?.data?.message);
+      navigate("/admin/testimonials");
       window.location.reload(true);
     } catch (e) {
       throw new Error(e);
@@ -126,27 +126,29 @@ function Testimonial() {
             />
           </Form.Group>
         </div>
-        <div className="d-md-flex d-lg-flex gap-5">
-          <Form.Group className="mb-3 col-12" controlId="formBasicEmail">
-            <Form.Label>Client Profile</Form.Label>
-            <Form.Control
-              type="file"
-              name="clientProfile"
-              accept="image/*"
-              required={tid === null ? true : false}
-              onChange={(e) => {
-                if (e.target.files[0] && e.target.files.length > 0) {
-                  setTestimonials((prevState) => {
-                    return {
-                      ...prevState,
-                      [e.target.name]: e.target.files[0],
-                    };
-                  });
-                }
-              }}
-            />
-          </Form.Group>
-        </div>
+        {!tid && (
+          <div className="d-md-flex d-lg-flex gap-5">
+            <Form.Group className="mb-3 col-12" controlId="formBasicEmail">
+              <Form.Label>Client Profile</Form.Label>
+              <Form.Control
+                type="file"
+                name="clientProfile"
+                accept="image/*"
+                required={tid === null ? true : false}
+                onChange={(e) => {
+                  if (e.target.files[0] && e.target.files.length > 0) {
+                    setTestimonials((prevState) => {
+                      return {
+                        ...prevState,
+                        [e.target.name]: e.target.files[0],
+                      };
+                    });
+                  }
+                }}
+              />
+            </Form.Group>
+          </div>
+        )}
         <div className="d-md-flex d-lg-flex gap-5">
           <Form.Group className="mb-3 col-12" controlId="formBasicEmail">
             <Form.Label>Client Designation</Form.Label>
