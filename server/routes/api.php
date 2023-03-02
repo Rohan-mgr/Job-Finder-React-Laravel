@@ -76,4 +76,4 @@ Route::delete("/admin/seeker_delete/{id}", [AdminControllerController::class, "d
 Route::post("/admin/testimonials", [AdminControllerController::class, "handleTestimonialPost"]);
 Route::get("/admin/fetch_testimonials", [AdminControllerController::class, "fetchTestimonials"]);
 Route::delete("/admin/delete_testimonial/{id}", [AdminControllerController::class, "deleteTestimonial"]);
-Route::post("/admin/edit_testimonial/{id}", [AdminControllerController::class, "EditTestimonial"]);
+Route::put("/admin/edit_testimonial/{id}", [AdminControllerController::class, "EditTestimonial"]);
