@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
-import { BsFillPersonFill} from "react-icons/bs";
+import { BsFillPersonFill } from "react-icons/bs";
 import { SlDiamond } from "react-icons/sl";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { FaFreeCodeCamp } from "react-icons/fa";
@@ -9,6 +9,10 @@ import "../../scss/_services-page.scss";
 import "../../Pages/ContactUs/ContactUs.css";
 
 function Services() {
+  useEffect(() => {
+    document.title = "Jobfinder.com | Services";
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <div className="breadCrum">
@@ -29,8 +33,7 @@ function Services() {
               <p>
                 We consider search to be one of the most important feature for
                 Job seekers and Employers. Therefore, we have implemented the
-                search algorithms to find a job or a candidate for
-                a job.
+                search algorithms to find a job or a candidate for a job.
               </p>
             </div>
           </div>
@@ -44,10 +47,10 @@ function Services() {
             <div className="text">
               <h5>Jobseekers can apply for IT and Non-IT Jobs</h5>
               <p>
-                Jobseekers can apply for IT and Non-IT jobs to make sure that right job
-                reaches the right person. This feature makes it easy to navigate
-                through the jobs by creating a distinctive space for both
-                fields.
+                Jobseekers can apply for IT and Non-IT jobs to make sure that
+                right job reaches the right person. This feature makes it easy
+                to navigate through the jobs by creating a distinctive space for
+                both fields.
               </p>
             </div>
           </div>
@@ -90,7 +93,8 @@ function Services() {
             <div className="text">
               <h5>Notification</h5>
               <p>
-                 When jobseekers apply for jobs then employers will get the notification and he or she can view the jobseekers details. 
+                When jobseekers apply for jobs then employers will get the
+                notification and he or she can view the jobseekers details.
               </p>
             </div>
           </div>

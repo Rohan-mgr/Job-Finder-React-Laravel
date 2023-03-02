@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../scss/_h1-hero.scss";
 import "../../scss/_common.scss";
 import { useNavigate, Outlet } from "react-router-dom";
@@ -31,6 +31,11 @@ function Home(props) {
       }
     },
   });
+
+  useEffect(() => {
+    document.title = "Jobfinder.com";
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div>

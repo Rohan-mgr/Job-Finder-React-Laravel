@@ -1,12 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import {
-  NavLink,
-  // Routes,
-  // useLocation,
-  // useNavigate,
-  // useParams,
-  // useRoutes,
-} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { getSeekerProfile } from "../../services/seeker";
 import { getEmpoyerProfile } from "../../services/employer";
 import { _getSecureLs } from "../../helper/storage";

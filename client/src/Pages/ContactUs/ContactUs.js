@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ContactUs.css";
 import { Form, Button } from "react-bootstrap";
 import { useFormik } from "formik";
@@ -32,6 +32,11 @@ export const ContactUs = () => {
       }
     },
   });
+
+  useEffect(() => {
+    document.title = "Jobfinder.com | Contact Us";
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div>
@@ -146,4 +151,4 @@ export const ContactUs = () => {
   );
 };
 
-  export default ContactUs;
+export default ContactUs;

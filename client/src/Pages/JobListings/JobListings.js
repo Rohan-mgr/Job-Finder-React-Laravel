@@ -37,6 +37,8 @@ function JobListings() {
   }, []);
 
   useEffect(() => {
+    document.title = "Jobfinder.com | Find Jobs";
+    window.scrollTo(0, 0);
     if (title !== null || location !== null) {
       handleSearchJobs();
     } else {

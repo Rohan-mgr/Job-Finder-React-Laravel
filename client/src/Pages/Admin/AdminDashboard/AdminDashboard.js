@@ -33,7 +33,7 @@ function AdminDashboard() {
 
   useEffect(() => {
     getDashboardDetails();
-  });
+  }, [getDashboardDetails]);
 
   return (
     <section className="content">
