@@ -9,6 +9,7 @@ import Footer from "../Footer/Footer";
 import RecentJobs from "./RecentJobs";
 import ApplyProcess from "./ApplyProcess";
 import { useFormik } from "formik";
+import Testimonial from "./Testimonials/Testimonial";
 
 function Home(props) {
   const { pathname } = useLocation();
@@ -95,6 +96,7 @@ function Home(props) {
           <Categories />
           <RecentJobs />
           <ApplyProcess />
+          <Testimonial />
         </>
       )}
       <Outlet />

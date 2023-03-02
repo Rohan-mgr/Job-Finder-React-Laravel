@@ -4,7 +4,7 @@ import "../../scss/_apply-proces.scss";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import { BsFillPersonFill } from "react-icons/bs";
 import { SiSymantec } from "react-icons/si";
-// import "../../../scss/_apply-process.scss";
+import "../../scss/_apply-proces.scss";
 
 function ApplyProcess() {
   return (
@@ -21,7 +21,7 @@ function ApplyProcess() {
 
         <div className="row">
           <div className="col-lg-4 col-md-6">
-            <div className="single-process text-center mb-30">
+            <div className="single-process text-center mb-30 ">
               <div className="process-ion">
                 <span>
                   <AiOutlineFileSearch />
@@ -36,9 +36,9 @@ function ApplyProcess() {
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6">
+          <div className="col-lg-4 col-md-6 col-12">
             <div className="single-process text-center mb-30">
-              <div className="process-ion">
+              <div className="process-ion col-12">
                 <span>
                   <SiSymantec />
                 </span>
@@ -52,7 +52,7 @@ function ApplyProcess() {
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6">
+          <div className="col-lg-4 col-md-6 col-12">
             <div className="single-process text-center mb-30">
               <div className="process-ion">
                 <span>
