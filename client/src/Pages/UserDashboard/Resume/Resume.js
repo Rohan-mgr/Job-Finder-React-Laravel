@@ -5,6 +5,7 @@ import { getSeekerResume } from "../../../services/seeker";
 import axios from "axios";
 function Resume() {
   const [resumePath, setResumePath] = useState(null);
+  const [resume, setResume] = useState("");
   const { user } = _getSecureLs("seekerAuth");
 
   const getSeekerCV = useCallback(async () => {
