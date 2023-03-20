@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { _getSecureLs, _setSecureLs, _remove } from "../../helper/storage";
 
 function NavigationBar() {
-  const collapseRef = useRef(null);
   const navigate = useNavigate();
   const { user } = _getSecureLs("seekerAuth");
   const [authModal, setAuthModal] = useState(false);
@@ -48,10 +47,6 @@ function NavigationBar() {
     };
   }, []);
 
-  const hideBars = () => {
-    collapseRef.current.setAttribute("class", "navbar-collapse collapse");
-  };
-
   return (
     <Navbar bg="Navbar" className={show && "sticky-nav"} expand="lg">
       <Container fluid>
@@ -65,18 +60,14 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
           id="basic-navbar-nav"
+          collapseOnSelect
           // className="justify-content-center"
-          ref={collapseRef}
         >
           <Nav className="text-center my-2">
-            <NavLink Path="/" hideNav={hideBars} Link="Home" />
-            <NavLink Path="contact_us" hideNav={hideBars} Link="Contact Us" />
-            <NavLink Path="services" hideNav={hideBars} Link="Services" />
-            <NavLink
-              Path="search_jobs/job_listings"
-              hideNav={hideBars}
-              Link="Find Jobs"
-            />
+            <NavLink Path="/" Link="Home" />
+            <NavLink Path="contact_us" Link="Contact Us" />
+            <NavLink Path="services" Link="Services" />
+            <NavLink Path="search_jobs/job_listings" Link="Find Jobs" />
             <NavLink Path="ourteam" Link="Our Team" />
             {user && (
               <a href="/account/seeker/dashboard" style={{ color: "red" }}>
