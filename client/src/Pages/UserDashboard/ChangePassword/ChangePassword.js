@@ -47,7 +47,11 @@ function ChangePassword(props) {
     <Form className="col-lg-8 col-md-8" onSubmit={formik.handleSubmit}>
       <Form.Group className="mb-3" controlId="oldPassword">
         {error?.message && (
-          <DismissableAlert Success={error.status === 200 ? true : false}>
+          <DismissableAlert
+            error
+            SetError={setError}
+            Success={error.status === 200 ? true : false}
+          >
             {/* {error.status === 200 ? error.message : error} */}
             {error.message}
           </DismissableAlert>

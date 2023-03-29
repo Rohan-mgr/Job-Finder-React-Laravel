@@ -1,47 +1,25 @@
-.resume_title, .resume_title2 {
-    font-size: 1rem;
-    font-weight: 700;   
-    border-bottom: 1px solid #c5c5c5;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    display: flex; 
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+
+
+.resume img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
 }
-.resume_title h1 {
-    display: inline-block;
-    font-size: 30px;
-    text-transform: capitalize;
-    font-weight: 800;
-    color: #134f5c;
-    font-family: 'Raleway', sans-serif;
+
+.resume h4 {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 1rem;
 }
-.resume_title a {
-    color: #555; 
-    font-size: 24px;
-    display: block;
+.cover_letter p {
+    width: 75%;
 }
-.resume_title a i{
-    display: inline-block;
-    position: relative;
-    vertical-align: middle;
-    font-size: 14px;
-    height: 30px;
-    width: 30px;
-    border-radius: 100%;
-    text-align: center;
-    line-height: 26px;
-    border: 1px solid #e3e9f5;
-    background: #fff;
-    margin-top: -5px;
-    margin-bottom: -5px;
+@media (max-width: 768px) {
+    .cover_letter p {
+        width: 100%;
+    }
 }
-.resume_title a .fa-download{
-    background: #4990a0;
-    color: #fff; 
-}
-.resume_title2 a .fa-envelope {
-    color: #4990a0;
-    font-size: 14px;
+@media (max-width: 480px) {
+    .cover_letter p {
+        width: 100%;
+    }
 }
