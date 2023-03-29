@@ -9,6 +9,9 @@
     background-size: cover;
     background-position: center center;
 }
+.login .btn {
+    padding: 27px 15px !important;
+}
 .login form {
     background-color: #fff;
     padding: 25px;
