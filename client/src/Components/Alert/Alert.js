@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import Alert from "react-bootstrap/Alert";
 
 function DismissableAlert(props) {
-  const [show, setShow] = useState(true);
-
-  if (show) {
+  if (props.error) {
     return (
       <Alert
         variant={props.Success ? "success" : "danger"}
-        onClose={() => setShow(false)}
+        onClose={() => props.SetError(null)}
         dismissible
       >
         <p style={{ padding: "0", margin: "0" }}>{props.children}</p>

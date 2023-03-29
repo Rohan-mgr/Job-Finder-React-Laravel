@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import { FaRegAddressCard } from "react-icons/fa";
 import { BsArrowLeft } from "react-icons/bs";
+import { AiOutlineEye } from "react-icons/ai";
 
 function Applicants() {
   const navigate = useNavigate();
@@ -34,6 +35,7 @@ function Applicants() {
               <th>Full Name</th>
               <th>Profile</th>
               <th>Email</th>
+              <th>Resume</th>
               <th>Contact</th>
             </tr>
           </thead>
@@ -54,12 +56,29 @@ function Applicants() {
                       alt="logo"
                     />
                   </td>
+
                   <td>
                     <a
                       href={`mailto:${e["email"]}`}
                       style={{ textDecoration: "none", color: "#fb246a" }}
                     >
                       {e["email"]}
+                    </a>
+                  </td>
+                  <td>
+                    <a
+                      style={{
+                        background: "#fb246a",
+                        padding: "8px",
+                        borderRadius: "7px",
+                      }}
+                      href={`http://localhost:8000/${e["resume"]}`}
+                      download
+                    >
+                      <AiOutlineEye
+                        style={{ fontSize: "1.2rem", marginTop: "-2px" }}
+                      />
+                      View
                     </a>
                   </td>
                   <td>{e["mobile"]}</td>

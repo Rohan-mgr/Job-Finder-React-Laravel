@@ -93,6 +93,16 @@ class SeekerController extends Controller
     }
 
     public function handleCVUpload(Request $req) {
+        $validator = Validator::make($req->all(), [
+             'upload_file'=>'required|image',
+         ]);
+         
+         if ($validator->fails()) {
+             return response()->json([
+                 'message'=>$validator->errors()
+             ],422);
+         }
+
         if($req->upload_file !== "null" && $req->cover_letter !== null){
             $user = seeker::find($req->userId);
 
@@ -127,8 +137,9 @@ class SeekerController extends Controller
     }
 
     public function getSeekerResume($id) {
+        
         $user = seeker::find($id);
-        return response()->json(['resume' => $user->resume])->header('Content-Type', 'application/pdf');
+        return response()->json(['resume' => $user->resume, 'letter' => $user->cover_letter])->header('Content-Type', 'application/pdf');
     }
 
     public function ChangePassword(Request $req){
