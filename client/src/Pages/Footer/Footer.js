@@ -59,6 +59,12 @@ function Footer() {
                       <NavLink Path="services" Link="Services" />
                     </li>
                     <li>
+                      <NavLink
+                        Path="search_jobs/job_listings"
+                        Link="Find Jobs"
+                      />
+                    </li>
+                    <li>
                       <NavLink Path="ourteam" Link="Our Team" />
                     </li>
                   </ul>
