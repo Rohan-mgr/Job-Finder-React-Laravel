@@ -37,12 +37,16 @@ function DeleteAccount(props) {
         <button type="submit" className="btn head-btn1">
           Yes, Delete My Account
         </button>
-        <button
+        <a
+          href={
+            props.Mode === "seeker"
+              ? "/account/seeker/dashboard"
+              : "/account/employer/dashboard"
+          }
           className="btn head-btn2"
-          onClick={() => navigate("/account/seeker/dashboard")}
         >
           Cancel
-        </button>
+        </a>
       </form>
     </div>
   );
